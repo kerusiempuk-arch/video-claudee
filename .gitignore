@@ -3,3 +3,6 @@ tingkap/node_modules/
 *.mp4
 boxer/.hyperframes/
 boxer/node_modules/
+work-*/
+.*.hf-transaction-*/
+renders/
