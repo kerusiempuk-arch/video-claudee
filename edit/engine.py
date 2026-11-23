@@ -54,7 +54,7 @@ SECTIONS = CFG["SECTIONS"]
 STICKERS = CFG["STICKERS"]
 CIRCLES = CFG["CIRCLES"]
 CTA = CFG["CTA"]
-CAPTION_Y = CFG.get("CAPTION_Y", 1010)
+CAPTION_Y = CFG.get("CAPTION_Y", 1780)
 CARD_Y = CFG.get("CARD_Y", 1110)
 ZOOM = CFG.get("ZOOM", 0.05)
 CAPTION_ACCENT = tuple(CFG.get("CAPTION_ACCENT", ACCENT))
@@ -262,7 +262,6 @@ def frame(t):
     draw_circles(img, t)
     draw_caption(img, t)
     draw_cta(img, t)
-    draw_watermark(img)
     return img
 
 # ------------------------------------------------------------------ sound effects

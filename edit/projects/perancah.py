@@ -1,6 +1,6 @@
 # Perancah lipat (video 1hVBeYmqNrjeLxb_zo6JKLbaCDI0twYgL)
 END = 21.3
-CAPTION_Y = 1010
+CAPTION_Y = 1780
 CARD_Y = 1110
 
 CAPTIONS = [  # (group_end, [(word, start, highlight)])
