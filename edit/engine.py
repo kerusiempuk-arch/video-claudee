@@ -1,5 +1,5 @@
-"""TikTok edit: perancah lipat. Usage:
-  python3 render.py <input.mp4> <output.mp4> [--preview]
+"""TikTok edit engine (gaya 'product explainer'). Usage:
+  python3 engine.py <input.mp4> <output.mp4> <project.py> [--preview] [--still T]
 Preview = 540x960 + PREVIEW watermark, final = 1080x1920.
 """
 import subprocess, sys, math
@@ -43,37 +43,24 @@ def fade(t, a, b, fin=0.15, fout=0.15):
         return 0.0
     return min(ease((t - a) / fin), ease((b - t) / fout) if fout else 1.0)
 
-# ------------------------------------------------------------------ timeline
-# Kapsyen ikut suara (dari transkripsi). (start, end, [(word, highlight)])
-CAPTIONS = [
-    (0.00, 1.00, [("Nanti-nanti", False)]),
-    (1.00, 2.40, [("saya", False), ("nak", False), ("naik", False), ("atas", True)]),
-    (8.30, 9.40, [("Nanti", False), ("dulu", True)]),
-]
-HOOK_END = 3.0
-SECTIONS = [  # (start, end, label, num, subtitle)
-    (3.0, 9.2, "kelebihan", "1 / 3", "naik senang"),
-    (9.2, 14.4, "kelebihan", "2 / 3", "kukuh & stabil"),
-    (14.4, 18.4, "kelebihan", "3 / 3", "berdiri pun boleh"),
-]
-STICKERS = [  # (start, end, text, x, y, angle) – disusun bertindan macam reference
-    (3.5, 9.0, "duduk pun selesa", 70, 300, 2.0),
-    (5.4, 9.0, "sampai tingkap atas", 110, 370, -1.5),
-    (9.6, 14.2, "besi tebal", 70, 300, 2.0),
-    (10.8, 14.2, "tak goyang", 110, 370, -1.5),
-    (12.2, 14.2, "tahan berat", 150, 440, 1.5),
-    (14.8, 18.3, "platform lebar", 70, 300, -2.0),
-    (16.0, 18.3, "selamat buat kerja cat", 110, 370, 1.5),
-]
-CIRCLES = [  # (start, end, cx, cy, r, label, label_x, label_y)
-    (6.0, 7.8, 650, 225, 85, "tinggi", 760, 250),
-    (10.6, 12.4, 860, 735, 80, "besi kukuh", 560, 800),
-]
-CTA_TITLE = (18.4, END, "kukuh")
-CTA_CARD_START = 19.3
+# ------------------------------------------------------------------ project config
+import runpy
+CFG = runpy.run_path(sys.argv[3])
+END = CFG["END"]
+CAPTIONS = CFG["CAPTIONS"]          # [(end, [(word, start, highlight), ...]), ...]
+HOOK = CFG["HOOK"]
+HOOK_END = HOOK["end"]
+SECTIONS = CFG["SECTIONS"]
+STICKERS = CFG["STICKERS"]
+CIRCLES = CFG["CIRCLES"]
+CTA = CFG["CTA"]
+CAPTION_Y = CFG.get("CAPTION_Y", 1010)
+CARD_Y = CFG.get("CARD_Y", 1110)
+ZOOM = CFG.get("ZOOM", 0.05)
+CAPTION_ACCENT = tuple(CFG.get("CAPTION_ACCENT", ACCENT))
 
 # ------------------------------------------------------------------ helpers
-def shadow_text(base, xy, text, f, fill, alpha, blur=6, shadow_a=150, anchor="mm"):
+def shadow_text(base, xy, text, f, fill, alpha, blur=6, shadow_a=150, anchor="mm", stroke=False):
     if alpha <= 0:
         return
     sh = Image.new("RGBA", base.size, (0, 0, 0, 0))
@@ -82,7 +69,9 @@ def shadow_text(base, xy, text, f, fill, alpha, blur=6, shadow_a=150, anchor="mm
     base.alpha_composite(sh)
     lay = Image.new("RGBA", base.size, (0, 0, 0, 0))
     c = fill[:3] + (int(fill[3] * alpha),)
-    ImageDraw.Draw(lay).text(xy, text, font=f, fill=c, anchor=anchor)
+    sw = max(1, round(2 * S)) if stroke else 0
+    ImageDraw.Draw(lay).text(xy, text, font=f, fill=c, anchor=anchor,
+                             stroke_width=sw, stroke_fill=(20, 20, 30, int(170 * alpha)))
     base.alpha_composite(lay)
 
 def rrect(d, box, r, fill):
@@ -134,22 +123,20 @@ def draw_section(img, t):
         d.text(((x + tw + 46) * S, (y + 26) * S), sub, font=font(F_MED, 32), fill=with_alpha(INK, a), anchor="lm")
 
 def draw_caption(img, t):
-    for a0, a1, words in CAPTIONS:
-        if not (a0 <= t <= a1):
+    for i, (g_end, words) in enumerate(CAPTIONS):
+        g_start = words[0][1]
+        if not (g_start <= t <= g_end):
             continue
-        f = font(F_BOLD, 58)
+        f = font(F_BOLD, 60)
         d = ImageDraw.Draw(img)
-        widths = [d.textlength(w, font=f) for w, _ in words]
+        widths = [d.textlength(w, font=f) for w, _, _ in words]
         gap = d.textlength(" ", font=f)
         total = sum(widths) + gap * (len(words) - 1)
         x = W / 2 - total / 2
-        n = len(words)
-        for i, ((w, hi), ww) in enumerate(zip(words, widths)):
-            ws = a0 + (a1 - a0 - 0.3) * i / max(1, n)   # perkataan muncul satu-satu
-            a = fade(t, ws, a1, 0.12, 0.12)
-            pop = 1 - 0.0 * a
-            y = 1010 * S + (1 - ease((t - ws) / 0.15)) * 14 * S
-            shadow_text(img, (x + ww / 2, y), w, f, ACCENT if hi else WHITE, a)
+        for (w, ws, hi), ww in zip(words, widths):
+            a = fade(t, ws, g_end, 0.10, 0.08)
+            y = CAPTION_Y * S + (1 - ease((t - ws) / 0.15)) * 14 * S
+            shadow_text(img, (x + ww / 2, y), w, f, CAPTION_ACCENT if hi else WHITE, a, blur=7, shadow_a=220, stroke=True)
             x += ww + gap
 
 def sticker(img, text, x, y, angle, a, t_in):
@@ -198,14 +185,16 @@ def draw_hook(img, t):
     if a <= 0:
         return
     d = ImageDraw.Draw(img)
-    d.text((W / 2, 112 * S), "perancah lipat paling", font=font(F_MED, 34), fill=with_alpha(GREY, a), anchor="mm")
-    big_title(img, "kukuh", 215, a, t)
-    # kad pilihan gaya tetingkap
+    d.text((W / 2, HOOK.get("y", 112) * S), HOOK["kicker"], font=font(F_MED, 34), fill=with_alpha(INK, a), anchor="mm")
+    big_title(img, HOOK["title"], HOOK.get("y", 112) + 103, a, t)
     ca = fade(t, 0.25, HOOK_END, 0.25, 0.25)
     if ca <= 0:
         return
-    sel = None if t < 1.0 else (0 if t < 2.0 else 1)
-    card(img, ca, 1110, options=[("Ringan nak angkat", "01"), ("Kukuh nak panjat", "02")], sel=sel)
+    sel = None
+    for i, ts in enumerate(HOOK["select_at"]):
+        if t >= ts:
+            sel = i
+    card(img, ca, CARD_Y, options=HOOK["options"], sel=sel)
 
 def big_title(img, word, y, a, t, size=150):
     f = font(F_XBOLD, size)
@@ -226,7 +215,7 @@ def window_card(img, a, top, height, width=620):
     for i, c in enumerate([(255, 95, 87, 255), (254, 188, 46, 255), (40, 200, 64, 255)]):
         cx = x0 + 30 + i * 22
         d.ellipse([(cx - 6) * S, (top + 30 - 6) * S, (cx + 6) * S, (top + 30 + 6) * S], fill=with_alpha(c, a))
-    d.text(((x0 + 100) * S, (top + 30) * S), "Perancah Lipat", font=font(F_MED, 24), fill=with_alpha((220, 220, 228, 255), a), anchor="lm")
+    d.text(((x0 + 100) * S, (top + 30) * S), CTA["card_label"], font=font(F_MED, 24), fill=with_alpha((220, 220, 228, 255), a), anchor="lm")
     return d, x0
 
 def card(img, a, top, options, sel):
@@ -240,19 +229,21 @@ def card(img, a, top, options, sel):
         d.text(((x0 + 586) * S, (y + 27) * S), num, font=font(F_MONO, 22), fill=with_alpha((170, 170, 180, 255), a), anchor="rm")
 
 def draw_cta(img, t):
-    a0, a1, word = CTA_TITLE
-    a = fade(t, a0, a1, 0.2, 0.01)
+    a = fade(t, CTA["title_at"], END, 0.2, 0.01)
     if a > 0:
-        big_title(img, word + "", 250, a, t, size=170)
-    ca = fade(t, CTA_CARD_START, END, 0.25, 0.01)
+        big_title(img, CTA["title"], CTA.get("title_y", 250), a, t, size=170)
+    c0 = CTA["card_at"]
+    ca = fade(t, c0, END, 0.25, 0.01)
     if ca <= 0:
         return
-    top = 1090 + (1 - ease((t - CTA_CARD_START) / 0.3)) * 40
+    top = CTA.get("card_y", 1090) + (1 - ease((t - c0) / 0.3)) * 40
     d, x0 = window_card(img, ca, top, 250)
-    d.text(((x0 + 30) * S, (top + 82) * S), "Perancah Lipat", font=font(F_XBOLD, 46), fill=with_alpha(WHITE, ca), anchor="lm")
-    d.text(((x0 + 30) * S, (top + 124) * S), "ringan · kukuh · boleh lipat", font=font(F_MONO, 22), fill=with_alpha((160, 160, 170, 255), ca), anchor="lm")
-    rrect(d, (x0 + 20, top + 160, x0 + 600, top + 230), 35, with_alpha(RED, ca))
-    d.text((540 * S, (top + 195) * S), "Link dekat bawah ↓", font=font(F_BOLD, 36), fill=with_alpha(WHITE, ca), anchor="mm")
+    d.text(((x0 + 30) * S, (top + 82) * S), CTA["name"], font=font(F_XBOLD, 46), fill=with_alpha(WHITE, ca), anchor="lm")
+    d.text(((x0 + 30) * S, (top + 124) * S), CTA["tags"], font=font(F_MONO, 22), fill=with_alpha((160, 160, 170, 255), ca), anchor="lm")
+    bcol = tuple(CTA.get("button_color", RED))
+    tcol = tuple(CTA.get("button_text_color", WHITE))
+    rrect(d, (x0 + 20, top + 160, x0 + 600, top + 230), 35, with_alpha(bcol, ca))
+    d.text((540 * S, (top + 195) * S), CTA["button"], font=font(F_BOLD, 36), fill=with_alpha(tcol, ca), anchor="mm")
 
 def draw_watermark(img):
     if not PREVIEW:
@@ -276,18 +267,18 @@ def frame(t):
 
 # ------------------------------------------------------------------ render
 if __name__ == "__main__":
-    if "--still" in sys.argv:  # debug: python3 render.py in out.png --preview --still 5.0
-        t = float(sys.argv[-1])
+    if "--still" in sys.argv:
+        t = float(sys.argv[sys.argv.index("--still") + 1])
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(t), "-i", SRC, "-frames:v", "1",
-                        "-vf", f"scale={W}:{H}", "/tmp/_bg.png"], check=True)
-        bg = Image.open("/tmp/_bg.png").convert("RGBA")
+                        "-vf", f"scale={W}:{H}", OUT + ".bg.png"], check=True)
+        bg = Image.open(OUT + ".bg.png").convert("RGBA")
         bg.alpha_composite(frame(t))
         bg.convert("RGB").save(OUT)
         sys.exit()
     n = int(END * FPS)
     # latar: zoom perlahan 1.00 -> 1.05, potong hujung yang kamera jatuh
     vf = (f"[0:v]trim=0:{END},setpts=PTS-STARTPTS,"
-          f"scale=w='trunc({W}*(1+0.05*t/{END})/2)*2':h=-2:eval=frame,crop={W}:{H},fps={FPS},format=rgba[bg];"
+          f"scale=w='trunc({W}*(1+{ZOOM}*t/{END})/2)*2':h=-2:eval=frame,crop={W}:{H},fps={FPS},format=rgba[bg];"
           f"[bg][1:v]overlay=0:0:format=auto,format=yuv420p[v];"
           f"[0:a]atrim=0:{END},asetpts=PTS-STARTPTS,afade=t=out:st={END-0.4}:d=0.4,loudnorm=I=-14:TP=-1.5[a]")
     cmd = ["ffmpeg", "-v", "error", "-y", "-i", SRC,
