@@ -1,0 +1,6 @@
+*.mp4
+node_modules/
+.hyperframes/
+.media/
+renders/
+work-*/
