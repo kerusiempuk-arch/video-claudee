@@ -2,7 +2,7 @@
   python3 engine.py <input.mp4> <output.mp4> <project.py> [--preview] [--still T]
 Preview = 540x960 + PREVIEW watermark, final = 1080x1920.
 """
-import subprocess, sys, math
+import subprocess, sys, math, os
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 SRC, OUT = sys.argv[1], sys.argv[2]
@@ -265,6 +265,20 @@ def frame(t):
     draw_watermark(img)
     return img
 
+# ------------------------------------------------------------------ sound effects
+def sfx_events():
+    """Bunyi automatik ikut overlay: (masa, nama, volume)."""
+    if not CFG.get("SFX", True):
+        return []
+    ev = [(0.0, "whoosh", 0.5)]
+    ev += [(ts, "click", 0.6) for ts in HOOK["select_at"]]
+    ev += [(a0, "whoosh", 0.45) for a0, *_ in SECTIONS]
+    ev += [(a0, "pop", 0.55) for a0, *_ in STICKERS]
+    ev += [(c[0], "pop", 0.55) for c in CIRCLES]
+    ev += [(CTA["title_at"], "whoosh", 0.5), (CTA["card_at"], "ding", 0.5)]
+    ev += [tuple(e) for e in CFG.get("EXTRA_SFX", [])]
+    return sorted((max(0.0, t), n, v) for t, n, v in ev if t < END)
+
 # ------------------------------------------------------------------ render
 if __name__ == "__main__":
     if "--still" in sys.argv:
@@ -276,13 +290,27 @@ if __name__ == "__main__":
         bg.convert("RGB").save(OUT)
         sys.exit()
     n = int(END * FPS)
-    # latar: zoom perlahan 1.00 -> 1.05, potong hujung yang kamera jatuh
+    sfx = sfx_events()
+    sfx_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sfx")
+    sfx_inputs, sfx_chains, sfx_labels = [], [], []
+    for k, (t, name, vol) in enumerate(sfx):
+        sfx_inputs += ["-i", os.path.join(sfx_dir, name + ".wav")]
+        ms = int(t * 1000)
+        sfx_chains.append(f"[{k + 2}:a]adelay={ms}|{ms},volume={vol}[s{k}]")
+        sfx_labels.append(f"[s{k}]")
+    # latar: zoom perlahan; suara dinormalkan dulu, kemudian SFX dicampur di bawah suara
     vf = (f"[0:v]trim=0:{END},setpts=PTS-STARTPTS,"
           f"scale=w='trunc({W}*(1+{ZOOM}*t/{END})/2)*2':h=-2:eval=frame,crop={W}:{H},fps={FPS},format=rgba[bg];"
           f"[bg][1:v]overlay=0:0:format=auto,format=yuv420p[v];"
-          f"[0:a]atrim=0:{END},asetpts=PTS-STARTPTS,afade=t=out:st={END-0.4}:d=0.4,loudnorm=I=-14:TP=-1.5[a]")
+          f"[0:a]atrim=0:{END},asetpts=PTS-STARTPTS,afade=t=out:st={END-0.4}:d=0.4,"
+          f"loudnorm=I=-14:TP=-2,aresample=44100,aformat=channel_layouts=stereo[voice]")
+    if sfx:
+        vf += ";" + ";".join(sfx_chains) + ";" + "[voice]" + "".join(sfx_labels) + \
+              f"amix=inputs={len(sfx) + 1}:duration=first:normalize=0,alimiter=limit=0.95[a]"
+    else:
+        vf += ";[voice]anull[a]"
     cmd = ["ffmpeg", "-v", "error", "-y", "-i", SRC,
-           "-f", "rawvideo", "-pix_fmt", "rgba", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
+           "-f", "rawvideo", "-pix_fmt", "rgba", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-"] + sfx_inputs + [
            "-filter_complex", vf, "-map", "[v]", "-map", "[a]",
            "-c:v", "libx264", "-preset", "veryfast" if PREVIEW else "slow",
            "-crf", "26" if PREVIEW else "17", "-c:a", "aac", "-b:a", "192k",
