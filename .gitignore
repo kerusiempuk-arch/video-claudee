@@ -4,3 +4,6 @@ node_modules/
 .media/
 renders/
 work-*/
+.venv-style1/
+work/
+__pycache__/

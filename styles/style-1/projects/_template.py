@@ -1,0 +1,29 @@
+# <Nama produk> (Drive <ID>) — salin fail ni, isi ikut video. Contoh lengkap: styles/style-1/projects/boxer.py
+# ---------- langkah potong (cut.py) – masa ikut video ASAL
+REMOVE = [
+    # (mula, tamat),  # "aaa" / "okay" / ulangan pertama / ayat tak habis
+]
+SRC_END = 99.0        # potong selepas ni (orang keluar frame / kamera jatuh)
+TAIL = 0.7            # hujung tak dipotong senyap — masa baca CTA
+PUNCH_Y = 0.25        # punch-in fokus ke atas (muka)
+
+# ---------- overlay (engine.py) – masa ikut video SELEPAS dipotong
+END = 0.0             # tempoh cut.mp4
+CAPTION_Y = 1780      # bawah (pilihan user)
+CARD_Y = 1180
+ZOOM = 0.04
+# CAPTION_ACCENT = (255, 212, 59, 255)   # kuning bila latar/baju biru
+
+CAPTIONS = [  # (group_end, [(perkataan, mula, highlight)]) — 1–3 perkataan
+    # (1.36, [("Zaman", 0.00, False), ("sekarang", 0.64, False)]),
+]
+HOOK = dict(end=3.0, y=100, kicker="<produk> paling", title="<katakunci>",
+            options=[("<pilihan A>", "01"), ("<pilihan B>", "02")], select_at=[1.0, 2.0])
+SECTIONS = [  # (mula, tamat, "kelebihan", "1 / 3", subtajuk)
+]
+STICKERS = [  # (mula, tamat, teks, x, y, sudut) — x 50/80/110, y 250/320/390 bertindan
+]
+CIRCLES = []  # (mula, tamat, cx, cy, r, label, label_x, label_y)
+CTA = dict(title="<katakunci>", title_at=0.0, title_y=230, card_at=0.0, card_y=1180,
+           card_label="<Produk>", name="<Produk>", tags="a · b · c",
+           button="Tekan bakul kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
