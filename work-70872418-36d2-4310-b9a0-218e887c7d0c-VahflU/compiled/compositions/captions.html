@@ -1,0 +1,77 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .cap { position: absolute; left: 120px; top: 545px; width: 840px; height: 110px; z-index: 1;
+      display: flex; align-items: center; justify-content: center; }
+    .cap-line { font: 700 56px "Inter", sans-serif; color: #fff; text-align: center; white-space: nowrap;
+      padding: 6px 22px; border-radius: 18px; background: rgba(10,14,28,.42);
+      text-shadow: 0 2px 10px rgba(0,0,0,.5); }
+    .w { display: inline-block; }
+    .kw-box { background: #fff; color: #111; padding: 0 14px; border-radius: 10px; text-shadow: none; }
+    .kw-serif { background: rgba(255,255,255,.18); color: #fff; padding: 0 14px; border-radius: 10px;
+      font: italic 400 62px "Playfair Display", serif; border: 2px solid rgba(255,255,255,.45); }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <div id="cap1" class="clip cap" data-start="0" data-duration="1.83"><div class="cap-line"><span class="w" id="cap1-w0">Zaman</span> <span class="w" id="cap1-w1">sekarang</span> <span class="w" id="cap1-w2">jarang</span> <span class="w" id="cap1-w3">dah</span></div></div>
+    <div id="cap2" class="clip cap" data-start="1.78" data-duration="1.57"><div class="cap-line"><span class="w" id="cap2-w0">pakai</span> <span class="w kw-box" id="cap2-w1">spender</span> <span class="w" id="cap2-w2">biasa</span></div></div>
+    <div id="cap3" class="clip cap" data-start="3.34" data-duration="2.14"><div class="cap-line"><span class="w" id="cap3-w0">kebanyakan</span> <span class="w" id="cap3-w1">pakai</span> <span class="w kw-serif" id="cap3-w2">boxer</span></div></div>
+    <div id="cap4" class="clip cap" data-start="5.46" data-duration="0.74"><div class="cap-line"><span class="w" id="cap4-w0">Sebab</span> <span class="w" id="cap4-w1">apa?</span></div></div>
+    <div id="cap5" class="clip cap" data-start="6.15" data-duration="1.26"><div class="cap-line"><span class="w" id="cap5-w0">Pakaian</span> <span class="w" id="cap5-w1">boxer</span> <span class="w" id="cap5-w2">ini</span></div></div>
+    <div id="cap6" class="clip cap" data-start="7.36" data-duration="1.10"><div class="cap-line"><span class="w" id="cap6-w0">lebih</span> <span class="w kw-box" id="cap6-w1">selesa</span></div></div>
+    <div id="cap7" class="clip cap" data-start="8.44" data-duration="2.24"><div class="cap-line"><span class="w kw-serif" id="cap7-w0">pengudaraan</span> <span class="w" id="cap7-w1">lebih</span> <span class="w" id="cap7-w2">lancar</span></div></div>
+    <div id="cap8" class="clip cap" data-start="10.64" data-duration="1.40"><div class="cap-line"><span class="w" id="cap8-w0">Lagi</span> <span class="w" id="cap8-w1">satu,</span> <span class="w" id="cap8-w2">kain</span> <span class="w" id="cap8-w3">dia</span></div></div>
+    <div id="cap9" class="clip cap" data-start="11.99" data-duration="1.31"><div class="cap-line"><span class="w" id="cap9-w0">sangat</span> <span class="w kw-box" id="cap9-w1">lembut</span></div></div>
+    <div id="cap10" class="clip cap" data-start="13.25" data-duration="1.77"><div class="cap-line"><span class="w" id="cap10-w0">getah</span> <span class="w" id="cap10-w1">dia</span> <span class="w kw-serif" id="cap10-w2">lembut</span></div></div>
+    <div id="cap11" class="clip cap" data-start="15" data-duration="1.35"><div class="cap-line"><span class="w" id="cap11-w0">Getah</span> <span class="w" id="cap11-w1">dia</span> <span class="w" id="cap11-w2">lembut</span></div></div>
+    <div id="cap12" class="clip cap" data-start="16.3" data-duration="1.62"><div class="cap-line"><span class="w" id="cap12-w0">ada</span> <span class="w" id="cap12-w1">pelbagai</span> <span class="w kw-box" id="cap12-w2">saiz</span></div></div>
+    <div id="cap13" class="clip cap" data-start="17.9" data-duration="1.50"><div class="cap-line"><span class="w" id="cap13-w0">ada</span> <span class="w" id="cap13-w1">pelbagai</span> <span class="w kw-box" id="cap13-w2">warna</span></div></div>
+    <div id="cap14" class="clip cap" data-start="19.37" data-duration="1.38"><div class="cap-line"><span class="w" id="cap14-w0">Berminat?</span> <span class="w" id="cap14-w1">Dapatkan</span> <span class="w" id="cap14-w2">di</span></div></div>
+    <div id="cap15" class="clip cap" data-start="20.73" data-duration="2.10"><div class="cap-line"><span class="w kw-serif" id="cap15-w0">beg kuning</span></div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#cap1-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 0.00);
+    tl.fromTo("#cap1-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 0.27);
+    tl.fromTo("#cap1-w2", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 0.89);
+    tl.fromTo("#cap1-w3", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 1.35);
+    tl.fromTo("#cap2-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 1.80);
+    tl.fromTo("#cap2-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 2.25);
+    tl.fromTo("#cap2-w2", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 2.73);
+    tl.fromTo("#cap3-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 3.36);
+    tl.fromTo("#cap3-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 4.41);
+    tl.fromTo("#cap3-w2", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 4.76);
+    tl.fromTo("#cap4-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 5.48);
+    tl.fromTo("#cap4-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 5.74);
+    tl.fromTo("#cap5-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 6.17);
+    tl.fromTo("#cap5-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 6.70);
+    tl.fromTo("#cap5-w2", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 7.15);
+    tl.fromTo("#cap6-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 7.38);
+    tl.fromTo("#cap6-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 7.81);
+    tl.fromTo("#cap7-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 8.46);
+    tl.fromTo("#cap7-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 9.49);
+    tl.fromTo("#cap7-w2", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 10.01);
+    tl.fromTo("#cap8-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 10.66);
+    tl.fromTo("#cap8-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 10.95);
+    tl.fromTo("#cap8-w2", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 11.44);
+    tl.fromTo("#cap8-w3", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 11.76);
+    tl.fromTo("#cap9-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 12.01);
+    tl.fromTo("#cap9-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 12.57);
+    tl.fromTo("#cap10-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 13.27);
+    tl.fromTo("#cap10-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 13.81);
+    tl.fromTo("#cap10-w2", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 14.15);
+    tl.fromTo("#cap11-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 15.02);
+    tl.fromTo("#cap11-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 15.38);
+    tl.fromTo("#cap11-w2", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 15.68);
+    tl.fromTo("#cap12-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 16.32);
+    tl.fromTo("#cap12-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 16.58);
+    tl.fromTo("#cap12-w2", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 17.34);
+    tl.fromTo("#cap13-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 17.92);
+    tl.fromTo("#cap13-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 18.14);
+    tl.fromTo("#cap13-w2", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 18.81);
+    tl.fromTo("#cap14-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 19.39);
+    tl.fromTo("#cap14-w1", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 19.91);
+    tl.fromTo("#cap14-w2", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 20.58);
+    tl.fromTo("#cap15-w0", { opacity: 0.3 }, { opacity: 1, duration: 0.1, ease: "none" }, 20.75);
+    window.__timelines["captions"] = tl;
+  </script>
+</template>
