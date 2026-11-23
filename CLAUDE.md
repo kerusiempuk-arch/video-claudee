@@ -16,3 +16,8 @@ General style notes from the first reference video: `STYLE_GUIDE.md`.
 - Add fitting sound effects.
 - Send draft frames → draft preview video → final render after approval.
 - Commit and push work as you go.
+
+## Saved styles are protected (owner's rule)
+- **Never change a saved style on `main`** (`styles/style-N/`, `.claude/skills/edit-style-N/`, its README/engine/tools) unless the owner explicitly says so ("simpan dalam style 1", "update style 1 di main", …).
+- Tweaks for one video go **only** in that video's project config (e.g. `styles/style-1/projects/<nama>.py`) on the session branch.
+- **At the end of every edit** (after the final render is sent), ask in Malay whether any change made for this video should be saved into the style for future videos — list the candidate changes briefly. Only on a yes: apply them to the style files, commit, and push to `main`.

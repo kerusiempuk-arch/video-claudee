@@ -16,6 +16,8 @@ Everything is plain Python (Pillow, numpy) + ffmpeg — no HyperFrames/Node need
 4. Sound effects on every overlay action (automatic: whoosh / click / pop / ding).
 5. Preview (540p) first → wait for **"okay render"** → final 1080×1920.
 6. Don't invent product facts (prices, sizes, materials). Inferred items (e.g. colours visible on screen) must be listed for the owner to confirm.
+7. **Style 1 itself is protected.** Never edit `styles/style-1/` engine/cut/sfx/tools/README or this skill on `main` without the owner's explicit OK. Per-video tweaks go only in `styles/style-1/projects/<name>.py`.
+8. After sending the final render, ask (in Malay) whether any change made for this video should be saved into Style 1 for future videos, listing the candidates. Only on a yes: update the style files, commit, push to `main`.
 
 ## Steps (run from repo root; `W=work/<name>`)
 ```bash
