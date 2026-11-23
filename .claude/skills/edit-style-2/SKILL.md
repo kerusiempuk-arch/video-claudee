@@ -15,10 +15,12 @@ Design notes for humans: `styles/style-2/README.md`. Helper scripts: `styles/sty
 1. Cut **every filler word** ("aaa", "emm", "okay"), **repeated words/phrases** (keep the last, cleanest take) and **stutters**.
 2. Shorten **every pause > ~0.3 s** to ~0.1 s.
 3. Alternate a **punch-in** (`scale(1.07)`, `transform-origin: 50% 4%` so the head is never cropped) on every other segment so jump cuts look intentional.
-4. Add **sound effects** on every visual action (map below), volume 0.3–0.4, under the voice.
-5. Send **draft frames first**, then a **draft preview video**; final high-quality render only after approval.
-6. Never invent product facts (sizes, colours, prices). If the speaker doesn't say them, ask, or mark them clearly as placeholders.
-7. Commit and push work to the session branch as you go.
+4. **Keep only the main voice.** Remove background noise (wind, fans, traffic, hum, other sounds): `scripts/clean-voice.sh src.mp4 voice.m4a` (highpass + RNNoise `arnndn` + lowpass, −14 LUFS), then build segments with `segments.mjs … --voice` (videos muted, cleaned voice cut the same). If music or another person is still audible, cut it or ask.
+5. **Brighten dark footage.** `scripts/brightness.sh src.mp4` measures mean luma; below 105 it prints a patch → `hyperframes media-treatment --selector ".seg" --grading '<patch>' --apply`. Check the stills; adjust if still dark or washed out. Never use WebGL blur (too slow); this correction alone renders fine.
+6. Add **sound effects** on every visual action (map below), volume 0.3–0.4, under the voice.
+7. Send **draft frames first**, then a **draft preview video**; final high-quality render only after approval.
+8. Never invent product facts (sizes, colours, prices). If the speaker doesn't say them, ask, or mark them clearly as placeholders.
+9. Commit and push work to the session branch as you go.
 
 ## 0. Environment (fresh container)
 
@@ -55,7 +57,8 @@ python3 -I ../$S/energy.py /tmp/<name>-fill/a16k.wav <from> <to>               #
 
 ## 3. Build (copy from the reference project)
 
-1. `node ../$S/segments.mjs <source_end> '<cuts json>' [source times…]` → `<video>` segment tags (punch-in alternates) + total duration + source→edit time map. Root `data-duration` = total. Add the `.seg` / `.seg.punch` CSS from the reference `index.html`.
+0. `bash ../$S/clean-voice.sh src.mp4 voice.m4a` and `bash ../$S/brightness.sh src.mp4` (rules 4–5).
+1. `node ../$S/segments.mjs <source_end> '<cuts json>' --voice [source times…]` → `<video>` segment tags (punch-in alternates) + cleaned-voice `<audio>` tags + total duration + source→edit time map. Root `data-duration` = total. Add the `.seg` / `.seg.punch` CSS from the reference `index.html`.
 2. Copy `reference-project/assets/sfx/*.mp3` into `assets/sfx/`.
 3. Scenes (each its own file in `compositions/`, host in `index.html`, same id for host / root / timeline key):
    - `hook.html` — white pill "✳ <topic>" over the chest, 0.15 s → ~2.7 s.
@@ -66,7 +69,8 @@ python3 -I ../$S/energy.py /tmp/<name>-fill/a16k.wav <from> <to>               #
    - `captions.html` — write `captions.config.json` (see the reference one) then `node ../$S/gen-captions.mjs .`. Chunks ≤ 4 words; `[word]` white box, `{word}` serif italic; `top` ≈ just below the chin (545 in the reference).
 4. Time every card/tick/label to the **edited** time of the word that triggers it (use the map from step 1).
 5. Cards must not cover the face or the product being shown; the bottom band over the legs is the default (TikTok safe-zone warnings there are accepted).
-6. Avoid WebGL media treatments (blur/grade) — they make local renders ~10× slower without a GPU. Use the navy tint div instead.
+6. Avoid WebGL blur — it makes local renders ~10× slower without a GPU; use the navy tint div. The brightness correction (rule 5) is fine.
+7. If dark: apply the brightness patch to `.seg` after writing `index.html`.
 
 ### Sound effect map (`<audio id class-less data-start data-duration data-volume data-track-index>`)
 

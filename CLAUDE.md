@@ -1,23 +1,25 @@
 # video-claudee
 
-Video editing for TikTok — Style 1 uses Python + ffmpeg, Style 2 uses HyperFrames (HTML → MP4). The owner writes in Malay — reply in Malay.
+Video editing for TikTok — both styles render with HyperFrames (HTML → MP4). The owner writes in Malay — reply in Malay.
 
 ## Saved styles
 
 | Trigger | What to do |
 |---|---|
-| "edit style 1" + Google Drive link | Follow `.claude/skills/edit-style-1/SKILL.md` (product explainer, Python + ffmpeg: big title with red dot, dark macOS-style option card, monospace "kelebihan 1 / 3" + blue progress bar, tilted white stickers, bottom captions, dark CTA card with yellow "Tekan bakul kuning" button, punch-in cuts, SFX). Reference: `styles/style-1/` (approved example `projects/boxer.py`). |
+| "edit style 1" + Google Drive link | Follow `.claude/skills/edit-style-1/SKILL.md` (product explainer, HyperFrames via `styles/style-1/build.py`: big title with red dot, dark macOS-style option card, monospace "kelebihan 1 / 3" + blue progress bar, tilted white stickers, bottom captions, dark CTA card with yellow "Tekan bakul kuning" button, punch-in cuts, SFX). Reference: `styles/style-1/` (approved example `projects/boxer.py`). |
 | "edit style 2" + Google Drive link | Follow `.claude/skills/edit-style-2/SKILL.md` (talking-head / product review: chest karaoke captions, blue rail, bottom feature cards, yellow "beg kuning" CTA, punch-in cuts, SFX). Reference: `styles/style-2/`. |
 
 General style notes from the first reference video: `STYLE_GUIDE.md`.
 
 ## Owner's editing rules (all styles)
 - Remove every filler ("aaa", "emm", "okay"), repeated phrases and stutters; shorten pauses > 0.3 s.
+- **Keep only the main voice**: remove background noise / unwanted sounds (RNNoise denoise, −14 LUFS).
+- **Brighten dark footage** (mean luma < 105 → `hyperframes media-treatment` exposure/shadows).
 - Add fitting sound effects.
 - Send draft frames → draft preview video → final render after approval.
 - Commit and push work as you go.
 
 ## Saved styles are protected (owner's rule)
-- **Never change a saved style on `main`** (`styles/style-N/`, `.claude/skills/edit-style-N/`, its README/engine/tools) unless the owner explicitly says so ("simpan dalam style 1", "update style 1 di main", …).
+- **Never change a saved style on `main`** (`styles/style-N/`, `.claude/skills/edit-style-N/`, its README/build/tools) unless the owner explicitly says so ("simpan dalam style 1", "update style 1 di main", …).
 - Tweaks for one video go **only** in that video's project config (e.g. `styles/style-1/projects/<nama>.py`) on the session branch.
 - **At the end of every edit** (after the final render is sent), ask in Malay whether any change made for this video should be saved into the style for future videos — list the candidate changes briefly. Only on a yes: apply them to the style files, commit, and push to `main`.

@@ -1,5 +1,5 @@
-# <Nama produk> (Drive <ID>) — salin fail ni, isi ikut video. Contoh lengkap: styles/style-1/projects/boxer.py
-# ---------- langkah potong (cut.py) – masa ikut video ASAL
+# <Nama produk> (Drive <ID>) — salin fail ni, isi ikut video. Contoh lengkap: styles/style-1/projects/boxer.py. Bina: python3 -I styles/style-1/build.py <raw.mp4> <fail ini> <work_dir>
+# ---------- potongan (build.py) – masa ikut video ASAL
 REMOVE = [
     # (mula, tamat),  # "aaa" / "okay" / ulangan pertama / ayat tak habis
 ]
@@ -7,12 +7,14 @@ SRC_END = 99.0        # potong selepas ni (orang keluar frame / kamera jatuh)
 TAIL = 0.7            # hujung tak dipotong senyap — masa baca CTA
 PUNCH_Y = 0.25        # punch-in fokus ke atas (muka)
 
-# ---------- overlay (engine.py) – masa ikut video SELEPAS dipotong
-END = 0.0             # tempoh cut.mp4
+# ---------- overlay (build.py) – masa ikut video SELEPAS dipotong
+END = 0.0             # tempoh selepas potongan (build.py --plan)
 CAPTION_Y = 1780      # bawah (pilihan user)
 CARD_Y = 1180
 ZOOM = 0.04
 # CAPTION_ACCENT = (255, 212, 59, 255)   # kuning bila latar/baju biru
+# BRIGHTEN = "auto"   # video gelap (YAVG < 105) dicerahkan auto; atau {"exposure": 0.4, "shadows": 0.25, "blacks": 0.08}; None = matikan
+# DENOISE = True      # buang bunyi latar, kekalkan suara utama sahaja
 
 CAPTIONS = [  # (group_end, [(perkataan, mula, highlight)]) — 1–3 perkataan
     # (1.36, [("Zaman", 0.00, False), ("sekarang", 0.64, False)]),

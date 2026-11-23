@@ -1,5 +1,7 @@
 # Style 1 — "Product Explainer" (gaya UI moden)
 
+Dirender dengan **HyperFrames** (HTML → MP4): `build.py` + config projek → projek HyperFrames → `hyperframes render`.
+
 Rujukan asal: video facemask "lawak." (Drive `1F89dXsFD8GCP3JTsKQYwjflXe1zwCAkW`).
 Contoh siap: `styles/style-1/projects/boxer.py` (boxer lelaki — versi yang diluluskan user).
 
@@ -17,11 +19,21 @@ Contoh siap: `styles/style-1/projects/boxer.py` (boxer lelaki — versi yang dil
 - Kata kunci diwarnakan: biru-ungu `(110,123,255)` secara default; **kuning `(255,212,59)`** bila latar/baju biru (contoh boxer).
 
 ## Potongan (wajib setiap video)
-- Buang **senyap > 0.3s** (auto, `cut.py`).
+- Buang **senyap > 0.3s** (auto, `build.py`).
 - Buang **"aaa", "eh", "emm", "okay"** — semua filler.
 - Buang **ulangan / gagap / ayat tak habis** — simpan sebutan TERAKHIR yang lengkap.
 - Setiap jump cut tukar zoom (punch-in 1.08) supaya nampak sengaja.
 - Potong hujung bila orang keluar frame / kamera jatuh.
+
+## Bunyi: suara utama sahaja (wajib)
+- Bunyi latar yang tak perlu (angin, kipas, jalan raya, dengung, bunyi lain) **dibuang** — auto dalam `build.py`:
+  highpass 80 Hz → RNNoise (`arnndn`) → lowpass 12 kHz → −14 LUFS. Video dibisukan; suara bersih main sebagai trek sendiri.
+- Kalau masih ada bunyi lain yang kuat (muzik, orang lain bercakap), potong bahagian itu atau tanya user.
+
+## Kecerahan (wajib)
+- Video **gelap mesti dicerahkan**. `build.py` ukur purata luma (YAVG 0–255); bawah **105** → exposure/shadows dinaikkan
+  melalui `hyperframes media-treatment` (exposure = (118 − YAVG)/85, had 0.15–0.8).
+- Semak gambar frame: masih gelap atau terlalu putih → tetapkan `BRIGHTEN = {"exposure": …, "shadows": …, "blacks": …}` dalam config; `BRIGHTEN = None` untuk matikan.
 
 ## Visual lain
 - Gradient putih lembut di atas (supaya tajuk gelap jelas), zoom perlahan 4–5% sepanjang video.
@@ -30,8 +42,8 @@ Contoh siap: `styles/style-1/projects/boxer.py` (boxer lelaki — versi yang dil
 
 ## Sound effect (auto)
 whoosh = tajuk & setiap seksyen · click = pilihan kad bertukar · pop = sticker/bulatan · ding = kad CTA.
-Bunyi sintetik (`sfx.py`), bebas hak cipta, volume di bawah suara. Suara dinormalkan −14 LUFS.
+Bunyi sintetik (`sfx.py`, fail `.wav` dalam `sfx/`), bebas hak cipta, volume di bawah suara.
 
 ## Aliran kerja
-1. Preview **540p tanpa watermark** → hantar ke user, senaraikan apa yang dipotong & teks yang perlu disemak.
-2. Tunggu user cakap **"okay render"** → render final 1080×1920 (`engine.py` tanpa `--preview`).
+1. Preview (render **draft**, tanpa watermark) → hantar ke user, senaraikan apa yang dipotong & teks yang perlu disemak.
+2. Tunggu user cakap **"okay render"** → render final 1080×1920 (`hyperframes render -q high`).

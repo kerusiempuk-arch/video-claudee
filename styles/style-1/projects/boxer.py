@@ -1,5 +1,5 @@
 # Boxer lelaki (Drive 1gI1bGT7A2_I4DFTn-jw5PHQ8X-NKUNGH) — CONTOH STYLE 1 YANG DILULUSKAN
-# --- langkah potong (cut.py), masa ikut video ASAL
+# --- potongan (build.py), masa ikut video ASAL
 REMOVE = [
     (3.30, 3.62),    # "aaa" sebelum "kebanyakan"
     (13.20, 15.00),  # "getah dia pun lembut" pertama – diulang lepas tu
@@ -9,7 +9,7 @@ SRC_END = 22.0              # selepas "...bakul kuning ni" + masa baca CTA
 TAIL = 0.7                  # hujung tak dipotong senyap
 PUNCH_Y = 0.25
 
-END = 16.97                 # panjang selepas cut.py
+END = 16.93                 # panjang selepas potongan (build.py --plan)
 CAPTION_Y = 1780            # bawah (permintaan user)
 CARD_Y = 1180
 ZOOM = 0.04
