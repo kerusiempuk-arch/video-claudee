@@ -22,6 +22,7 @@ Design notes for humans: `styles/style-2/README.md`. Helper scripts: `styles/sty
 
 ## 0. Environment (fresh container)
 
+- The "video-claudee" cloud environment has a setup script that already installs `hyperframes@0.9.85`, its skills, whisper.cpp and `ggml-small.bin`. Check with `which hyperframes` and `ls /root/.cache/hyperframes/whisper/models`; only do the manual steps below if they are missing.
 - Network needs `drive.google.com`, `drive.usercontent.google.com`, `huggingface.co` (+ its CDN hosts). The owner's cloud environment **"video-claudee"** has them. If a host is refused, check `get_environment` and switch to / propose that environment.
 - Install: `npm install -g hyperframes` then `hyperframes skills` (installs the `/hyperframes` and `/media-use` skills — load `/hyperframes` before writing compositions).
 - Whisper model: `hyperframes transcribe` does **not** use the HTTPS proxy (fails with `ENOTFOUND huggingface.co`). Run it once (it builds whisper.cpp), then download the model with curl:
