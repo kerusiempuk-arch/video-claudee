@@ -14,7 +14,7 @@
     .f3-dot { width: 50px; height: 50px; border-radius: 25px; border: 4px solid #fff; box-shadow: 0 0 0 2px #D5DAE3; }
   </style>
   <div id="root" data-composition-id="f3" data-width="1080" data-height="1920">
-    <div id="f3-wrap" class="clip" data-start="0.05" data-duration="2.95">
+    <div id="f3-wrap" class="clip" data-start="0.05" data-duration="2.73">
       <div id="f3-card">
         <div class="f3-kicker">04 · PILIHAN</div>
         <div class="f3-title">Pelbagai saiz &amp; warna</div>
@@ -36,10 +36,10 @@
     tl.fromTo("#f3-card", { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }, 0.05);
     // "saiz" ~17.4 s (local 1.0); "warna" ~18.85 s (local 2.5) — dots muncul lebih awal sedikit supaya sempat dibaca
     tl.fromTo(["#f3-s1", "#f3-s2", "#f3-s3", "#f3-s4"], { opacity: 0, y: 12, scale: 0.8 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.25, stagger: 0.1, ease: "back.out(2)" }, 0.6);
+      { opacity: 1, y: 0, scale: 1, duration: 0.25, stagger: 0.1, ease: "back.out(2)" }, 0.4);
     tl.fromTo(["#f3-c1", "#f3-c2", "#f3-c3", "#f3-c4", "#f3-c5"], { opacity: 0, scale: 0.3 },
-      { opacity: 1, scale: 1, duration: 0.25, stagger: 0.09, ease: "back.out(2.5)" }, 1.6);
-    tl.to("#f3-card", { opacity: 0, y: 20, duration: 0.25, ease: "power2.in" }, 2.75);
+      { opacity: 1, scale: 1, duration: 0.25, stagger: 0.09, ease: "back.out(2.5)" }, 1.3);
+    tl.to("#f3-card", { opacity: 0, y: 20, duration: 0.25, ease: "power2.in" }, 2.5);
     window.__timelines["f3"] = tl;
   </script>
 </template>

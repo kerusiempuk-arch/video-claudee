@@ -14,7 +14,7 @@
       display: flex; align-items: center; justify-content: center; font: 700 18px "JetBrains Mono", monospace; }
   </style>
   <div id="root" data-composition-id="rail" data-width="1080" data-height="1920">
-    <div id="rl-wrap" class="clip" data-start="0" data-duration="13.2" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="rl-wrap" class="clip" data-start="0" data-duration="10.64" data-layout-allow-overflow data-layout-allow-overlap>
       <div id="rl-track"></div>
       <div id="rl-fill"></div>
       <div id="rl-node"></div>
@@ -27,7 +27,7 @@
     </div>
   </div>
   <script>
-    // Masa scene (bermula 6.2 s): 01 @0, 02 @2.3 (8.5 s), 03 @4.5 (10.7 s), 04 @10.15 (16.35 s)
+    // Masa scene (bermula 6.2 s, selepas potongan): 01 @0, 02 @2.06, 03 @4.26, 04 @7.86
     const Y = [318, 380, 442, 504];
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#rl-wrap", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 0);
@@ -35,14 +35,14 @@
     tl.fromTo("#rl-node", { y: Y[0] - 20 }, { y: Y[0] - 20, duration: 0.01 }, 0);
     tl.fromTo("#rl-label", { y: Y[0] - 25 }, { y: Y[0] - 25, duration: 0.01 }, 0);
     tl.fromTo("#rl-p1", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 0.25);
-    [[2.3, 1, "#rl-p1", "#rl-p2"], [4.5, 2, "#rl-p2", "#rl-p3"], [10.15, 3, "#rl-p3", "#rl-p4"]].forEach(([t, i, out, inn]) => {
+    [[2.06, 1, "#rl-p1", "#rl-p2"], [4.26, 2, "#rl-p2", "#rl-p3"], [7.86, 3, "#rl-p3", "#rl-p4"]].forEach(([t, i, out, inn]) => {
       tl.to("#rl-fill", { scaleY: Y[i] / 1920, duration: 0.45, ease: "power2.inOut" }, t);
       tl.to("#rl-node", { y: Y[i] - 20, duration: 0.45, ease: "power2.inOut" }, t);
       tl.to("#rl-label", { y: Y[i] - 25, duration: 0.45, ease: "power2.inOut" }, t);
       tl.to(out, { opacity: 0, duration: 0.2 }, t);
       tl.fromTo(inn, { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, t + 0.3);
     });
-    tl.to("#rl-wrap", { opacity: 0, x: -40, duration: 0.3, ease: "power2.in" }, 12.85);
+    tl.to("#rl-wrap", { opacity: 0, x: -40, duration: 0.3, ease: "power2.in" }, 10.3);
     window.__timelines["rail"] = tl;
   </script>
 </template>

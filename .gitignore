@@ -6,3 +6,4 @@ boxer/node_modules/
 work-*/
 .*.hf-transaction-*/
 renders/
+boxer/.media/

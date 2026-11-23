@@ -17,8 +17,8 @@
     #cta-btn i { font: italic 400 46px "Playfair Display", serif; }
   </style>
   <div id="root" data-composition-id="cta" data-width="1080" data-height="1920">
-    <div id="cta-tint" class="clip" data-start="0" data-duration="3.43"></div>
-    <div id="cta-box" class="clip" data-start="0.2" data-duration="3.23">
+    <div id="cta-tint" class="clip" data-start="0" data-duration="2.62"></div>
+    <div id="cta-box" class="clip" data-start="0.15" data-duration="2.47">
       <div id="cta-line"></div>
       <div class="cta-row" id="cta-r1"><div class="cta-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>Lebih selesa</div>
       <div class="cta-row" id="cta-r2"><div class="cta-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>Pengudaraan lancar</div>
@@ -36,9 +36,9 @@
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#cta-tint", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 0);
     tl.fromTo(["#cta-r1", "#cta-r2", "#cta-r3", "#cta-r4"], { opacity: 0, x: -24 },
-      { opacity: 1, x: 0, duration: 0.28, stagger: 0.14, ease: "power2.out" }, 0.3);
-    tl.fromTo("#cta-btn", { opacity: 0, y: 30, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 1.0);
-    tl.fromTo("#cta-btn svg", { rotation: 0 }, { rotation: -12, duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1.6);
+      { opacity: 1, x: 0, duration: 0.28, stagger: 0.1, ease: "power2.out" }, 0.2);
+    tl.fromTo("#cta-btn", { opacity: 0, y: 30, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 0.45);
+    tl.fromTo("#cta-btn svg", { rotation: 0 }, { rotation: -12, duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.9);
     window.__timelines["cta"] = tl;
   </script>
 </template>

@@ -15,7 +15,7 @@
     .f2-fill svg { width: 28px; height: 28px; }
   </style>
   <div id="root" data-composition-id="f2" data-width="1080" data-height="1920">
-    <div id="f2-wrap" class="clip" data-start="0.1" data-duration="5.5">
+    <div id="f2-wrap" class="clip" data-start="0.1" data-duration="3.45">
       <div id="f2-card">
         <div class="f2-kicker">03 · LEMBUT</div>
         <div class="f2-title">Sangat <span class="f2-accent">lembut</span></div>
@@ -28,10 +28,10 @@
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#f2-card", { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }, 0.1);
     tl.fromTo(["#f2-r1", "#f2-r2"], { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.15, ease: "power2.out" }, 0.5);
-    // "kain ... lembut" ~12.6 s, "getah ... lembut" ~14.2 s
+    // selepas potongan: "kain ... lembut" ~12.4 s, "getah dia lembut" ~12.75 s
     tl.fromTo("#f2-k1", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 1.95);
-    tl.fromTo("#f2-k2", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 3.5);
-    tl.to("#f2-card", { opacity: 0, y: 20, duration: 0.3, ease: "power2.in" }, 5.3);
+    tl.fromTo("#f2-k2", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)" }, 2.28);
+    tl.to("#f2-card", { opacity: 0, y: 20, duration: 0.3, ease: "power2.in" }, 3.25);
     window.__timelines["f2"] = tl;
   </script>
 </template>
