@@ -1,96 +1,40 @@
 ---
 name: edit-style-2
-description: Edit a vertical talking-head / product-review video in the owner's "Style 2" (karaoke captions on the chest, blue progress rail, white feature cards at the bottom, CTA with checklist + yellow "beg kuning" button, punch-in jump cuts, UI sound effects) with HyperFrames. Use when the user says "edit style 2", "style 2", "gaya style 2" or gives a Google Drive link and asks to edit it like style 2.
+description: Edit a vertical talking-head / product-review video in the owner's "Style 2" (karaoke captions on the chest, blue progress rail, white feature cards at the bottom, CTA with checklist + yellow "beg kuning" button, punch-in jump cuts, UI sound effects) with HyperFrames via styles/style-2/build.py. Use when the user says "edit style 2", "style 2", "gaya style 2" or gives a Google Drive link and asks to edit it like style 2.
 ---
 
-# Edit Style 2
+# Edit Style 2 (HyperFrames, `build.py`)
 
-The owner writes in Malay; reply in Malay. They send a Google Drive link and say "edit style 2".
-Reference implementation (the boxer review): `styles/style-2/reference-project/`. Read its
-`index.html` and `compositions/*.html` before building; copy and adapt them, don't start from zero.
-Design notes for humans: `styles/style-2/README.md`. Helper scripts: `styles/style-2/scripts/`.
+Owner writes in Malay — reply in Malay. They send a Google Drive link and say "edit style 2".
+`styles/style-2/build.py` turns raw video + project config (`styles/style-2/projects/<name>.py`) into a HyperFrames
+project; `hyperframes check / snapshot / render` do the rest. Approved example: `projects/boxer.py`.
+Template: `projects/_template.py`. Design notes: `styles/style-2/README.md`.
 
 ## Owner's standing rules (non-negotiable)
+1. Cut every filler ("aaa", "emm", "okay"), repeated words/phrases (keep the last, complete take) and stutters → `REMOVE`.
+2. Pauses > 0.3 s are cut automatically; punch-in (1.07, origin top) alternates on each jump cut — automatic.
+3. **Keep only the main voice** — automatic (highpass + RNNoise `arnndn` + lowpass, −14 LUFS; video muted). If music or another person is still audible, cut it or ask.
+4. **Brighten dark footage** — automatic (mean luma < 105 → `hyperframes media-treatment`). Check stills; if still dark or washed out set `BRIGHTEN = {...}` (or `None`).
+5. Sound effects on every visual action — automatic (pop / whoosh-short / click / sparkle / ping).
+6. Send **draft frames first**, then a **draft preview video**; final `-q high` render only after approval.
+7. Never invent product facts (sizes, colours, prices). Unspoken items are placeholders the owner must confirm.
+8. **Style 2 is protected**: don't change `build.py`, sfx, README or this skill on `main` without the owner's explicit OK. Per-video tweaks go only in `projects/<name>.py`. After the final render, ask whether any change should be saved into Style 2.
+9. Commit and push work as you go (videos and `work/` are git-ignored).
 
-1. Cut **every filler word** ("aaa", "emm", "okay"), **repeated words/phrases** (keep the last, cleanest take) and **stutters**.
-2. Shorten **every pause > ~0.3 s** to ~0.1 s.
-3. Alternate a **punch-in** (`scale(1.07)`, `transform-origin: 50% 4%` so the head is never cropped) on every other segment so jump cuts look intentional.
-4. **Keep only the main voice.** Remove background noise (wind, fans, traffic, hum, other sounds): `scripts/clean-voice.sh src.mp4 voice.m4a` (highpass + RNNoise `arnndn` + lowpass, −14 LUFS), then build segments with `segments.mjs … --voice` (videos muted, cleaned voice cut the same). If music or another person is still audible, cut it or ask.
-5. **Brighten dark footage.** `scripts/brightness.sh src.mp4` measures mean luma; below 105 it prints a patch → `hyperframes media-treatment --selector ".seg" --grading '<patch>' --apply`. Check the stills; adjust if still dark or washed out. Never use WebGL blur (too slow); this correction alone renders fine.
-6. Add **sound effects** on every visual action (map below), volume 0.3–0.4, under the voice.
-7. Send **draft frames first**, then a **draft preview video**; final high-quality render only after approval.
-8. Never invent product facts (sizes, colours, prices). If the speaker doesn't say them, ask, or mark them clearly as placeholders.
-9. Commit and push work to the session branch as you go.
+## Environment
+- The "video-claudee" cloud environment allows Drive + Hugging Face, and its setup script installs `hyperframes@0.9.85`, its skills, whisper.cpp and `ggml-small.bin` (check `which hyperframes`, `ls /root/.cache/hyperframes/whisper/models`). Manual fallback: `npm i -g hyperframes@0.9.85 && hyperframes skills`; run `hyperframes transcribe` once to build whisper.cpp, then
+  `curl -sSL -o /root/.cache/hyperframes/whisper/models/ggml-small.bin https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin` (the CLI's own download ignores the proxy).
+- RNNoise model is fetched by `build.py` from raw.githubusercontent.com into `~/.cache/style1/cb.rnnn`.
+- `HF="node ~/.claude/skills/hyperframes/scripts/plugin-cli.mjs"`; `S=styles/style-2/scripts`.
 
-## 0. Environment (fresh container)
-
-- The "video-claudee" cloud environment has a setup script that already installs `hyperframes@0.9.85`, its skills, whisper.cpp and `ggml-small.bin`. Check with `which hyperframes` and `ls /root/.cache/hyperframes/whisper/models`; only do the manual steps below if they are missing.
-- Network needs `drive.google.com`, `drive.usercontent.google.com`, `huggingface.co` (+ its CDN hosts). The owner's cloud environment **"video-claudee"** has them. If a host is refused, check `get_environment` and switch to / propose that environment.
-- Install: `npm install -g hyperframes` then `hyperframes skills` (installs the `/hyperframes` and `/media-use` skills — load `/hyperframes` before writing compositions).
-- Whisper model: `hyperframes transcribe` does **not** use the HTTPS proxy (fails with `ENOTFOUND huggingface.co`). Run it once (it builds whisper.cpp), then download the model with curl:
-  `curl -sSL -o /root/.cache/hyperframes/whisper/models/ggml-small.bin https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin`
-  and run transcribe again.
-- CLI: `node ~/.claude/skills/hyperframes/scripts/plugin-cli.mjs <command>` (= `npx hyperframes <command>`).
-
-## 1. Get the footage
-
-```bash
-S=styles/style-2/scripts
-bash $S/download-drive.sh "<drive link>" /tmp/<name>.mp4
-hyperframes init <name> --video /tmp/<name>.mp4 --skip-transcribe --non-interactive --skip-skills --skill=hyperframes
-```
-Phones record 1920×1080 with rotation −90 → the project is 1080×1920 portrait. Make a contact sheet
-(`ffmpeg -vf "fps=1/2,scale=240:-1,tile=8x3"`) and a gridded strip (`drawgrid=w=0:h=60`) to see
-where the **face**, the **product** and the **free areas** are.
-
-## 2. Transcribe + find what to cut
-
-```bash
-cd <name>
-hyperframes transcribe src.mp4 --model small --language ms --engine whisper   # -> transcript.json (word timings)
-bash ../$S/find-fillers.sh src.mp4 /tmp/<name>-fill                            # filler-aware words (* = filler) + pauses
-python3 -I ../$S/energy.py /tmp/<name>-fill/a16k.wav <from> <to>               # dB every 30 ms to place cuts
-```
-- Normal Whisper drops fillers; `find-fillers.sh` uses a filler prompt so "aaa/okay" show up. Confirm each one on the energy table (a sound burst bounded by dips below ~-40 dB) and, if unsure, transcribe the remainder alone (`ffmpeg -ss <cut_end>` → `whisper-cli`) to check the next word is still whole.
-- Cut points sit inside the quiet dips, keeping ~0.03–0.05 s of air.
-- Fix Whisper spelling for captions (e.g. boksir→boxer, lembuk→lembut, beg kuni→beg kuning). The speaker's words are the captions — don't drop words like "pun".
-
-## 3. Build (copy from the reference project)
-
-0. `bash ../$S/clean-voice.sh src.mp4 voice.m4a` and `bash ../$S/brightness.sh src.mp4` (rules 4–5).
-1. `node ../$S/segments.mjs <source_end> '<cuts json>' --voice [source times…]` → `<video>` segment tags (punch-in alternates) + cleaned-voice `<audio>` tags + total duration + source→edit time map. Root `data-duration` = total. Add the `.seg` / `.seg.punch` CSS from the reference `index.html`.
-2. Copy `reference-project/assets/sfx/*.mp3` into `assets/sfx/`.
-3. Scenes (each its own file in `compositions/`, host in `index.html`, same id for host / root / timeline key):
-   - `hook.html` — white pill "✳ <topic>" over the chest, 0.15 s → ~2.7 s.
-   - `vs.html` — optional "old → new" comparison card (strike-through grey vs blue ✓ serif-italic).
-   - `f1…fN.html` — one **feature card** per selling point, bottom band `left:120 top:1360–1390 width:760`, white, radius 30, kicker in JetBrains Mono blue 28 px (`01 · SELESA`), title Inter 700 46–50 px with one Playfair Display italic blue accent word, optional icon tile or ✓ checklist ticked on the spoken word.
-   - `rail.html` — blue progress rail at x=58 with node + blue label pill (`01 Selesa`…) stepping down **Y = 318, 380, 442, 504** (beside the head, above the caption), visible only during the feature section.
-   - `cta.html` — navy tint `rgba(14,22,52,.62)` over footage, ✓ recap of every feature, yellow `#FFC93C` pill button "🛒 Tekan *beg kuning*" (or whatever the speaker asks), basket wiggle.
-   - `captions.html` — write `captions.config.json` (see the reference one) then `node ../$S/gen-captions.mjs .`. Chunks ≤ 4 words; `[word]` white box, `{word}` serif italic; `top` ≈ just below the chin (545 in the reference).
-4. Time every card/tick/label to the **edited** time of the word that triggers it (use the map from step 1).
-5. Cards must not cover the face or the product being shown; the bottom band over the legs is the default (TikTok safe-zone warnings there are accepted).
-6. Avoid WebGL blur — it makes local renders ~10× slower without a GPU; use the navy tint div. The brightness correction (rule 5) is fine.
-7. If dark: apply the brightness patch to `.seg` after writing `index.html`.
-
-### Sound effect map (`<audio id class-less data-start data-duration data-volume data-track-index>`)
-
-| Moment | File | dur | vol |
-|---|---|---|---|
-| pill / icon / chip pops in | `pop.mp3` | 0.72 | 0.3–0.35 |
-| card enters or swaps | `whoosh-short.mp3` | 0.57 | 0.3–0.35 |
-| ✓ tick, strike-through | `click.mp3` | 0.37 | 0.35–0.4 |
-| product name reveal | `sparkle.mp3` | 1.8 | 0.3 |
-| CTA button lands | `ping.mp3` | 1.32 | 0.4 |
-
-Always set `data-duration` on each `<audio>` (otherwise check thinks it runs to the end) and put overlapping ones on different `data-track-index` lanes.
-
-## 4. Check, draft, preview, final
-
-```bash
-hyperframes check --json        # fix every error; warnings: safe-zone bottom + caption density are expected
-hyperframes snapshot --at <t1>,<t2>,…   # hook, each card, each cut, CTA → combine with ffmpeg hstack/vstack → SendUserFile
-hyperframes render -q draft -o ../<name>_preview.mp4   # run detached (setsid nohup … &) and wait with a background until-loop
-```
-- Verify the render: transcribe the output again with the filler prompt — no "aaa/okay" may remain.
-- Send the preview with SendUserFile; list what was cut (times) and anything assumed.
-- Final: `hyperframes render -q high -o ../<name>_final.mp4` after the owner approves.
+## Steps (from repo root, `W=work/<name>`)
+1. `bash $S/download-drive.sh "<link>" $W/raw.mp4` → contact sheet (`ffmpeg -vf "fps=1/2,scale=240:-1,tile=8x3"`) and a gridded strip (`drawgrid=w=0:h=60`) to find the **face**, the **product** and free areas.
+2. `bash $S/find-fillers.sh $W/raw.mp4 $W/fill` → words (`*` = filler) + pauses. Confirm each filler/repeat on `python3 -I $S/energy.py $W/fill/a16k.wav <from> <to>`; cut inside the quiet dips. Write `REMOVE`, `SRC_END`, `TAIL` in `projects/<name>.py` (copy `_template.py`).
+3. `python3 -I styles/style-2/build.py $W/raw.mp4 <project> $W/hf --plan` → END. Then `--cut-audio $W/cut.wav` and transcribe it word-by-word:
+   `B=/root/.cache/hyperframes/whisper/whisper.cpp/build/bin; LD_LIBRARY_PATH=$B $B/whisper-cli -m /root/.cache/hyperframes/whisper/models/ggml-small.bin -f $W/cut.wav -l ms -ml 1 -sow --prompt "Aaa, okay, emm." -oj -of $W/cutw`
+   Verify no filler/repeat remains (else extend `REMOVE` and redo).
+4. Fill the overlay config in **cut time**: `CAPTIONS` (≤ 4 words, fix Whisper spelling — boksir→boxer, lembuk→lembut, beg kuni→beg kuning — and keep every spoken word), `HOOK`, `CARDS` (vs / icon / check / chips, each timed to the word that triggers it), `RAIL` steps, `CTA`. `CAPTION_Y` just below the chin; cards stay off the face and the product.
+5. `python3 -I styles/style-2/build.py $W/raw.mp4 <project> $W/hf` → `cd $W/hf && $HF check` (no errors; safe-zone / density warnings are the design).
+6. `$HF snapshot --at …` (hook, each card, each cut, CTA) → combine (ffmpeg hstack/vstack) → SendUserFile.
+7. `$HF render -q draft -o ../preview.mp4` detached (`setsid nohup … &`, wait with a background until-loop) → re-transcribe the output with the filler prompt (no "aaa/okay" may remain) → SendUserFile with what was cut, brightness/noise notes and open questions.
+8. After approval: `$HF render -q high -o ../final.mp4` → SendUserFile → ask whether to save any change into Style 2.

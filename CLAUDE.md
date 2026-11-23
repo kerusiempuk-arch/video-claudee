@@ -7,7 +7,7 @@ Video editing for TikTok — both styles render with HyperFrames (HTML → MP4).
 | Trigger | What to do |
 |---|---|
 | "edit style 1" + Google Drive link | Follow `.claude/skills/edit-style-1/SKILL.md` (product explainer, HyperFrames via `styles/style-1/build.py`: big title with red dot, dark macOS-style option card, monospace "kelebihan 1 / 3" + blue progress bar, tilted white stickers, bottom captions, dark CTA card with yellow "Tekan bakul kuning" button, punch-in cuts, SFX). Reference: `styles/style-1/` (approved example `projects/boxer.py`). |
-| "edit style 2" + Google Drive link | Follow `.claude/skills/edit-style-2/SKILL.md` (talking-head / product review: chest karaoke captions, blue rail, bottom feature cards, yellow "beg kuning" CTA, punch-in cuts, SFX). Reference: `styles/style-2/`. |
+| "edit style 2" + Google Drive link | Follow `.claude/skills/edit-style-2/SKILL.md` (talking-head / product review, HyperFrames via `styles/style-2/build.py`: chest karaoke captions, blue rail, bottom feature cards, yellow "beg kuning" CTA, punch-in cuts, SFX). Reference: `styles/style-2/` (approved example `projects/boxer.py`). |
 
 General style notes from the first reference video: `STYLE_GUIDE.md`.
 
