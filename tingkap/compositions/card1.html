@@ -1,0 +1,52 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #c1 { position: absolute; left: 120px; top: 905px; width: 760px; height: 335px; z-index: 1; }
+    #c1-card {
+      position: absolute; inset: 0; border-radius: 30px; background: #fff;
+      box-shadow: 0 18px 50px rgba(0,0,0,.30); padding: 36px 40px; opacity: 0;
+    }
+    .c1-kicker { font: 700 28px "JetBrains Mono", monospace; color: #2F6BFF; letter-spacing: 2px; }
+    .c1-title { margin-top: 18px; font: 700 54px/1.12 "Inter", sans-serif; color: #111; }
+    .c1-accent { font: italic 400 58px/1.12 "Playfair Display", serif; color: #2F6BFF; }
+    .c1-chips { margin-top: 26px; display: flex; gap: 14px; }
+    .c1-chip {
+      padding: 8px 20px; border-radius: 22px; background: #F1F2F5;
+      font: 400 28px "Inter", sans-serif; color: #444;
+    }
+    #c1-badge {
+      position: absolute; right: 24px; top: -54px; width: 116px; height: 116px; border-radius: 58px;
+      background: #2F6BFF; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 10px 28px rgba(47,107,255,.45); opacity: 0;
+    }
+    #c1-badge b { font: 900 32px "Inter", sans-serif; }
+    #c1-badge small { font: 700 13px "JetBrains Mono", monospace; letter-spacing: 1px; opacity: .85; }
+  </style>
+  <div id="root" data-composition-id="card1" data-width="1080" data-height="1920">
+    <div id="c1" class="clip" data-start="0.2" data-duration="5.7" data-layout-allow-overflow>
+      <div id="c1-card">
+        <div class="c1-kicker">PROJEK · CAT RUMAH</div>
+        <div class="c1-title" id="c1-t1">Tingkap kayu lama</div>
+        <div class="c1-title"><span class="c1-accent" id="c1-t2">→ wajah baru</span></div>
+        <div class="c1-chips">
+          <div class="c1-chip" id="c1-chip1">3 langkah</div>
+          <div class="c1-chip" id="c1-chip2">1 hari</div>
+          <div class="c1-chip" id="c1-chip3">Buat sendiri</div>
+        </div>
+      </div>
+      <div id="c1-badge"><b>DIY</b></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#c1-card", { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }, 0.2);
+    tl.fromTo("#c1-t1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.45);
+    tl.fromTo("#c1-t2", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 0.75);
+    tl.fromTo(["#c1-chip1", "#c1-chip2", "#c1-chip3"], { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.3, stagger: 0.12, ease: "power2.out" }, 1.1);
+    tl.fromTo("#c1-badge", { opacity: 0, scale: 0.4, rotation: -20 },
+      { opacity: 1, scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, 1.4);
+    tl.to(["#c1-card", "#c1-badge"], { opacity: 0, y: 20, duration: 0.3, ease: "power2.in" }, 5.55);
+    window.__timelines["card1"] = tl;
+  </script>
+</template>

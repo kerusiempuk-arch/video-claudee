@@ -1,0 +1,60 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #c3 { position: absolute; left: 120px; top: 880px; width: 760px; height: 360px; z-index: 1; }
+    #c3-card {
+      position: absolute; inset: 0; border-radius: 30px; background: #fff;
+      box-shadow: 0 18px 50px rgba(0,0,0,.30); padding: 32px 32px; opacity: 0;
+    }
+    .c3-head { display: flex; justify-content: space-between; align-items: center; }
+    .c3-kicker { font: 700 28px "JetBrains Mono", monospace; color: #2F6BFF; letter-spacing: 2px; }
+    #c3-count {
+      padding: 6px 18px; border-radius: 20px; background: #2F6BFF; color: #fff;
+      font: 700 28px "Inter", sans-serif;
+    }
+    .c3-title { margin-top: 8px; font: 700 44px "Inter", sans-serif; color: #111; }
+    .c3-tiles { margin-top: 20px; display: flex; gap: 18px; }
+    .c3-tile {
+      width: 220px; height: 160px; border-radius: 22px; background: #F4F6FA; border: 2px solid #E4E8F0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+      font: 700 28px "Inter", sans-serif; color: #222;
+    }
+    .c3-tile svg { width: 70px; height: 70px; }
+  </style>
+  <div id="root" data-composition-id="card3" data-width="1080" data-height="1920">
+    <div id="c3" class="clip" data-start="0.15" data-duration="4.8">
+      <div id="c3-card">
+        <div class="c3-head"><div class="c3-kicker">03 · SEDIA</div><div id="c3-count">3/3 sedia</div></div>
+        <div class="c3-title">Barang kerja</div>
+        <div class="c3-tiles">
+          <div class="c3-tile" id="c3-t1">
+            <svg viewBox="0 0 64 64" fill="none" stroke-width="3.5" stroke-linejoin="round">
+              <path d="M14 18h36l-4 38H18z" fill="#fff" stroke="#222"/><path d="M14 18c6-8 30-8 36 0" stroke="#222"/>
+              <rect x="20" y="30" width="24" height="12" rx="2" fill="#D97757" stroke="none"/>
+            </svg>Cat
+          </div>
+          <div class="c3-tile" id="c3-t2">
+            <svg viewBox="0 0 64 64" fill="none" stroke="#222" stroke-width="3.5" stroke-linecap="round">
+              <path d="M10 16h44"/><path d="M16 16v40M48 16v40"/><path d="M16 26l32 20M48 26L16 46" stroke="#2F6BFF"/>
+            </svg>Scaffolding
+          </div>
+          <div class="c3-tile" id="c3-t3">
+            <svg viewBox="0 0 64 64" fill="none" stroke="#222" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+              <rect x="22" y="6" width="20" height="22" rx="3" fill="#2F6BFF" stroke="none"/><path d="M20 28h24v8H20z"/><path d="M28 36h8v22h-8z"/>
+            </svg>Berus
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#c3-card", { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }, 0.15);
+    tl.fromTo("#c3-t1", { opacity: 0, y: 24, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, 0.6);
+    tl.fromTo("#c3-t2", { opacity: 0, y: 24, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, 1.4);
+    tl.fromTo("#c3-t3", { opacity: 0, y: 24, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, 2.2);
+    tl.fromTo("#c3-count", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.7);
+    tl.to("#c3-card", { opacity: 0, y: 20, duration: 0.3, ease: "power2.in" }, 4.6);
+    window.__timelines["card3"] = tl;
+  </script>
+</template>

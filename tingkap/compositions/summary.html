@@ -1,0 +1,48 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #sum-tint { position: absolute; inset: 0; z-index: 0; background: rgba(14,22,52,.55); }
+    #sum { position: absolute; left: 150px; top: 760px; width: 700px; height: 560px; z-index: 1; }
+    .sum-row { display: flex; align-items: center; gap: 26px; height: 92px; font: 700 40px "Inter", sans-serif; color: #fff; }
+    .sum-dot {
+      width: 46px; height: 46px; border-radius: 23px; background: #2F6BFF; flex: none;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .sum-dot svg { width: 28px; height: 28px; }
+    .sum-dot.open { background: transparent; border: 4px solid rgba(255,255,255,.75); }
+    .sum-row.dim { color: rgba(255,255,255,.7); font-weight: 400; }
+    .sum-row.dim i { font: italic 400 42px "Playfair Display", serif; color: #fff; }
+    #sum-line { position: absolute; left: 21px; top: 46px; width: 4px; height: 276px; background: rgba(255,255,255,.35); z-index: 0; }
+    .sum-row { position: relative; z-index: 1; }
+    #sum-follow {
+      position: absolute; left: 0; top: 420px; height: 84px; width: 330px; border-radius: 42px;
+      background: #fff; display: flex; align-items: center; justify-content: center; gap: 14px;
+      font: 700 34px "Inter", sans-serif; color: #111; box-shadow: 0 12px 32px rgba(0,0,0,.3);
+    }
+    #sum-follow .fdot { width: 40px; height: 40px; border-radius: 20px; background: #2F6BFF; display: flex; align-items: center; justify-content: center; }
+    #sum-follow svg { width: 24px; height: 24px; }
+    #sum-plus, #sum-tick { position: absolute; }
+  </style>
+  <div id="root" data-composition-id="summary" data-width="1080" data-height="1920">
+    <div id="sum-tint" class="clip" data-start="0" data-duration="3.5"></div>
+    <div id="sum" class="clip" data-start="0.3" data-duration="3.2">
+      <div id="sum-line"></div>
+      <div class="sum-row" id="sum-r1"><div class="sum-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>Periksa bingkai</div>
+      <div class="sum-row" id="sum-r2"><div class="sum-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>Kikis cat lama</div>
+      <div class="sum-row" id="sum-r3"><div class="sum-dot"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>Barang sedia</div>
+      <div class="sum-row dim" id="sum-r4"><div class="sum-dot open"></div><span>Cat — <i>part 2</i></span></div>
+      <div id="sum-follow">
+        <div class="fdot"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <span id="sum-follow-text">Following</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#sum-tint", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 0);
+    tl.fromTo(["#sum-r1", "#sum-r2", "#sum-r3", "#sum-r4"], { opacity: 0, x: -24 },
+      { opacity: 1, x: 0, duration: 0.3, stagger: 0.18, ease: "power2.out" }, 0.4);
+    tl.fromTo("#sum-follow", { opacity: 0, y: 24, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 1.1);
+    window.__timelines["summary"] = tl;
+  </script>
+</template>

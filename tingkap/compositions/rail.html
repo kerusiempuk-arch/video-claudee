@@ -1,0 +1,54 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #rail-wrap { position: absolute; left: 0; top: 0; width: 520px; height: 1920px; z-index: 1; }
+    #rail-track { position: absolute; left: 58px; top: 0; width: 5px; height: 1920px; background: rgba(255,255,255,.55); }
+    #rail-fill { position: absolute; left: 58px; top: 0; width: 5px; height: 1920px; background: #2F6BFF; transform-origin: 50% 0%; }
+    #rail-node {
+      position: absolute; left: 41px; top: 0; width: 40px; height: 40px; border-radius: 20px;
+      background: #2F6BFF; border: 6px solid #fff; box-shadow: 0 4px 14px rgba(0,0,0,.35);
+    }
+    #rail-label { position: absolute; left: 124px; top: 0; height: 50px; }
+    .rail-pill {
+      position: absolute; left: 0; top: 0; height: 50px; padding: 0 22px 0 10px; border-radius: 25px;
+      background: #2F6BFF; color: #fff; display: flex; align-items: center; gap: 12px; white-space: nowrap;
+      font: 700 28px "Inter", sans-serif; box-shadow: 0 6px 18px rgba(47,107,255,.4);
+    }
+    .rail-pill span {
+      width: 34px; height: 34px; border-radius: 17px; background: rgba(255,255,255,.25);
+      display: flex; align-items: center; justify-content: center; font: 700 18px "JetBrains Mono", monospace;
+    }
+  </style>
+  <div id="root" data-composition-id="rail" data-width="1080" data-height="1920">
+    <div id="rail-wrap" class="clip" data-start="0" data-duration="15" data-layout-allow-overflow data-layout-allow-overlap>
+      <div id="rail-track"></div>
+      <div id="rail-fill"></div>
+      <div id="rail-node"></div>
+      <div id="rail-label">
+        <div class="rail-pill" id="rail-p1"><span data-layout-ignore>01</span>Periksa</div>
+        <div class="rail-pill" id="rail-p2"><span data-layout-ignore>02</span>Kikis</div>
+        <div class="rail-pill" id="rail-p3"><span data-layout-ignore>03</span>Sedia</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Nod turun mengikut langkah: 01 @0 s, 02 @6 s, 03 @10 s (masa scene; scene bermula 3 s)
+    const Y = [520, 650, 780];
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#rail-wrap", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, 0);
+    tl.fromTo("#rail-fill", { scaleY: Y[0] / 1920 }, { scaleY: Y[0] / 1920, duration: 0.01 }, 0);
+    tl.fromTo("#rail-node", { y: Y[0] - 20 }, { y: Y[0] - 20, duration: 0.01 }, 0);
+    tl.fromTo("#rail-label", { y: Y[0] - 25 }, { y: Y[0] - 25, duration: 0.01 }, 0);
+    tl.fromTo("#rail-p1", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, 0.25);
+    tl.fromTo(["#rail-p2", "#rail-p3"], { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    [[6, 1, "#rail-p1", "#rail-p2"], [10, 2, "#rail-p2", "#rail-p3"]].forEach(([t, i, out, inn]) => {
+      tl.to("#rail-fill", { scaleY: Y[i] / 1920, duration: 0.5, ease: "power2.inOut" }, t);
+      tl.to("#rail-node", { y: Y[i] - 20, duration: 0.5, ease: "power2.inOut" }, t);
+      tl.to("#rail-label", { y: Y[i] - 25, duration: 0.5, ease: "power2.inOut" }, t);
+      tl.to(out, { opacity: 0, duration: 0.2 }, t);
+      tl.fromTo(inn, { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, t + 0.3);
+    });
+    tl.to("#rail-wrap", { opacity: 0, x: -40, duration: 0.3, ease: "power2.in" }, 14.65);
+    window.__timelines["rail"] = tl;
+  </script>
+</template>
