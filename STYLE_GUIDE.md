@@ -33,6 +33,7 @@ Dikaji dari video rujukan (Google Drive `1dwMtteYsa9ZirF828ME6Gvdj2ESqN9Xc`).
 - Payoff: footage tajam semula + teks besar dengan "selection box" seolah-olah sedang diedit.
 
 ## Peraturan wajib (arahan pemilik)
+- **Buang setiap perkataan pengisi "aaa", "emm" dan "okay".** Whisper biasa tak menulisnya, jadi transkrip semula dengan prompt pengisi (`whisper-cli --prompt "Aaa, okay, emm..."`) dan sahkan setiap satu pada gelombang bunyi sebelum potong.
 - **Sentiasa potong** bahagian senyap (jeda > ~0.3 s dipendekkan ke ~0.1 s), **perkataan/ayat berulang** (kekalkan sebutan yang terakhir/terbaik) dan **gagap** sebelum menambah grafik.
 - Silih setiap jump cut dengan punch-in kecil (scale ~1.07, origin di atas supaya kepala tak terpotong).
 - Masukkan **sound effect** pada setiap aksi visual: whoosh (kad masuk/tukar), pop (pil/chip/ikon muncul), click (tanda ✓), sparkle (pendedahan produk), ping (butang CTA). Volume ~0.3–0.4, di bawah suara.
