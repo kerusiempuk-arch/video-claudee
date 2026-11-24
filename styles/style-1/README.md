@@ -8,9 +8,9 @@ Contoh siap: `styles/style-1/projects/boxer.py` (boxer lelaki — versi yang dil
 ## Struktur video
 | Bahagian | Apa | Bila |
 |---|---|---|
-| **Hook** | kicker kecil (cth. "seluar dalam lelaki paling") + tajuk besar 1 perkataan bold hitam + **titik merah** (cth. "selesa."). Kad gelap gaya tetingkap macOS (titik merah/kuning/hijau + nama produk) dengan 2 pilihan `01`/`02` — pilihan bertukar biru tepat bila perkataan itu disebut | ayat pembuka, ~3–5s |
+| **Hook** | kicker kecil (cth. "seluar dalam lelaki paling") + tajuk besar 1 perkataan bold hitam + **titik merah** (cth. "selesa."). Kad gelap gaya tetingkap macOS (titik merah/kuning/hijau + nama produk) dengan 2 pilihan `01`/`02` — pilihan bertukar biru tepat bila perkataan itu disebut (`select_at` ikut masa sebenar) | sepanjang ayat pembuka (~3–6s) |
 | **Kelebihan 1/3, 2/3, 3/3** | progress bar biru nipis di atas + label monospace gelap `kelebihan 1 / 3` (nombor biru) + subtajuk pendek. Sticker putih condong sikit, bertindan ke bawah (kiri atas), keluar tepat bila disebut. Bulatan biru + label untuk tunjuk bahagian produk (pilihan) | ikut isi percakapan |
-| **CTA** | tajuk besar ulang (cth. "selesa.") + kad gelap: nama produk, tag monospace `a · b · c`, butang. TikTok Shop → butang **kuning "Tekan bakul kuning ↓"** (teks gelap). Lain-lain → merah "Link dekat bawah ↓" | ~2s terakhir, simpan ~0.7s hujung untuk dibaca |
+| **CTA** | tajuk besar ulang (cth. "selesa.") + kad gelap: nama produk, tag monospace `a · b · c`, butang. TikTok Shop → butang **kuning "Tekan bakul kuning ↓"** (teks gelap). Lain-lain → merah "Link dekat bawah ↓" | ~2s terakhir, simpan ~1.2s hujung untuk dibaca (`TAIL = 1.2`). Nama produk panjang → font kad mengecil sendiri |
 
 ## Kapsyen
 - Ikut suara, **1–3 perkataan** satu masa, muncul ikut masa sebenar setiap perkataan (Whisper).

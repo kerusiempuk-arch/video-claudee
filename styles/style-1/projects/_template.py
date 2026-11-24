@@ -4,7 +4,7 @@ REMOVE = [
     # (mula, tamat),  # "aaa" / "okay" / ulangan pertama / ayat tak habis
 ]
 SRC_END = 99.0        # potong selepas ni (orang keluar frame / kamera jatuh)
-TAIL = 0.7            # hujung tak dipotong senyap — masa baca CTA
+TAIL = 1.2            # hujung tak dipotong senyap — masa baca CTA (1.2s supaya kad CTA sempat dibaca)
 PUNCH_Y = 0.25        # punch-in fokus ke atas (muka)
 
 # ---------- overlay (build.py) – masa ikut video SELEPAS dipotong
@@ -19,7 +19,8 @@ ZOOM = 0.04
 CAPTIONS = [  # (group_end, [(perkataan, mula, highlight)]) — 1–3 perkataan
     # (1.36, [("Zaman", 0.00, False), ("sekarang", 0.64, False)]),
 ]
-HOOK = dict(end=3.0, y=100, kicker="<produk> paling", title="<katakunci>",
+HOOK = dict(end=3.0, y=100,  # end = hujung ayat pembuka; select_at = bila setiap pilihan DISEBUT
+            kicker="<produk> paling", title="<katakunci>",
             options=[("<pilihan A>", "01"), ("<pilihan B>", "02")], select_at=[1.0, 2.0])
 SECTIONS = [  # (mula, tamat, "kelebihan", "1 / 3", subtajuk)
 ]

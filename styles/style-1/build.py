@@ -332,8 +332,9 @@ def build_cta(cta, end):
     t0, c0 = cta["title_at"], cta["card_at"]
     bc = cta.get("button_color", RED)
     tc = cta.get("button_text_color", (255, 255, 255))
+    nm_px = max(30, min(46, int(560 / (0.53 * max(1, len(cta["name"]))))))  # nama panjang -> font kecil, muat dalam kad
     css = WIN_CSS + TITLE_CSS + f"""
-    .nm {{ position: absolute; left: 30px; top: 57px; height: 50px; line-height: 50px; font: 700 46px "S1 Display"; color: #fff; white-space: nowrap; }}
+    .nm {{ position: absolute; left: 30px; top: 57px; height: 50px; line-height: 50px; font: 700 {nm_px}px "S1 Display"; color: #fff; white-space: nowrap; }}
     .tg {{ position: absolute; left: 30px; top: 110px; height: 28px; line-height: 28px; font: 500 22px "S1 Mono"; color: rgb(160,160,170); white-space: nowrap; }}
     .btn {{ position: absolute; left: 20px; top: 160px; width: 580px; height: 70px; border-radius: 35px; background: {rgb(bc)};
       display: flex; align-items: center; justify-content: center; font: 700 36px "S1 Inter"; color: {rgb(tc)}; }}"""
