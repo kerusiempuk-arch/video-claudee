@@ -9,7 +9,7 @@ PUNCH_Y = 0.25        # punch-in fokus ke atas (muka)
 
 # ---------- overlay (build.py) – masa ikut video SELEPAS dipotong
 END = 0.0             # tempoh selepas potongan (build.py --plan)
-CAPTION_Y = 1780      # bawah (pilihan user)
+CAPTION_Y = 680       # atas, paras dada (pilihan user); kena muka -> 700–760
 CARD_Y = 1180
 ZOOM = 0.04
 # CAPTION_ACCENT = (255, 212, 59, 255)   # kuning bila latar/baju biru
@@ -28,5 +28,5 @@ STICKERS = [  # (mula, tamat, teks, x, y, sudut) — x 50/80/110, y 250/320/390 
 ]
 CIRCLES = []  # (mula, tamat, cx, cy, r, label, label_x, label_y)
 CTA = dict(title="<katakunci>", title_at=0.0, title_y=230, card_at=0.0, card_y=1180,
-           card_label="<Produk>", name="<Produk>", tags="a · b · c",
+           card_label="<Produk>", name="<Produk>", tags="a · b · c",  # maks 3 tag pendek (1–2 perkataan)
            button="Tekan bakul kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
