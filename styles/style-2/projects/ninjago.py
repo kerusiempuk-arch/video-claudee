@@ -13,8 +13,7 @@ TAIL = 0.7
 
 # --- overlay (build.py), masa ikut video SELEPAS dipotong (transkripsi cut.wav)
 END = 27.68
-CAPTION_Y = 1290  # tiada muka di awal – produk di atas, jadi kapsyen di bawah produk; elak butang CTA (760–1260)
-CARD_TOP = 1450   # kad turun sikit supaya tak bertindih kapsyen
+CAPTION_Y = 180   # owner minta kapsyen di bahagian atas
 
 CAPTIONS = [
     (2.09, [("Tengok", 0.19, ""), ("anak", 1.09, ""), ("aku", 1.33, ""), ("buat", 1.66, "")]),
