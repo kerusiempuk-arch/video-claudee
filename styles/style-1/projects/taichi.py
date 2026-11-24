@@ -5,7 +5,7 @@ SRC_END = 22.1
 TAIL = 1.2
 PUNCH_Y = 0.25
 END = 19.13
-CAPTION_Y = 1780
+CAPTION_Y = 680           # atas (permintaan user untuk video ni)
 CARD_Y = 1180
 ZOOM = 0.04
 # (group_end, [(word, start, highlight)]) – masa ikut video SELEPAS dipotong
