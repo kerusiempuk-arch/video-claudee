@@ -16,7 +16,7 @@ Apa yang build.py buat (automatik):
      `hyperframes media-treatment` (atau ikut BRIGHTEN dalam config).
   4. Overlay Style 1: gradient putih atas, zoom perlahan, hook (kicker + tajuk besar + titik merah + kad
      macOS dengan pilihan 01/02), progress bar + label "kelebihan n / N", sticker putih condong,
-     bulatan biru, kapsyen bawah ikut perkataan, CTA (tajuk + kad + butang), sound effect.
+     bulatan biru, kapsyen atas (paras dada) ikut perkataan, CTA (tajuk + kad + butang), sound effect.
 """
 import html, json, math, os, runpy, shutil, subprocess, sys, wave, array
 
@@ -36,7 +36,7 @@ PAD = C.get("PAD", 0.06)
 PUNCH = C.get("PUNCH", 1.08)
 TAIL = C.get("TAIL", 0.0)
 PUNCH_Y = C.get("PUNCH_Y", 0.35)
-CAPTION_Y = C.get("CAPTION_Y", 1780)
+CAPTION_Y = C.get("CAPTION_Y", 680)   # atas, paras dada (pilihan user)
 CARD_Y = C.get("CARD_Y", 1110)
 ZOOM = C.get("ZOOM", 0.05)
 DENOISE = C.get("DENOISE", True)
@@ -451,7 +451,8 @@ def main():
     if "--cut-audio" in sys.argv:
         out = sys.argv[sys.argv.index("--cut-audio") + 1]
         cut_audio(voice, keep, out)
-        print("->", out)
+        json.dump(keep, open(out + ".keep.json", "w"))  # untuk transcribe.py --keep (masa cut -> masa asal)
+        print("->", out, "+", out + ".keep.json")
         return
     shutil.copyfile(RAW, os.path.join(W, "src.mp4"))
     for d in ("fonts", "sfx"):

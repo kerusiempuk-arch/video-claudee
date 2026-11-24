@@ -1,6 +1,6 @@
 ---
 name: edit-style-1
-description: Edit a vertical product video in the owner's "Style 1" (modern UI "product explainer" — big one-word title with red dot, macOS-style dark option card, monospace "kelebihan 1 / 3" labels with blue progress bar, tilted white stickers, bottom word-by-word captions, dark CTA card with yellow "Tekan bakul kuning" button, punch-in jump cuts, SFX) rendered with HyperFrames. Use when the user says "edit style 1", "style 1", "gaya style 1" and gives a Google Drive link.
+description: Edit a vertical product video in the owner's "Style 1" (modern UI "product explainer" — big one-word title with red dot, macOS-style dark option card, monospace "kelebihan 1 / 3" labels with blue progress bar, tilted white stickers, top (chest-level) word-by-word captions, dark CTA card with yellow "Tekan bakul kuning" button, punch-in jump cuts, SFX) rendered with HyperFrames. Use when the user says "edit style 1", "style 1", "gaya style 1" and gives a Google Drive link.
 ---
 
 # Edit Style 1 (HyperFrames)
@@ -15,7 +15,7 @@ HyperFrames project; `hyperframes check / snapshot / render` do the rest. Transc
 2. Cut every pause > 0.3 s (automatic in `build.py`), punch-in alternates on each jump cut.
 3. **Keep only the main voice.** Background noise (wind, fans, traffic, hum, other sounds) is removed — automatic in `build.py` (highpass + RNNoise `arnndn` + lowpass, −14 LUFS). If something still leaks through (music, another person), say so and cut that part or ask.
 4. **Brighten dark footage.** `build.py` measures mean luma; below `DARK_Y` (105) it applies exposure/shadows through `hyperframes media-treatment`. Look at the stills: if it is still dark or now washed out, set `BRIGHTEN = {"exposure": …, "shadows": …, "blacks": …}` in the project config (or `BRIGHTEN = None` to switch off).
-5. Captions at the **bottom** (`CAPTION_Y = 1780`), never in the middle. No watermark on previews.
+5. Captions at the **top, chest level** (`CAPTION_Y = 680`, owner's choice) — below the title/stickers, never over the face/mouth (check stills; nudge to 700–760 if it is). No watermark on previews.
 6. Sound effects on every overlay action (automatic: whoosh / click / pop / ding).
 7. Preview (draft render) first → wait for **"okay render"** → final render (`-q high`).
 8. Don't invent product facts (prices, sizes, materials). Inferred items (e.g. colours visible on screen) must be listed for the owner to confirm.
@@ -35,7 +35,7 @@ ffmpeg -v error -i $W/raw.mp4 -vf "fps=1,scale=240:-1,tile=8x4" $W/sheet.jpg   #
 1. `cp styles/style-1/projects/_template.py styles/style-1/projects/<name>.py`; fill `REMOVE` (source times), `SRC_END`, `TAIL`.
 2. `python3 -I styles/style-1/build.py $W/raw.mp4 styles/style-1/projects/<name>.py $W/hf --plan` → prints the kept segments and **END** (put END in the config).
 3. `python3 -I styles/style-1/build.py $W/raw.mp4 <project> $W/hf --cut-audio $W/cut.wav` → clean, cut voice; transcribe it:
-   `.venv-style1/bin/python styles/style-1/tools/transcribe.py $W/cut.wav` → confirm no filler/repeat remains → fill `CAPTIONS` (1–3 words, real word starts), `HOOK` (`select_at` = when each option word is spoken), `SECTIONS`, `STICKERS`, `CIRCLES`, `CTA`. All overlay times are **cut** times.
+   `.venv-style1/bin/python styles/style-1/tools/transcribe.py $W/cut.wav --keep $W/cut.wav.keep.json` → the clean voice reveals short "ha"/"okay" the raw transcript missed; each `[FILLER]` prints `REMOVE ≈ (src_a, src_b)` → add to `REMOVE`, redo `--plan`/`--cut-audio` until no filler/repeat remains → fill `CAPTIONS` (1–3 words, real word starts), `HOOK` (`select_at` = when each option word is spoken), `SECTIONS`, `STICKERS`, `CIRCLES`, `CTA` (CTA `tags`: max 3 short tags, 1–2 words each, or they overflow the card). All overlay times are **cut** times.
 4. Build: `python3 -I styles/style-1/build.py $W/raw.mp4 <project> $W/hf` (prints the brightness decision).
 5. `cd $W/hf && $HF check` — must have no errors (top/bottom safe-zone and small-text warnings are the approved design).
 6. Stills: `$HF snapshot --at <t1>,<t2>,…` (hook, each option switch, each section, stickers, CTA) → check overlaps with face/product; if the caption accent vanishes on the background (e.g. light-blue shirt), set `CAPTION_ACCENT = (255, 212, 59, 255)`.
