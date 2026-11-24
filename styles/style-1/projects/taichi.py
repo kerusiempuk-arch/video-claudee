@@ -30,7 +30,7 @@ CAPTIONS = [
     (15.94, [("Hasil", 15.06, False), ("dia", 15.22, False), ("memang", 15.56, False)]),
     (17.14, [("sangat", 15.96, False), ("memuaskan", 16.24, True)]),
     (18.00, [("Berminat?", 17.18, False), ("dapatkan", 17.62, False)]),
-    (19.13, [("di", 18.02, False), ("bakul", 18.12, True), ("ni", 18.36, False)]),
+    (19.13, [("di", 18.02, False), ("beg", 18.12, True), ("kuning", 18.24, True), ("ni", 18.40, False)]),
 ]
 HOOK = dict(end=5.6, y=100, kicker="lelaki yang selalu rasa", title="lemah",
             options=[("Rasa lemah", "01"), ("Dah tak bermaya", "02")], select_at=[2.36, 3.44])
