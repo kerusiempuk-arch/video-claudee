@@ -32,7 +32,7 @@ CAPTIONS = [
     (9.22, [("macam", 8.03, ""), ("ni.", 8.30, ""), ("Jadinya", 8.52, "")]),
     (10.54, [("kita", 9.22, ""), ("boleh", 9.57, ""), ("adjust", 10.01, "serif")]),
     (11.07, [("sampai", 10.54, ""), ("empat,", 10.80, "box")]),
-    (12.45, [("nak", 11.07, ""), ("lagi", 11.33, ""), ("bongkok,", 11.73, "box")]),
+    (12.45, [("nak", 11.07, ""), ("lagi", 11.33, ""), ("baring,", 11.73, "box")]),
     (13.60, [("nak", 12.45, ""), ("lagi", 12.71, ""), ("rendah", 13.05, "box")]),
     (15.56, [("ataupun", 13.60, ""), ("nak", 14.19, ""), ("lagi", 14.45, ""), ("tinggi", 14.83, "box")]),
     (16.31, [("Ada", 15.56, ""), ("poket", 15.73, "serif"), ("lagi", 16.08, "")]),
@@ -40,7 +40,7 @@ CAPTIONS = [
     (18.39, [("nak", 16.95, ""), ("letak", 17.18, ""), ("telefon,", 17.61, "box")]),
     (19.72, [("nak", 18.39, ""), ("letak", 18.65, ""), ("botol,", 19.08, "box")]),
     (20.64, [("sangat", 19.72, ""), ("sesuai", 20.07, "serif")]),
-    (21.48, [("Ada", 20.64, ""), ("span,", 20.89, "box")]),
+    (21.48, [("Ada", 20.64, ""), ("sponge,", 20.89, "box")]),
     (22.92, [("sangat", 21.48, ""), ("selesa", 22.04, "serif")]),
     (24.46, [("Berminat", 22.92, ""), ("dengan", 23.61, ""), ("kerusi", 24.00, "")]),
     (25.82, [("lipat", 24.46, ""), ("serba", 24.85, ""), ("guna", 25.27, ""), ("ni,", 25.56, "")]),
@@ -54,11 +54,11 @@ CARDS = [
     dict(kind="check", start=4.2, end=10.8, kicker="02 · LARAS", title="*4 tahap* boleh laras",
          items=[("Lubang di belakang", 7.71), ("Boleh adjust", 10.01)]),
     dict(kind="check", start=10.8, end=15.5, kicker="03 · POSISI", title="Ikut *selesa* anda",
-         items=[("Lagi bongkok", 11.73), ("Lagi rendah", 13.05), ("Lagi tinggi", 14.83)]),
+         items=[("Lagi baring", 11.73), ("Lagi rendah", 13.05), ("Lagi tinggi", 14.83)]),
     dict(kind="check", start=15.55, end=20.6, kicker="04 · POKET", title="Ada *poket* tepi",
          items=[("Letak telefon", 17.61), ("Letak botol", 19.08)]),
-    dict(kind="icon", start=20.65, end=22.9, kicker="05 · SPAN", title="Ada *span*\nlebih selesa", icon="shield"),
+    dict(kind="icon", start=20.65, end=22.9, kicker="05 · SPONGE", title="Ada *sponge*\nlebih selesa", icon="shield"),
 ]
-RAIL = dict(start=2.35, end=22.9, steps=[(2.35, "Selesa"), (4.2, "Laras"), (10.8, "Posisi"), (15.55, "Poket"), (20.65, "Span")])
+RAIL = dict(start=2.35, end=22.9, steps=[(2.35, "Selesa"), (4.2, "Laras"), (10.8, "Posisi"), (15.55, "Poket"), (20.65, "Sponge")])
 CTA = dict(start=22.92, button_at=25.1, button="Klik *beg kuning*",
-           items=["Buka & terus duduk", "4 tahap boleh laras", "Poket telefon & botol", "Ada span, sangat selesa"])
+           items=["Buka & terus duduk", "4 tahap boleh laras", "Poket telefon & botol", "Ada sponge, sangat selesa"])
