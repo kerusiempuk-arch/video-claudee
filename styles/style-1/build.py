@@ -15,8 +15,10 @@ Apa yang build.py buat (automatik):
   3. Kecerahan: ukur purata luma (YAVG). Kalau < DARK_Y (105) → exposure/shadows dinaikkan melalui
      `hyperframes media-treatment` (atau ikut BRIGHTEN dalam config).
   4. Overlay Style 1: gradient putih atas, zoom perlahan, hook (kicker + tajuk besar + titik merah + kad
-     macOS dengan pilihan 01/02), progress bar + label "kelebihan n / N", sticker putih condong,
-     bulatan biru, kapsyen atas (paras dada) ikut perkataan (kata kunci kuning auto bila baju/latar biru), CTA (tajuk + kad + butang), sound effect.
+     macOS dengan 2–3 pilihan 01/02/03), progress bar + label "kelebihan n / N" (atau "tip n / N"), sticker putih condong,
+     perkataan besar sekejap di tengah video (BIG_WORDS),
+     bulatan biru, kapsyen atas (paras dada) ikut perkataan (kata kunci kuning auto bila baju/latar biru; CAPTIONS = [] → tiada kapsyen),
+     CTA (tajuk + kad + butang), sound effect.
 """
 import html, json, math, os, runpy, shutil, subprocess, sys, wave, array
 
@@ -37,7 +39,7 @@ PUNCH = C.get("PUNCH", 1.08)
 TAIL = C.get("TAIL", 0.0)
 PUNCH_Y = C.get("PUNCH_Y", 0.35)
 CAPTION_Y = C.get("CAPTION_Y", 680)   # atas, paras dada (pilihan user)
-CARD_Y = C.get("CARD_Y", 1110)
+CARD_Y = C.get("CARD_Y", 1420)   # kad hook rendah sikit supaya produk yang dipegang tak tertutup
 ZOOM = C.get("ZOOM", 0.05)
 DENOISE = C.get("DENOISE", True)
 DARK_Y = C.get("DARK_Y", 105)
@@ -242,8 +244,9 @@ def build_hook(H, end):
         oy = 60 + i * 62
         opts += (f'        <div class="opt" style="top:{oy}px"><div class="sel" id="hk-sel{i}"></div>'
                  f'<span class="ot" id="hk-ot{i}">{esc(txt)}</span><span class="on">{esc(num)}</span></div>\n')
-    body.append(f'      <div id="hk-card" style="position:absolute;left:230px;top:{CARD_Y}px;width:620px;height:190px">')
-    body.append(window_card_html("hk", C["CTA"]["card_label"], 190, opts.rstrip()))
+    card_h = max(190, 70 + len(H["options"]) * 62)   # 2 pilihan → 190px, 3 pilihan → 256px
+    body.append(f'      <div id="hk-card" style="position:absolute;left:230px;top:{CARD_Y}px;width:620px;height:{card_h}px">')
+    body.append(window_card_html("hk", C["CTA"]["card_label"], card_h, opts.rstrip()))
     body.append("      </div>")
     body.append("    </div>")
     css = WIN_CSS + TITLE_CSS + """
@@ -301,9 +304,13 @@ def sticker_html(id_, text, x, y, ang):
             f'<div class="stk-in" id="{id_}">{esc(text)}</div></div>')
 
 
-def build_stickers(stickers, circles):
+def build_stickers(stickers, circles, big_words=()):
     body, js = [], ""
     css = """
+    .bw { position: absolute; left: 0; top: 230px; width: 1080px; height: 220px; display: flex; justify-content: center; align-items: center; }
+    .bw span { position: relative; font-family: "S1 Display"; font-weight: 700; font-size: 170px; color: rgb(22,22,26); line-height: 1;
+      letter-spacing: -1px; text-shadow: 0 0 30px rgba(255,255,255,.55); }
+    .bw b { position: absolute; right: -36px; bottom: 0.13em; width: 28px; height: 28px; background: rgb(229,72,77); }
     .stk { position: absolute; transform-origin: 50% 50%; }
     .stk-in { height: 60px; padding: 0 18px; border-radius: 8px; background: #fff; display: flex; align-items: center;
       font: 600 34px "S1 Inter"; color: rgb(22,22,26); white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,.35); }
@@ -318,6 +325,11 @@ def build_stickers(stickers, circles):
                     + sticker_html(f"ci{i}-l", label, lx, ly, 3) + "</div>")
         js += fade_js(f"#ci{i}-r", a0, a1, 0.25, 0.2, ", scale: 0.7", ", scale: 1")
         js += fade_js(f"#ci{i}-l", a0, a1, 0.12, 0.2, ", scale: 0.8", ", scale: 1")
+    for i, (a0, a1, word, dot) in enumerate(big_words):   # perkataan besar sekejap (cth. "berbuih.")
+        body.append(f'    <div id="bw{i}" class="clip" data-start="{f2(a0)}" data-duration="{f2(a1 - a0)}">'
+                    f'<div class="bw"><span id="bw{i}-in">{esc(word)}{"<b></b>" if dot else ""}</span></div></div>')
+        js += (f'    tl.fromTo("#bw{i}-in", {{ opacity: 0, scale: 1.25 }}, {{ opacity: 1, scale: 1, duration: 0.18, ease: "power3.out" }}, {f2(a0)});\n'
+               f'    tl.to("#bw{i}-in", {{ opacity: 0, duration: 0.15, ease: "power2.in" }}, {f2(a1 - 0.15)});\n')
     if not body:
         body.append('    <div id="st-none" class="clip" data-start="0" data-duration="0.1"></div>')
     return scene("stickers", css, "\n".join(body), js)
@@ -377,6 +389,7 @@ def sfx_events(end):
     ev += [(a0, wh, 0.45) for a0, *_ in S_]
     ev += [(a0, "pop", 0.55) for a0, *_ in ST]
     ev += [(c[0], "pop", 0.55) for c in CI]
+    ev += [(b[0], wh, 0.45) for b in C.get("BIG_WORDS", [])]
     ev += [(CTA["title_at"], wh, 0.5), (CTA["card_at"], "ding", 0.5)]
     ev += [tuple(e) for e in C.get("EXTRA_SFX", [])]
     return sorted((max(0.0, t), n, v) for t, n, v in ev if t < end)
@@ -494,8 +507,8 @@ def main():
     files = {
         "hook": build_hook(C["HOOK"], C["HOOK"]["end"]),
         "sections": build_sections(C["HOOK"]["end"], end, C["SECTIONS"]),
-        "stickers": build_stickers(C["STICKERS"], C["CIRCLES"]),
-        "captions": build_captions(C["CAPTIONS"]),
+        "stickers": build_stickers(C["STICKERS"], C["CIRCLES"], C.get("BIG_WORDS", [])),
+        "captions": build_captions(C.get("CAPTIONS", [])),
         "cta": build_cta(C["CTA"], end),
     }
     for k, v in files.items():

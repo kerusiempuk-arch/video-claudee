@@ -78,12 +78,11 @@ STICKERS = [
     (21.70, 22.85, "minyak hilang terus", 80, 260, 2.0),
 ]
 CIRCLES = []
-# perkataan besar sekejap di tengah video (macam "store", "4 layer", "ngam." dalam rujukan) – ditambah oleh sabun_extra.py
+# perkataan besar sekejap di tengah video (macam "store", "4 layer", "ngam." dalam rujukan)
 BIG_WORDS = [  # (mula, tamat, perkataan, titik_merah)
     (11.14, 12.40, "berbuih", True),
     (20.32, 21.66, "bersih", True),
 ]
-EXTRA_SFX = [(t, "drop", 0.45) for t, *_ in BIG_WORDS]
 CTA = dict(title="senang", title_at=22.80, title_y=230, card_at=23.00, card_y=1180,
            card_label="Sabun Pencuci", name="Sabun Pencuci Pinggan", tags="senang · berbuih · bersih",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
