@@ -16,7 +16,7 @@ Apa yang build.py buat (automatik):
      `hyperframes media-treatment` (atau ikut BRIGHTEN dalam config).
   4. Overlay Style 1: gradient putih atas, zoom perlahan, hook (kicker + tajuk besar + titik merah + kad
      macOS dengan pilihan 01/02), progress bar + label "kelebihan n / N", sticker putih condong,
-     bulatan biru, kapsyen atas (paras dada) ikut perkataan, CTA (tajuk + kad + butang), sound effect.
+     bulatan biru, kapsyen atas (paras dada) ikut perkataan (kata kunci kuning auto bila baju/latar biru), CTA (tajuk + kad + butang), sound effect.
 """
 import html, json, math, os, runpy, shutil, subprocess, sys, wave, array
 
@@ -51,7 +51,8 @@ INK = (22, 22, 26)
 ACCENT = (110, 123, 255)
 BLUE = (66, 99, 235)
 RED = (229, 72, 77)
-CAPTION_ACCENT = tuple(C.get("CAPTION_ACCENT", ACCENT))[:3]
+YELLOW_ACCENT = (255, 212, 59)
+CAPTION_ACCENT = tuple(C["CAPTION_ACCENT"])[:3] if "CAPTION_ACCENT" in C else None  # None = auto (baju biru → kuning)
 
 
 def sh(cmd, **kw):
@@ -134,6 +135,22 @@ def mean_luma():
                           "-f", "null", "-"], capture_output=True, text=True).stdout
     vals = [float(l.split("=")[1]) for l in out.splitlines() if "YAVG=" in l]
     return sum(vals) / len(vals) if vals else 128.0
+
+
+def blue_share():
+    """Bahagian piksel biru di jalur kapsyen (tengah, paras CAPTION_Y), purata semua saat."""
+    out = subprocess.run(["ffmpeg", "-v", "error", "-i", RAW, "-vf",
+                          f"fps=1,scale=1080:1920,crop=600:200:240:{CAPTION_Y - 100},scale=60:20",
+                          "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True).stdout
+    px = [out[i:i + 3] for i in range(0, len(out) - 2, 3)]
+    blue = sum(1 for r, g, b in px if b > r + 30 and b > g + 10)
+    return blue / len(px) if px else 0.0
+
+
+def pick_caption_accent():
+    """Baju/latar biru di belakang kapsyen (≥ 15 % piksel) → kuning (biru-ungu tak nampak); lain → biru-ungu."""
+    share = blue_share()
+    return (YELLOW_ACCENT if share >= 0.15 else ACCENT), share
 
 
 def brighten_patch(y):
@@ -466,6 +483,11 @@ def main():
     y = mean_luma()
     patch = brighten_patch(y)
     print(f"# kecerahan purata YAVG={y:.0f}" + (f" → dicerahkan {json.dumps(patch)}" if patch else " (ok)"))
+    global CAPTION_ACCENT
+    if CAPTION_ACCENT is None:
+        CAPTION_ACCENT, share = pick_caption_accent()
+        print(f"# piksel biru di paras kapsyen {share:.0%} → kata kunci "
+              + ("KUNING (latar/baju biru)" if CAPTION_ACCENT == YELLOW_ACCENT else "biru-ungu"))
     comp = os.path.join(W, "compositions")
     os.makedirs(comp, exist_ok=True)
     files = {

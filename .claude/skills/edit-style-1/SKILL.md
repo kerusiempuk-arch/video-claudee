@@ -29,16 +29,17 @@ styles/style-1/tools/fetch_drive.sh "<drive link>" $W/raw.mp4   # fails clearly 
 ffmpeg -v error -i $W/raw.mp4 -vf "fps=1,scale=240:-1,tile=8x4" $W/sheet.jpg   # look at it
 .venv-style1/bin/python styles/style-1/tools/transcribe.py $W/raw.mp4
 ```
+- Closing/CTA line repeated several times (e.g. "berminat dengan … ni" ×3 + an unfinished "dapatkan") → one `REMOVE` covering all earlier tries; keep only the last complete take through "… beg/bakul kuning". Re-transcribe that window if Whisper garbles it.
 - `transcribe.py` flags `[FILLER]`, `[ULANG?]` (possible repeat — check, keep the complete take) and `[PANJANG]` (word > 0.9 s: Whisper merged a repeat; it re-transcribes that window and prints it). Also check isolated 0.1–0.3 s sound bursts between sentences on the energy (short "aa").
 - If the link is the already-edited reference video, ask for the raw footage instead.
 
 1. `cp styles/style-1/projects/_template.py styles/style-1/projects/<name>.py`; fill `REMOVE` (source times), `SRC_END`, `TAIL`.
 2. `python3 -I styles/style-1/build.py $W/raw.mp4 styles/style-1/projects/<name>.py $W/hf --plan` → prints the kept segments and **END** (put END in the config).
 3. `python3 -I styles/style-1/build.py $W/raw.mp4 <project> $W/hf --cut-audio $W/cut.wav` → clean, cut voice; transcribe it:
-   `.venv-style1/bin/python styles/style-1/tools/transcribe.py $W/cut.wav --keep $W/cut.wav.keep.json` → the clean voice reveals short "ha"/"okay" the raw transcript missed; each `[FILLER]` prints `REMOVE ≈ (src_a, src_b)` → add to `REMOVE`, redo `--plan`/`--cut-audio` until no filler/repeat remains → fill `CAPTIONS` (1–3 words, real word starts), `HOOK` (`select_at` = when each option word is spoken), `SECTIONS`, `STICKERS`, `CIRCLES`, `CTA` (CTA `tags`: max 3 short tags, 1–2 words each, or they overflow the card). All overlay times are **cut** times.
+   `.venv-style1/bin/python styles/style-1/tools/transcribe.py $W/cut.wav --keep $W/cut.wav.keep.json` → the clean voice reveals short "ha"/"okay" the raw transcript missed; each `[FILLER]` prints `REMOVE ≈ (src_a, src_b)` → add to `REMOVE`, redo `--plan`/`--cut-audio` until no filler/repeat remains → fill `CAPTIONS` (1–3 words, real word starts), `HOOK` (`select_at` = when each option word is spoken; `end` may run to ~8 s so both options are spoken while the card is up), `SECTIONS`, `STICKERS`, `CIRCLES`, `CTA` (CTA `tags`: max 3 short tags, 1–2 words each, or they overflow the card). All overlay times are **cut** times.
 4. Build: `python3 -I styles/style-1/build.py $W/raw.mp4 <project> $W/hf` (prints the brightness decision).
 5. `cd $W/hf && $HF check` — must have no errors (top/bottom safe-zone and small-text warnings are the approved design).
-6. Stills: `$HF snapshot --at <t1>,<t2>,…` (hook, each option switch, each section, stickers, CTA) → check overlaps with face/product; if the caption accent vanishes on the background (e.g. light-blue shirt), set `CAPTION_ACCENT = (255, 212, 59, 255)`.
+6. Stills: `$HF snapshot --at <t1>,<t2>,…` (hook, each option switch, each section, stickers, CTA) → check overlaps with face/product; the caption accent turns yellow automatically on a blue shirt/background (build prints `piksel biru … → KUNING`); if it still vanishes, force `CAPTION_ACCENT = (…)` in the project config.
 7. Preview: `$HF render -q draft -o ../preview.mp4` (run detached: `setsid nohup … &`, wait with a background until-loop) → SendUserFile + table of texts/times + what was cut + brightness/noise notes + open questions.
 8. After "okay render": `$HF render -q high -o ../final.mp4` → SendUserFile.
 9. Commit the project config (videos and `work/` are git-ignored) and push.
