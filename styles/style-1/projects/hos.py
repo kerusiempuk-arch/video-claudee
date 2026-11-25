@@ -1,4 +1,5 @@
 # Hos / getah buang air mesin basuh 3 meter (Drive 1CFBVSQjClOS7NgjrQylHtqGjw3hyLSL6)
+# SFX: whoosh diganti titisan air – selepas build.py jalankan projects/hos_sfx.py <work>/hf/assets/sfx/whoosh.wav
 REMOVE = [
     (0.00, 1.10),    # "ha" pembuka
     (4.40, 11.00),   # "okay. Siap bagi pengikat dia lagi, okay. Kita tengok ia asal. Ha, ni ia asal." (pengikat diulang di hujung)
