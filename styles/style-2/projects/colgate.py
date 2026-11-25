@@ -10,6 +10,7 @@ TAIL = 0.7
 # --- overlay, masa ikut video SELEPAS dipotong
 END = 17.30
 CAPTION_Y = 655   # bawah dagu; produk dipegang paras dada
+CARD_TOP = 1360   # nilai asal sebelum default jadi 1500
 
 CAPTIONS = [
     (1.66, [("Kalau", 0.03, ""), ("tak", 0.37, ""), ("nak", 0.72, "")]),

@@ -14,6 +14,7 @@ TAIL = 0.7
 # --- overlay, masa ikut video SELEPAS dipotong
 END = 29.05
 CAPTION_Y = 655   # bawah dagu, tak bertindih senarai CTA (top 760)
+CARD_TOP = 1360   # nilai asal sebelum default jadi 1500
 
 CAPTIONS = [
     (2.30, [("Mata", 0.05, ""), ("bit", 0.85, "")]),

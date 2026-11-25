@@ -15,7 +15,7 @@ TAIL = 0.7            # hujung tak dipotong senyap — masa baca CTA
 # --- overlay (build.py), masa ikut video SELEPAS dipotong (transkripsi cut.wav dari --cut-audio)
 END = 0.0             # dari --plan
 CAPTION_Y = 655       # dada, bawah dagu; max ~650 supaya tak bertindih senarai CTA (top 760). boxer guna 545
-# CARD_TOP = 1360     # jalur kad di bawah (atas kaki); jangan tutup muka/produk
+# CARD_TOP = 1500     # jalur kad di bawah (default 1500, rendah sikit supaya tak tutup produk yang dipegang paras pinggang; video lama guna 1360)
 
 CAPTIONS = [  # (tamat_kumpulan, [(perkataan, mula, gaya)]) — gaya "" / "box" (kotak putih) / "serif" (serif italik). Max ~4 perkataan
     # (1.64, [("Zaman", 0.03, ""), ("sekarang", 0.26, "")]),
@@ -24,6 +24,8 @@ HOOK = dict(start=0.15, end=3.0, text="review **<produk>**", x=350, y=860)
 CARDS = [
     # Pembuka (pilihan): kad "check" untuk apa yang dapat sebelum kelebihan 01, ganti "vs" bila tiada perbandingan, cth
     # dict(kind="check", start=, end=, kicker="DAPAT 2 SET", title="10 pieces *satu box*", items=[("Bermagnetic", <t>), ...]),
+    # Atau kad "PILIHAN" bila produk sebut warna/saiz (contoh projects/kasut.py) – hanya apa yang disebut
+    # dict(kind="check", start=, end=, kicker="PILIHAN", title="Warna & *saiz*", items=[("Warna hitam", <t>), ("Saiz pelbagai", <t>)]),
     # dict(kind="vs", start=, end=, kicker="ZAMAN SEKARANG", old="<lama>", new="<produk>", new_at=<bila nama produk disebut>),
     #      old/new pendek (1–2 perkataan, cth "Nipis" → "Tebal") supaya tak jadi dua baris
     # Tengah video (pilihan): kad "check" untuk barang yang dapat bersama produk, cth (projects/colgate.py)

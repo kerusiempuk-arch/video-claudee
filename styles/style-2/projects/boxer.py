@@ -11,6 +11,7 @@ TAIL = 0.7
 # --- overlay (build.py), masa ikut video SELEPAS dipotong (transkripsi cut.wav)
 END = 17.99
 CAPTION_Y = 545   # dada, bawah dagu
+CARD_TOP = 1360   # nilai asal sebelum default jadi 1500
 
 # (tamat_kumpulan, [(perkataan, mula, gaya)]) — gaya: "" biasa, "box" kotak putih, "serif" serif italik. Max ~4 perkataan.
 CAPTIONS = [
