@@ -371,12 +371,13 @@ def sfx_events(end):
     if not C.get("SFX", True):
         return []
     H, S_, ST, CI, CTA = C["HOOK"], C["SECTIONS"], C["STICKERS"], C["CIRCLES"], C["CTA"]
-    ev = [(0.0, "whoosh", 0.5)]
+    wh = C.get("SFX_WHOOSH", "whoosh")   # "whoosh" (default) | "drop" (titisan air – produk air/dapur)
+    ev = [(0.0, wh, 0.5)]
     ev += [(ts, "click", 0.6) for ts in H["select_at"]]
-    ev += [(a0, "whoosh", 0.45) for a0, *_ in S_]
+    ev += [(a0, wh, 0.45) for a0, *_ in S_]
     ev += [(a0, "pop", 0.55) for a0, *_ in ST]
     ev += [(c[0], "pop", 0.55) for c in CI]
-    ev += [(CTA["title_at"], "whoosh", 0.5), (CTA["card_at"], "ding", 0.5)]
+    ev += [(CTA["title_at"], wh, 0.5), (CTA["card_at"], "ding", 0.5)]
     ev += [tuple(e) for e in C.get("EXTRA_SFX", [])]
     return sorted((max(0.0, t), n, v) for t, n, v in ev if t < end)
 
