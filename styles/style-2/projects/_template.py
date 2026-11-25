@@ -14,14 +14,16 @@ TAIL = 0.7            # hujung tak dipotong senyap — masa baca CTA
 
 # --- overlay (build.py), masa ikut video SELEPAS dipotong (transkripsi cut.wav dari --cut-audio)
 END = 0.0             # dari --plan
-CAPTION_Y = 600       # dada, bawah dagu (ubah ikut kedudukan muka; boxer guna 545)
+CAPTION_Y = 655       # dada, bawah dagu; max ~650 supaya tak bertindih senarai CTA (top 760). boxer guna 545
 # CARD_TOP = 1360     # jalur kad di bawah (atas kaki); jangan tutup muka/produk
 
 CAPTIONS = [  # (tamat_kumpulan, [(perkataan, mula, gaya)]) — gaya "" / "box" (kotak putih) / "serif" (serif italik). Max ~4 perkataan
     # (1.64, [("Zaman", 0.03, ""), ("sekarang", 0.26, "")]),
 ]
-HOOK = dict(start=0.15, end=3.0, text="review **<produk>**", x=350, y=760)
+HOOK = dict(start=0.15, end=3.0, text="review **<produk>**", x=350, y=860)
 CARDS = [
+    # Pembuka (pilihan): kad "check" untuk apa yang dapat sebelum kelebihan 01, ganti "vs" bila tiada perbandingan, cth
+    # dict(kind="check", start=, end=, kicker="DAPAT 2 SET", title="10 pieces *satu box*", items=[("Bermagnetic", <t>), ...]),
     # dict(kind="vs", start=, end=, kicker="ZAMAN SEKARANG", old="<lama>", new="<produk>", new_at=<bila nama produk disebut>),
     #      old/new pendek (1–2 perkataan, cth "Nipis" → "Tebal") supaya tak jadi dua baris
     # dict(kind="icon", start=, end=, kicker="01 · <KELEBIHAN>", title="Lebih *<kata>*", icon="heart"),  # heart wind star shield bolt tag

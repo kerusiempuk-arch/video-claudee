@@ -32,7 +32,7 @@ MIN_SIL = C.get("MIN_SILENCE", 0.30)
 PAD = C.get("PAD", 0.06)
 PUNCH = C.get("PUNCH", 1.07)
 TAIL = C.get("TAIL", 0.0)
-CAPTION_Y = C.get("CAPTION_Y", 600)
+CAPTION_Y = C.get("CAPTION_Y", 655)
 CARD_TOP = C.get("CARD_TOP", 1360)
 DENOISE = C.get("DENOISE", True)
 DARK_Y = C.get("DARK_Y", 105)
@@ -281,7 +281,7 @@ def card_chips(cid, k):
 
 def build_hook(h):
     s, e = h.get("start", 0.15), h["end"]
-    x, y = h.get("x", 350), h.get("y", 760)
+    x, y = h.get("x", 350), h.get("y", 860)
     body = (f'    <div id="hk" class="clip" data-start="{f2(s)}" data-duration="{f2(e - s)}" style="position:absolute;left:{x}px;top:{y}px;height:72px">\n'
             f'      <div id="hk-in"><svg viewBox="0 0 24 24" fill="#D97757"><path d="M12 1.5l1.6 7 6.3-3.6-4.2 5.9 6.8 1.2-6.8 1.2 4.2 5.9-6.3-3.6-1.6 7-1.6-7-6.3 3.6 4.2-5.9-6.8-1.2 6.8-1.2-4.2-5.9 6.3 3.6z"/></svg>'
             f'<span>{rich(h["text"])}</span></div>\n    </div>')
