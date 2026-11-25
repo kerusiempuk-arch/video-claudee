@@ -24,7 +24,7 @@ ZOOM = 0.04
 SFX_WHOOSH = "drop"   # produk dapur / air
 
 C_ = lambda end, *ws: (end, [(w, t, h) for w, t, h in ws])
-CAPTIONS = [
+CAPTIONS_OLD = [  # dibuang atas permintaan owner ("Buang subtitle di tengah")
     C_(0.64, ("Nak", 0.05, False), ("cuci", 0.32, False)),
     C_(1.10, ("pinggan", 0.66, True)),
     C_(1.90, ("menggunakan", 1.14, False)),
@@ -56,6 +56,7 @@ CAPTIONS = [
     C_(23.90, ("Berminat", 22.96, False), ("dapatkan", 23.46, False)),
     C_(25.47, ("di", 23.92, False), ("beg", 24.02, True), ("kuning", 24.24, True)),
 ]
+CAPTIONS = []
 HOOK = dict(end=3.95, y=100,
             kicker="sabun pencuci pinggan,", title="senang",
             options=[("Cuci pinggan", "01"), ("Sabun pencuci", "02"), ("Sangat senang", "03")],
