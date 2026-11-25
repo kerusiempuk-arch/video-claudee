@@ -26,6 +26,8 @@ CARDS = [
     # dict(kind="check", start=, end=, kicker="DAPAT 2 SET", title="10 pieces *satu box*", items=[("Bermagnetic", <t>), ...]),
     # dict(kind="vs", start=, end=, kicker="ZAMAN SEKARANG", old="<lama>", new="<produk>", new_at=<bila nama produk disebut>),
     #      old/new pendek (1–2 perkataan, cth "Nipis" → "Tebal") supaya tak jadi dua baris
+    # Tengah video (pilihan): kad "check" untuk barang yang dapat bersama produk, cth (projects/colgate.py)
+    # dict(kind="check", start=, end=, kicker="02 · DAPAT SEKALI", title="Bonus *berus gigi*", items=[("Ubat gigi Colgate", <t>), ("Berus gigi", <t>)]),
     # dict(kind="icon", start=, end=, kicker="01 · <KELEBIHAN>", title="Lebih *<kata>*", icon="heart"),  # heart wind star shield bolt tag
     # dict(kind="check", start=, end=, kicker="02 · ...", title="...", items=[("<teks>", <bila ✓>), ...]),
     # dict(kind="chips", start=, end=, kicker="03 · PILIHAN", title="Pelbagai saiz & warna",
