@@ -12,9 +12,8 @@ SRC_END = 26.6
 TAIL = 1.9
 
 END = 17.32
-# Video ni: kepala di bahagian atas frame (y ~100–600) → tajuk & CTA diletak di BAWAH (paras riba), bukan atas.
-# Gradien gelap dialih ke bawah selepas bina (langkah khas video ni, lihat POST di bawah).
-HEAD_Y = 1240
+# Kepala di bahagian atas frame (y ~100–600) → tajuk, CTA & gradien di BAWAH.
+POSITION = "bottom"
 HEADS = [
     dict(start=0.0, end=4.05, kicker="Extension wire", title="5 soket.", pills=[(3.15, "Untuk 3 pin")]),
     dict(start=4.05, end=5.15, kicker="Ada sticker", title="SIRIM."),
@@ -24,6 +23,4 @@ HEADS = [
     dict(start=12.05, end=14.8, kicker="Wire dia", title="Panjang.", pills=[(13.3, "Tebal"), (13.8, "Lebih selamat")]),
 ]
 IMAGES = []   # tiada gambar produk diberi
-CTA = dict(start=14.8, text="Beli di beg kuning", y=1300)
-# POST (selepas build.py): alih gradien ke bawah
-#   sed -i 's/left: 0; top: 0; width: 1080px; height: 820px;/left: 0; top: 1000px; width: 1080px; height: 920px;/; s/180deg, rgba(18,20,26,.78) 0%, rgba(18,20,26,.50) 38%, rgba(18,20,26,0) 100%/0deg, rgba(18,20,26,.80) 0%, rgba(18,20,26,.55) 45%, rgba(18,20,26,0) 100%/' work/v2/hf/compositions/shade.html
+CTA = dict(start=14.8, text="Beli di beg kuning")

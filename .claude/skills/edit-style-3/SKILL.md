@@ -28,7 +28,8 @@ Same as Style 2: `hyperframes`, whisper.cpp, `ggml-small.bin` (check `ls /root/.
 `HF="node ~/.claude/skills/hyperframes/scripts/plugin-cli.mjs"`; `S=styles/style-3/scripts`.
 
 ## Steps (from repo root, `W=work/<name>`)
-1. `bash $S/download-drive.sh "<link>" $W/raw.mp4` → contact sheet (`ffmpeg -vf "fps=1/2,scale=240:-1,tile=8x3"`): where is the head (titles sit above it, `HEAD_Y` default 190) and the product.
+1. `bash $S/download-drive.sh "<link>" $W/raw.mp4` → contact sheet (`ffmpeg -vf "fps=1/2,scale=240:-1,tile=8x3"`) + gridded strip (`fps=1/3,scale=270:480,drawgrid=w=0:h=48,tile=9x1`, each line = 10 %): where is the head and the product.
+   **Face check:** titles sit at y 190–530 px (10–28 %). If the face is in that band for most of the video (head near the top of the frame), set `POSITION = "bottom"` (titles y 1240, CTA y 1300, dark gradient at the bottom; example `projects/extension.py`) and say so with the draft frames. Keep titles off the product too.
    Ask the owner for **product photos** (TikTok Shop listing screenshots) if none were sent — the "Penyelesaian" / design / fabric moments use them. Without photos, skip `IMAGES`.
 2. `bash $S/find-fillers.sh $W/raw.mp4 $W/fill` → words (`*` = filler) + pauses. Confirm on `python3 -I $S/energy.py $W/fill/a16k.wav <from> <to>`; verify boundaries next to kept words with a short whisper clip (Style 2 skill step 2 has the detail). Write `REMOVE`, `SRC_END`, `TAIL` in `projects/<name>.py` (copy `_template.py`).
 3. `python3 -I styles/style-3/build.py $W/raw.mp4 <project> $W/hf --plan` → END. Then `--cut-audio $W/cut.wav` and transcribe:

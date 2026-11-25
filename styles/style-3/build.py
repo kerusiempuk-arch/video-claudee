@@ -34,7 +34,9 @@ MIN_SIL = C.get("MIN_SILENCE", 0.30)
 PAD = C.get("PAD", 0.06)
 PUNCH = C.get("PUNCH", 1.07)
 TAIL = C.get("TAIL", 0.0)
-HEAD_Y = C.get("HEAD_Y", 190)        # atas label kecil (px, kanvas 1080×1920)
+POSITION = C.get("POSITION", "top")   # "top" (biasa) / "bottom" (bila kepala di atas frame → tajuk, CTA, gradien di bawah)
+HEAD_Y = C.get("HEAD_Y", 1240 if POSITION == "bottom" else 190)   # atas label kecil (px, kanvas 1080×1920)
+CTA_Y = 1300 if POSITION == "bottom" else 200                       # default CTA["y"]
 IMG_TOP = C.get("IMG_TOP", 470)      # atas kad gambar produk
 IMG_W = C.get("IMG_W", 1000)         # lebar kad gambar produk
 DENOISE = C.get("DENOISE", True)
@@ -162,9 +164,14 @@ def scene(cid, css, body, js):
 
 
 def build_shade(end):
-    """Gradien gelap di atas sepanjang video supaya tajuk putih jelas."""
+    """Gradien gelap di atas (atau di bawah bila POSITION="bottom") sepanjang video supaya tajuk putih jelas."""
     body = f'    <div id="sh" class="clip" data-start="0" data-duration="{f2(end)}"></div>'
-    css = """
+    if POSITION == "bottom":
+        css = """
+    #sh { position: absolute; left: 0; top: 1000px; width: 1080px; height: 920px;
+      background: linear-gradient(0deg, rgba(18,20,26,.80) 0%, rgba(18,20,26,.55) 45%, rgba(18,20,26,0) 100%); }"""
+    else:
+        css = """
     #sh { position: absolute; left: 0; top: 0; width: 1080px; height: 820px;
       background: linear-gradient(180deg, rgba(18,20,26,.78) 0%, rgba(18,20,26,.50) 38%, rgba(18,20,26,0) 100%); }"""
     return scene("shade", css, body, "")
@@ -263,7 +270,7 @@ def build_image(cid, im, fname):
 def build_cta(c, end):
     s = c["start"]
     d = end - s
-    body = (f'    <div id="ct" class="clip" data-start="0" data-duration="{f2(d)}" style="top:{c.get("y", 200)}px">\n'
+    body = (f'    <div id="ct" class="clip" data-start="0" data-duration="{f2(d)}" style="top:{c.get("y", CTA_Y)}px">\n'
             f'      <div id="ct-btn">{esc(c.get("text", "Beli di beg kuning"))}</div>\n'
             '      <div id="ct-arr"><svg viewBox="0 0 48 48" fill="none" stroke="#FFD21F" stroke-width="6" stroke-linecap="round" '
             'stroke-linejoin="round"><path d="M12 10l12 11 12-11"/><path d="M12 26l12 11 12-11"/></svg></div>\n    </div>')

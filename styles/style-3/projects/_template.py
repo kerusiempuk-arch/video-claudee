@@ -10,7 +10,8 @@ TAIL = 1.9            # hujung tak dipotong senyap — masa baca CTA
 # PUNCH = 1.07        # punch-in segmen selang-seli
 # BRIGHTEN = "auto"   # atau {"exposure": 0.4, "shadows": 0.25, "blacks": 0.08}; None = matikan
 # DENOISE = True
-# HEAD_Y = 190        # atas label kecil; IMG_TOP = 470; IMG_W = 1000
+# POSITION = "top"   # "bottom" bila kepala di atas frame (tajuk tutup muka) → tajuk, CTA & gradien di bawah (contoh projects/extension.py)
+# HEAD_Y = 190        # atas label kecil (bottom: 1240); IMG_TOP = 470; IMG_W = 1000
 
 # --- overlay, masa ikut video SELEPAS dipotong (transkripsi cut.wav dari --cut-audio). TIADA subtitle bawah.
 END = 0.0             # dari --plan
