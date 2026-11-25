@@ -1,6 +1,6 @@
 ---
 name: edit-style-1
-description: Edit a vertical product video in the owner's "Style 1" (modern UI "product explainer" — big one-word title with red dot, macOS-style dark option card, monospace "kelebihan 1 / 3" labels with blue progress bar, tilted white stickers, top (chest-level) word-by-word captions, dark CTA card with yellow "Tekan bakul kuning" button, punch-in jump cuts, SFX) rendered with HyperFrames. Use when the user says "edit style 1", "style 1", "gaya style 1" and gives a Google Drive link.
+description: Edit a vertical product video in the owner's "Style 1" (modern UI "product explainer" — big one-word title with red dot, macOS-style dark option card, monospace "kelebihan 1 / 3" labels with blue progress bar, tilted white stickers, top (chest-level) word-by-word captions, dark CTA card with yellow "Tekan beg kuning" button, punch-in jump cuts, SFX) rendered with HyperFrames. Use when the user says "edit style 1", "style 1", "gaya style 1" and gives a Google Drive link.
 ---
 
 # Edit Style 1 (HyperFrames)

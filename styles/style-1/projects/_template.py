@@ -29,4 +29,4 @@ STICKERS = [  # (mula, tamat, teks, x, y, sudut) — x 50/80/110, y 250/320/390 
 CIRCLES = []  # (mula, tamat, cx, cy, r, label, label_x, label_y)
 CTA = dict(title="<katakunci>", title_at=0.0, title_y=230, card_at=0.0, card_y=1180,
            card_label="<Produk>", name="<Produk>", tags="a · b · c",  # maks 3 tag pendek (1–2 perkataan)
-           button="Tekan bakul kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
+           button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
