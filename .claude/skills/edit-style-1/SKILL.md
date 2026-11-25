@@ -16,7 +16,7 @@ HyperFrames project; `hyperframes check / snapshot / render` do the rest. Transc
 3. **Keep only the main voice.** Background noise (wind, fans, traffic, hum, other sounds) is removed — automatic in `build.py` (highpass + RNNoise `arnndn` + lowpass, −14 LUFS). If something still leaks through (music, another person), say so and cut that part or ask.
 4. **Brighten dark footage.** `build.py` measures mean luma; below `DARK_Y` (105) it applies exposure/shadows through `hyperframes media-treatment`. Look at the stills: if it is still dark or now washed out, set `BRIGHTEN = {"exposure": …, "shadows": …, "blacks": …}` in the project config (or `BRIGHTEN = None` to switch off).
 5. Captions at the **top, chest level** (`CAPTION_Y = 680`, owner's choice) — below the title/stickers, never over the face/mouth (check stills; nudge to 700–760 if it is). No watermark on previews.
-6. Sound effects on every overlay action (automatic: whoosh / click / pop / ding).
+6. Sound effects on every overlay action (automatic: whoosh / click / pop / ding). For water/kitchen products set `SFX_WHOOSH = "drop"` (water-drop "bloop" instead of whoosh).
 7. Preview (draft render) first → wait for **"okay render"** → final render (`-q high`).
 8. Don't invent product facts (prices, sizes, materials). Inferred items (e.g. colours visible on screen) must be listed for the owner to confirm.
 9. **Style 1 itself is protected.** Never edit `styles/style-1/` build/sfx/tools/README or this skill on `main` without the owner's explicit OK. Per-video tweaks go only in `styles/style-1/projects/<name>.py`.

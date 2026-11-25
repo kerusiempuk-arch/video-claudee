@@ -45,7 +45,7 @@ Contoh siap: `styles/style-1/projects/boxer.py` (boxer lelaki — versi yang dil
 - Font: Inter (Bold/Display Bold/SemiBold/Medium) + JetBrains Mono — dalam `fonts/`.
 
 ## Sound effect (auto)
-whoosh = tajuk & setiap seksyen · click = pilihan kad bertukar · pop = sticker/bulatan · ding = kad CTA.
+whoosh = tajuk & setiap seksyen (atau `SFX_WHOOSH = "drop"` → titisan air, sesuai produk air/dapur) · click = pilihan kad bertukar · pop = sticker/bulatan · ding = kad CTA.
 Bunyi sintetik (`sfx.py`, fail `.wav` dalam `sfx/`), bebas hak cipta, volume di bawah suara.
 
 ## Aliran kerja

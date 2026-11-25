@@ -14,6 +14,7 @@ CARD_Y = 1180
 ZOOM = 0.04
 # CAPTION_ACCENT = (255, 212, 59, 255)   # paksa warna; default auto: baju/latar biru → kuning
 # BRIGHTEN = "auto"   # video gelap (YAVG < 105) dicerahkan auto; atau {"exposure": 0.4, "shadows": 0.25, "blacks": 0.08}; None = matikan
+# SFX_WHOOSH = "drop"  # ganti whoosh dengan titisan air (produk air / dapur / mesin basuh)
 # DENOISE = True      # buang bunyi latar, kekalkan suara utama sahaja
 
 CAPTIONS = [  # (group_end, [(perkataan, mula, highlight)]) — 1–3 perkataan

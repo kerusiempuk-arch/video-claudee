@@ -52,6 +52,16 @@ def ding():  # CTA
     att = np.minimum(1, t / 0.004)
     return y * att
 
+def drop(d=0.38):  # pilihan ganti whoosh (SFX_WHOOSH = "drop"): titisan air + percikan kecil
+    def one(t0, f0, f1, k):
+        t = t_(d) - t0
+        on = t >= 0
+        tt = np.where(on, t, 0)
+        f = f0 * (f1 / f0) ** np.minimum(tt / 0.07, 1)   # pic naik cepat = bunyi titisan
+        ph = 2 * np.pi * np.cumsum(f * on) / SR
+        return np.sin(ph) * np.minimum(1, tt / 0.003) * np.exp(-tt * k) * on
+    return one(0.0, 420, 1500, 32) + 0.35 * one(0.11, 700, 1900, 45)
+
 if __name__ == "__main__":
     out = sys.argv[1]
     os.makedirs(out, exist_ok=True)
@@ -59,4 +69,5 @@ if __name__ == "__main__":
     save(os.path.join(out, "click.wav"), click(), 0.5)
     save(os.path.join(out, "whoosh.wav"), whoosh(), 0.6)
     save(os.path.join(out, "ding.wav"), ding(), 0.55)
+    save(os.path.join(out, "drop.wav"), drop(), 0.6)
     print("ok", out)
