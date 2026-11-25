@@ -1,5 +1,4 @@
 # Hos / getah buang air mesin basuh 3 meter (Drive 1CFBVSQjClOS7NgjrQylHtqGjw3hyLSL6)
-# SFX: whoosh diganti titisan air – selepas build.py jalankan projects/hos_sfx.py <work>/hf/assets/sfx/whoosh.wav
 REMOVE = [
     (0.00, 1.10),    # "ha" pembuka
     (4.40, 11.00),   # "okay. Siap bagi pengikat dia lagi, okay. Kita tengok ia asal. Ha, ni ia asal." (pengikat diulang di hujung)
@@ -19,6 +18,7 @@ END = 24.20
 CAPTION_Y = 680
 CARD_Y = 1180
 ZOOM = 0.04
+SFX_WHOOSH = "drop"   # titisan air ganti whoosh
 
 CAPTIONS = [  # masa ikut video SELEPAS dipotong (Whisper atas cut.wav)
     (0.92, [("Getah", 0.00, False), ("mesin", 0.60, False)]),
