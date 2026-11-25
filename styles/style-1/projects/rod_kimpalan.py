@@ -45,7 +45,7 @@ CAPTIONS = [  # (group_end, [(perkataan, mula, highlight)]) — masa ikut cut.wa
     (22.54, [("beg", 21.38, True), ("kuning.", 21.54, True)]),
 ]
 HOOK = dict(end=7.45, y=100,
-            kicker="rod kimpalan paling", title="kemas",
+            kicker="rod kimpalan paling", title="murah",
             options=[("Siap dalam bekas", "01"), ("Lebih tersusun", "02")], select_at=[3.56, 6.40])
 SECTIONS = [  # (mula, tamat, "kelebihan", "1 / 3", subtajuk)
     (7.45, 11.36, "kelebihan", "1 / 3", "DIY sendiri"),
@@ -61,6 +61,6 @@ STICKERS = [  # (mula, tamat, teks, x, y, sudut)
     (18.28, 18.80, "lagi murah", 80, 320, 1.5),
 ]
 CIRCLES = []
-CTA = dict(title="kemas", title_at=18.86, title_y=230, card_at=19.2, card_y=1180,
+CTA = dict(title="murah", title_at=18.86, title_y=230, card_at=19.2, card_y=1180,
            card_label="Rod Kimpalan", name="Rod Kimpalan", tags="kemas · DIY · harga promosi",
-           button="Tekan bakul kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
+           button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
