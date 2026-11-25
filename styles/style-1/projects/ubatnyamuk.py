@@ -49,7 +49,7 @@ CAPTIONS = [  # masa ikut video SELEPAS dipotong
     (28.06, [('Dapatkan', 27.44, False), ('di', 27.86, False), ('beg', 27.98, False)]),
     (28.60, [('kuning.', 28.06, True)]),
 ]
-HOOK = dict(end=3.0, y=100, kicker="tapak ubat nyamuk paling", title="stabil",
+HOOK = dict(end=3.0, y=100, kicker="tapak lingkaran nyamuk paling", title="stabil",
             options=[("Tapak biasa", "01"), ("Tapak 4 kaki", "02")], select_at=[1.0, 2.1])
 SECTIONS = [
     (3.0, 9.8, "kelebihan", "1 / 3", "melendik ke bawah"),
@@ -69,6 +69,6 @@ STICKERS = [
 CIRCLES = []
 YELLOW = (255, 200, 40, 255)
 CTA = dict(title="stabil", title_at=24.5, title_y=230, card_at=26.9, card_y=1180,
-           card_label="Tapak Ubat Nyamuk", name="Tapak Ubat Nyamuk",
+           card_label="Tapak Lingkaran Nyamuk", name="Tapak Lingkaran Nyamuk",
            tags="4 kaki · stabil · ada bekas",
            button="Tekan beg kuning ↓", button_color=YELLOW, button_text_color=(22, 22, 26, 255))
