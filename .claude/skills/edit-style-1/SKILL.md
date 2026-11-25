@@ -20,7 +20,7 @@ HyperFrames project; `hyperframes check / snapshot / render` do the rest. Transc
 7. Preview (draft render) first → wait for **"okay render"** → final render (`-q high`).
 8. Don't invent product facts (prices, sizes, materials). Inferred items (e.g. colours visible on screen) must be listed for the owner to confirm.
 9. **Style 1 itself is protected.** Never edit `styles/style-1/` build/sfx/tools/README or this skill on `main` without the owner's explicit OK. Per-video tweaks go only in `styles/style-1/projects/<name>.py`.
-10. After sending the final render, ask (in Malay) whether any change made for this video should be saved into Style 1 for future videos, listing the candidates. Only on a yes: update the style files, commit, push to `main`.
+10. After sending the final render + cover photo, ask (in Malay) whether any change made for this video should be saved into Style 1 for future videos, listing the candidates. Only on a yes: update the style files, commit, push to `main`.
 
 ## Steps (run from repo root; `W=work/<name>`, `HF="node ~/.claude/skills/hyperframes/scripts/plugin-cli.mjs"`)
 ```bash
@@ -41,7 +41,7 @@ ffmpeg -v error -i $W/raw.mp4 -vf "fps=1,scale=240:-1,tile=8x4" $W/sheet.jpg   #
 5. `cd $W/hf && $HF check` — must have no errors (top/bottom safe-zone and small-text warnings are the approved design).
 6. Stills: `$HF snapshot --at <t1>,<t2>,…` (hook, each option switch, each section, stickers, CTA) → check overlaps with face/product; the caption accent turns yellow automatically on a blue shirt/background (build prints `piksel biru … → KUNING`); if it still vanishes, force `CAPTION_ACCENT = (…)` in the project config.
 7. Preview: `$HF render -q draft -o ../preview.mp4` (run detached: `setsid nohup … &`, wait with a background until-loop) → SendUserFile + table of texts/times + what was cut + brightness/noise notes + open questions.
-8. After "okay render": `$HF render -q high -o ../final.mp4` → SendUserFile.
+8. After "okay render": `$HF render -q high -o ../final.mp4` → SendUserFile, **with the cover photo**. **Cover photo** (every style): with the final video, also send a TikTok cover — `python3 -I tools/cover/make_cover.py $W/raw.mp4 <t> $W/cover.png --title "<Nama produk>." --kicker "<2 kelebihan>" --pills "<a>,<b>,<c>" [--pos top]` (pick a sharp frame where the product is fully visible and the face looks at the camera; compare a few nearby times first; text off the face/product; only facts said in the video) → SendUserFile together with final.mp4.
 9. Commit the project config (videos and `work/` are git-ignored) and push.
 
 ## Environment notes

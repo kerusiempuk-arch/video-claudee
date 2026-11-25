@@ -18,6 +18,7 @@ General style notes from the first reference video: `STYLE_GUIDE.md`.
 - **Brighten dark footage** (mean luma < 105 → `hyperframes media-treatment` exposure/shadows).
 - Add fitting sound effects.
 - Send draft frames → draft preview video → final render after approval.
+- **Every time the final video is sent, send a cover photo with it** (frame showing the product + product name): `tools/cover/make_cover.py` — see each style's skill.
 - Commit and push work as you go.
 
 ## Saved styles are protected (owner's rule)
