@@ -12,14 +12,14 @@ END = 0.0             # tempoh selepas potongan (build.py --plan)
 CAPTION_Y = 680       # atas, paras dada (pilihan user); kena muka -> 700–760
 CARD_Y = 1180
 ZOOM = 0.04
-# CAPTION_ACCENT = (255, 212, 59, 255)   # kuning bila latar/baju biru
+# CAPTION_ACCENT = (255, 212, 59, 255)   # paksa warna; default auto: baju/latar biru → kuning
 # BRIGHTEN = "auto"   # video gelap (YAVG < 105) dicerahkan auto; atau {"exposure": 0.4, "shadows": 0.25, "blacks": 0.08}; None = matikan
 # DENOISE = True      # buang bunyi latar, kekalkan suara utama sahaja
 
 CAPTIONS = [  # (group_end, [(perkataan, mula, highlight)]) — 1–3 perkataan
     # (1.36, [("Zaman", 0.00, False), ("sekarang", 0.64, False)]),
 ]
-HOOK = dict(end=3.0, y=100,  # end = hujung ayat pembuka; select_at = bila setiap pilihan DISEBUT
+HOOK = dict(end=3.0, y=100,  # end = hujung ayat pembuka (boleh ~8s supaya 2 pilihan sempat disebut); select_at = bila setiap pilihan DISEBUT
             kicker="<produk> paling", title="<katakunci>",
             options=[("<pilihan A>", "01"), ("<pilihan B>", "02")], select_at=[1.0, 2.0])
 SECTIONS = [  # (mula, tamat, "kelebihan", "1 / 3", subtajuk)
