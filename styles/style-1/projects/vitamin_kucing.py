@@ -70,4 +70,9 @@ CTA = dict(title="ceria", title_at=23.30, title_y=230, card_at=23.46, card_y=118
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
 
 # ---------- cover photo (tools/cover.py) – `at` ikut masa video ASAL
-COVERS = []
+COVERS = [
+    dict(at=14.0, kicker="multivitamin kucing,", title="ceria",
+         stickers=["8-in-1 soft chews", "kucing sihat ✓"], pill="kelebihan 1-3 · vitamin kucing"),
+    dict(at=23.0, shift=430, kicker="kucing tak selera makan?", title="ceria",
+         stickers=["bentuk soft chew", "kucing berselera ✓"], pill="kelebihan 1-3 · harga berbaloi"),
+]
