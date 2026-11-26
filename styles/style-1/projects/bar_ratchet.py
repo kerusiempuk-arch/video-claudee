@@ -16,6 +16,8 @@ END = 37.76
 CAPTION_Y = 680       # atas, paras dada
 CARD_Y = 1420
 ZOOM = 0.04
+BRIGHTEN = None       # footage luar dah terang (YAVG 105–106, sempadan)
+# Plate kenderaan dikaburkan dalam footage dulu: work/v1/plate/{track,blur}.py → raw_noplate.mp4 (guna sebagai RAW)
 
 W_ = lambda *ws: [(w, t, h) for w, t, h in ws]
 CAPTIONS = [  # (group_end, [(perkataan, mula, highlight)])
