@@ -49,7 +49,7 @@ CAPTIONS = [  # (group_end, [(perkataan, mula, highlight)])
     (34.80, W_(("Kita", 32.96, False), ("boleh", 33.92, False), ("kemas", 34.50, True))),
     (35.82, W_(("barang", 34.82, False), ("tak", 35.16, False), ("berkarat", 35.34, False))),
     (36.86, W_(("Berminat?", 35.84, False), ("dapatkan", 36.36, False))),
-    (37.80, W_(("di", 36.74, False), ("beg", 36.88, True), ("ni", 37.18, False))),
+    (37.80, W_(("di", 36.74, False), ("beg", 36.88, True), ("kuning", 37.18, True))),
 ]
 HOOK = dict(end=7.6, y=100, kicker="barang dalam baket", title="terkawal",
             options=[("Kawal barang", "01"), ("Tak menggelongsor", "02")], select_at=[3.60, 5.52])
