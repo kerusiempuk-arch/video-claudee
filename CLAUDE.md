@@ -15,7 +15,8 @@ General style notes from the first reference video: `STYLE_GUIDE.md`.
 ## Owner's editing rules (all styles)
 - Remove every filler ("aaa", "emm", "okay"), repeated phrases and stutters; shorten pauses > 0.3 s.
 - **Keep only the main voice**: remove background noise / unwanted sounds (RNNoise denoise, −14 LUFS).
-- **Brighten dark footage** (mean luma < 105 → `hyperframes media-treatment` exposure/shadows).
+- **Brighten dark footage** (mean luma < 100 → `hyperframes media-treatment` exposure/shadows).
+- **Cover vehicle number plates** (Style 1: `styles/style-1/tools/blur_plate.py` before build).
 - Add fitting sound effects.
 - Send draft frames → draft preview video → final render after approval.
 - **Every time the final video is sent, send a cover photo with it** (frame showing the product + product name), **text in that style's own font and look** (`tools/cover/make_cover.py --style N`) — see each style's skill.
