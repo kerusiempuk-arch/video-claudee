@@ -27,3 +27,5 @@ HEADS = [
 ]
 IMAGES = []   # tiada gambar produk diberi
 CTA = dict(start=17.96, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/v1/raw.mp4 21.1 work/v1/cover.png --style 3 --title "Set 5 Sudip." \
+#   --kicker "5 jenis · Satu harga" --pills "Tak berkarat,Pemegang selesa,Tak tercabut" --pos bottom
