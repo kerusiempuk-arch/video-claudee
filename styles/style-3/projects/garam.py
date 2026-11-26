@@ -45,5 +45,10 @@ HEADS = [
     dict(start=33.56, end=37.18, kicker="Membantu", title="Aliran darah.",
          pills=[(34.55, "Lancarkan peredaran")]),
 ]
-IMAGES = []
+IMAGES = [  # screenshot listing owner (crop-listing.py)
+    dict(src="work/new3/img/p1.jpg", start=0.2, end=2.0),     # Pemanas bahu & leher
+    dict(src="work/new3/img/p3.jpg", start=8.5, end=11.9),    # alat kawalan
+    dict(src="work/new3/img/p2.jpg", start=17.0, end=20.7),   # cara pakai (bahu & belakang)
+    dict(src="work/new3/img/p4.jpg", start=22.4, end=25.8),   # garam / tradisional
+]
 CTA = dict(start=37.18, text="Beli di beg kuning")
