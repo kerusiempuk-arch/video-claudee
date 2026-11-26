@@ -28,6 +28,9 @@ SECTIONS = [  # (mula, tamat, "kelebihan" atau "tip", "1 / 3", subtajuk)
 STICKERS = [  # (mula, tamat, teks, x, y, sudut) — x 50/80/110, y 250/320/390 bertindan
 ]
 CIRCLES = []  # (mula, tamat, cx, cy, r, label, label_x, label_y)
+COVERS = [  # cover photo (tools/cover.py) – at = masa video ASAL; 2 pilihan (produk+muka, hasil)
+    # dict(at=4.2, kicker="<produk>,", title="<katakunci>", stickers=["<kelebihan 1>", "<kelebihan 2> ✓"], pill="tip 1-3 · <subtajuk>"),
+]
 BIG_WORDS = []  # (mula, tamat, perkataan, titik_merah) – perkataan besar sekejap di tengah video, cth. (11.1, 12.4, "berbuih", True)
 CTA = dict(title="<katakunci>", title_at=0.0, title_y=230, card_at=0.0, card_y=1180,
            card_label="<Produk>", name="<Produk>", tags="a · b · c",  # maks 3 tag pendek (1–2 perkataan)

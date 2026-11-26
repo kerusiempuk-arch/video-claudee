@@ -51,6 +51,15 @@ Contoh siap: `styles/style-1/projects/boxer.py` (boxer lelaki — versi yang dil
 whoosh = tajuk & setiap seksyen (atau `SFX_WHOOSH = "drop"` → titisan air, sesuai produk air/dapur) · click = pilihan kad bertukar · pop = sticker/bulatan · ding = kad CTA.
 Bunyi sintetik (`sfx.py`, fail `.wav` dalam `sfx/`), bebas hak cipta, volume di bawah suara.
 
+## Cover photo (wajib selepas render akhir)
+`tools/cover.py` jana cover TikTok 1080×1920 PNG daripada `COVERS` dalam config projek (contoh: `projects/sabun.py`):
+- Atas putih (gradient Style 1): kicker kecil + **tajuk besar + titik merah** (cth. "senang.").
+- Gambar dari video **diturunkan** (`shift` 330px) supaya tajuk tak tutup muka; pilih frame muka + produk jelas (`at` = masa video ASAL).
+- 2 sticker putih condong di kiri (y ≈ 1060) — ayat dari apa yang **disebut** dalam video, jangan reka dakwaan.
+- Pil monospace gelap di bawah (cth. "tip 1-3 · cara cuci senang", nombor biru).
+- Frame suram dicerahkan sendiri. Buat **2 pilihan** (cth. A = produk + muka, B = hasil) dan biar owner pilih.
+
 ## Aliran kerja
 1. Preview (render **draft**, tanpa watermark) → hantar ke user, senaraikan apa yang dipotong & teks yang perlu disemak.
 2. Tunggu user cakap **"okay render"** → render final 1080×1920 (`hyperframes render -q high`).
+3. Cover photo: `python3 -I styles/style-1/tools/cover.py <raw.mp4> projects/<nama>.py <out_dir>` → hantar cover.png + cover2.png.

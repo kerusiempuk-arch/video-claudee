@@ -42,6 +42,7 @@ ffmpeg -v error -i $W/raw.mp4 -vf "fps=1,scale=240:-1,tile=8x4" $W/sheet.jpg   #
 6. Stills: `$HF snapshot --at <t1>,<t2>,…` (hook, each option switch, each section, stickers, CTA) → check overlaps with face/product; the caption accent turns yellow automatically on a blue shirt/background (build prints `piksel biru … → KUNING`); if it still vanishes, force `CAPTION_ACCENT = (…)` in the project config.
 7. Preview: `$HF render -q draft -o ../preview.mp4` (run detached: `setsid nohup … &`, wait with a background until-loop) → SendUserFile + table of texts/times + what was cut + brightness/noise notes + open questions.
 8. After "okay render": `$HF render -q high -o ../final.mp4` → SendUserFile.
+8b. Cover photo: fill `COVERS` (2 options: product + face, and the result; `at` = source time; sticker text only from what was said) → `python3 -I styles/style-1/tools/cover.py $W/raw.mp4 <project> $W/cover` → look at both PNGs, then SendUserFile cover.png + cover2.png.
 9. Commit the project config (videos and `work/` are git-ignored) and push.
 
 ## Environment notes

@@ -86,3 +86,11 @@ BIG_WORDS = [  # (mula, tamat, perkataan, titik_merah)
 CTA = dict(title="senang", title_at=22.80, title_y=230, card_at=23.00, card_y=1180,
            card_label="Sabun Pencuci", name="Sabun Pencuci Pinggan", tags="senang · berbuih · bersih",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
+
+# ---------- cover photo (tools/cover.py) – `at` ikut masa video ASAL
+COVERS = [
+    dict(at=4.2, kicker="sabun pencuci pinggan,", title="senang",
+         stickers=["cepat berbuih", "minyak hilang terus ✓"], pill="tip 1-3 · cara cuci senang"),
+    dict(at=34.6, kicker="kotoran minyak pinggan,", title="hilang",
+         stickers=["cepat berbuih", "bilas, terus bersih ✓"], pill="tip 1-3 · sabun pencuci pinggan"),
+]
