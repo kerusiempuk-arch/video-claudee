@@ -12,7 +12,7 @@ Apa yang build.py buat (automatik):
      <video> sendiri; segmen selang-seli punch-in PUNCH (fokus PUNCH_Y). Masa overlay = masa SELEPAS potong.
   2. Bunyi: hanya suara utama – highpass + RNNoise (arnndn) + lowpass, kemudian loudnorm −14 LUFS.
      Video dibisukan; suara bersih main sebagai <audio> yang dipotong sama.
-  3. Kecerahan: ukur purata luma (YAVG). Kalau < DARK_Y (105) → exposure/shadows dinaikkan melalui
+  3. Kecerahan: ukur purata luma (YAVG). Kalau < DARK_Y (100) → exposure/shadows dinaikkan melalui
      `hyperframes media-treatment` (atau ikut BRIGHTEN dalam config).
   4. Overlay Style 1: gradient putih atas, zoom perlahan, hook (kicker + tajuk besar + titik merah + kad
      macOS dengan 2–3 pilihan 01/02/03), progress bar + label "kelebihan n / N" (atau "tip n / N"), sticker putih condong,
@@ -42,7 +42,7 @@ CAPTION_Y = C.get("CAPTION_Y", 680)   # atas, paras dada (pilihan user)
 CARD_Y = C.get("CARD_Y", 1420)   # kad hook rendah sikit supaya produk yang dipegang tak tertutup
 ZOOM = C.get("ZOOM", 0.05)
 DENOISE = C.get("DENOISE", True)
-DARK_Y = C.get("DARK_Y", 105)
+DARK_Y = C.get("DARK_Y", 100)   # 105 terlalu sensitif: footage luar yang terang (YAVG 105–106) tercerah
 BRIGHTEN = C.get("BRIGHTEN", "auto")      # "auto" | None | {"exposure":..,"shadows":..,"blacks":..}
 
 def rgb(c, a=None):

@@ -36,9 +36,16 @@ Contoh siap: `styles/style-1/projects/boxer.py` (boxer lelaki — versi yang dil
 - Kalau masih ada bunyi lain yang kuat (muzik, orang lain bercakap), potong bahagian itu atau tanya user.
 
 ## Kecerahan (wajib)
-- Video **gelap mesti dicerahkan**. `build.py` ukur purata luma (YAVG 0–255); bawah **105** → exposure/shadows dinaikkan
+- Video **gelap mesti dicerahkan**. `build.py` ukur purata luma (YAVG 0–255); bawah **100** (`DARK_Y`) → exposure/shadows dinaikkan
   melalui `hyperframes media-treatment` (exposure = (118 − YAVG)/85, had 0.15–0.8).
 - Semak gambar frame: masih gelap atau terlalu putih → tetapkan `BRIGHTEN = {"exposure": …, "shadows": …, "blacks": …}` dalam config; `BRIGHTEN = None` untuk matikan.
+
+## Plate nombor kenderaan (wajib tutup)
+- Kalau plate kereta/lori/pikap nampak dalam footage, **kaburkan dulu** sebelum `build.py`:
+  `.venv-style1/bin/python -I styles/style-1/tools/blur_plate.py <raw.mp4> <raw_noplate.mp4> --ref <saat plate jelas> --box x,y,w,h`
+  (kotak huruf plate, piksel 1080×1920). Plate diikut dengan padanan templat + gerakan kamera; plate separuh di tepi frame
+  → tambah `--anchor saat:x,y,w,h`. Lihat `--check check.jpg` dan semak setiap 0.2 s bila plate masuk/keluar frame.
+- Guna `raw_noplate.mp4` sebagai RAW untuk `build.py` dan `cover.py`. Rujukan: `projects/bar_ratchet.py`.
 
 ## Visual lain
 - **Perkataan besar sekejap** di tengah video (`BIG_WORDS = [(mula, tamat, "berbuih", True)]`, `True` = titik merah): hitam bold 170px di atas (y ≈ 340), bunyi whoosh/drop automatik. Letak bila tiada sticker supaya tak bertindih (rujukan: video rak besi "store", "4 layer", "ngam.").
