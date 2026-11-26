@@ -16,7 +16,8 @@ Rujukan: video boxer (Drive `1hHKM5lkYPdj2YYQVw6qiHSPtgzrcHYP5`), dibina semula 
 | Nombor besar | Ganti tajuk dengan nilai besar (210 px) yang bertukar ikut suara: "3XL → 5XL", "2× → 3×" + ayat kecil + (pilihan) garis hijau |
 | Kad gambar produk (`IMAGES`) | Gambar listing produk bucu bulat di tengah (lebar 1000 px), footage di belakang blur + digelapkan |
 | CTA | Pil kuning **"Beli di beg kuning"** di atas + anak panah ⌄⌄ kuning melantun, hingga tamat |
-| Kedudukan bawah | `POSITION = "bottom"` bila kepala **atau produk** di bahagian atas frame (contoh kipas atas dashboard, `projects/kipas.py`): tajuk (y 1240), butang kuning (y 1300) dan gradien gelap dialih ke **bawah** (paras riba). Contoh `projects/extension.py` |
+| Kedudukan bawah | `POSITION = "bottom"` bila kepala **atau produk** di bahagian atas frame (contoh kipas atas dashboard, `projects/kipas.py`): tajuk (y 1240), butang kuning (y 1300) dan gradien gelap dialih ke **bawah** (paras riba). Contoh `projects/extension.py`. Kepala di atas + produk di bawah (kuali dipegang paras pinggang) → tetap `bottom` (`projects/kuali.py`) |
+| Cover | Kepala di atas + produk di bawah → teks cover di **tengah** (`--pos bottom --y 760`, atas dada), muka & produk tak tertutup (contoh kuali) |
 | Subtitle | **Tiada subtitle bawah** (arahan owner) |
 | Warna | Putih, kuning `#FFD21F`, hijau `#22C55E`, gelap `#12141A` |
 
