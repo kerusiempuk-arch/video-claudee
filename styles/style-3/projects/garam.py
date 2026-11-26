@@ -32,7 +32,7 @@ HEADS = [
     dict(start=2.0, end=7.1, kicker="Dalam dia", title="Isi garam.",
          pills=[(2.98, "Zip · dah packing"), (4.35, "Kemas · cantik"), (5.9, "Tutup je zip")]),
     dict(start=7.1, end=14.49, kicker="Siap ada plug", title="Boleh kontrol.",
-         pills=[(11.19, "Suhu"), (12.65, "Berapa lama nak pakai")]),
+         pills=[(7.6, "Pemanas pintar"), (11.19, "Suhu"), (12.65, "Berapa lama nak pakai")]),
     dict(start=14.49, end=21.0, kicker="Cara pakai", title="Letak je.",
          pills=[(16.9, "Kat bahu · sambil baring"), (19.07, "Kat belakang")]),
     dict(start=21.0, end=22.24, kicker="Rasa dia", title="Sangat selesa."),
