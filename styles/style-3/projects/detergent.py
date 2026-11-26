@@ -31,5 +31,10 @@ HEADS = [
     dict(start=16.97, end=19.35, kicker="Caranya", title="Campur je.",
          pills=[(17.07, "Campur semua bahan"), (17.87, "Dalam baldi saja")]),
 ]
-IMAGES = []   # tiada gambar produk diberi
+IMAGES = [  # screenshot listing dari owner (crop: scripts/crop-listing.py)
+    dict(src="work/new/img/p2.jpg", start=2.60, end=5.40),    # 1 set 15–16 liter, sabun siap dibancuh
+    dict(src="work/new/img/p1.jpg", start=5.70, end=9.20),    # kuasa cucian lebih kuat
+    dict(src="work/new/img/p3.jpg", start=14.70, end=16.90),  # buih melimpah
+    dict(src="work/new/img/p4.jpg", start=17.10, end=19.30),  # bancuh sendiri di rumah (langkah)
+]
 CTA = dict(start=19.35, text="Beli di beg kuning")
