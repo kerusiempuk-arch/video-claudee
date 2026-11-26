@@ -52,3 +52,5 @@ IMAGES = [  # screenshot listing owner (crop-listing.py)
     dict(src="work/new3/img/p4.jpg", start=22.4, end=25.8),   # garam / tradisional
 ]
 CTA = dict(start=37.04, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/new3/raw.mp4 63.0 work/new3/cover.png --style 3 --title "Beg Terapi Garam." \
+#   --kicker "Pemasa pintar · Kontrol suhu" --pills "Tak payah panaskan garam,Sangat selesa,Bahu & belakang" --pos bottom --y 760
