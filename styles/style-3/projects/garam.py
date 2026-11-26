@@ -18,7 +18,7 @@ REMOVE = [
     (39.70, 40.41),  # "okey"
     (44.40, 50.00),  # take pertama "dengan adanya ni ... tak panas" (ulang di 50.0)
     (53.75, 54.05),  # "okey"
-    (59.50, 59.71),  # "okey"
+    (59.10, 59.45),  # "okey" (sebelum "membantu")
 ]
 SRC_END = 65.8
 TAIL = 1.9
@@ -26,7 +26,7 @@ TAIL = 1.9
 # Kepala di bahagian atas frame → tajuk, CTA & gradien di BAWAH.
 POSITION = "bottom"
 
-END = 39.46
+END = 39.32
 HEADS = [
     dict(start=0.0, end=2.0, kicker="Ini dia", title="Beg terapi garam."),
     dict(start=2.0, end=7.1, kicker="Dalam dia", title="Isi garam.",
@@ -40,10 +40,10 @@ HEADS = [
          pills=[(23.57, "Terapi garam")]),
     dict(start=25.9, end=29.6, kicker="Dengan beg ni", title="Tak payah lagi.",
          pills=[(28.29, "Panaskan garam")]),
-    dict(start=29.6, end=33.56, kicker="Cuma", title="Sambung plug.",
+    dict(start=29.6, end=33.51, kicker="Cuma", title="Sambung plug.",
          pills=[(32.25, "Boleh kontrol")]),
-    dict(start=33.56, end=37.18, kicker="Membantu", title="Aliran darah.",
-         pills=[(34.55, "Lancarkan peredaran")]),
+    dict(start=33.51, end=37.04, kicker="Membantu", title="Aliran darah.",
+         pills=[(34.41, "Lancarkan peredaran")]),
 ]
 IMAGES = [  # screenshot listing owner (crop-listing.py)
     dict(src="work/new3/img/p1.jpg", start=0.2, end=2.0),     # Pemanas bahu & leher
@@ -51,4 +51,4 @@ IMAGES = [  # screenshot listing owner (crop-listing.py)
     dict(src="work/new3/img/p2.jpg", start=17.0, end=20.7),   # cara pakai (bahu & belakang)
     dict(src="work/new3/img/p4.jpg", start=22.4, end=25.8),   # garam / tradisional
 ]
-CTA = dict(start=37.18, text="Beli di beg kuning")
+CTA = dict(start=37.04, text="Beli di beg kuning")
