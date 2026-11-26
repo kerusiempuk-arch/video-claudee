@@ -7,7 +7,9 @@ vid="$1"; out="$2"; mkdir -p "$out"
 B=/root/.cache/hyperframes/whisper/whisper.cpp/build/bin
 M=/root/.cache/hyperframes/whisper/models/ggml-small.bin
 ffmpeg -v error -y -i "$vid" -ar 16000 -ac 1 "$out/a16k.wav"
-LD_LIBRARY_PATH=$B $B/whisper-cli -m "$M" -f "$out/a16k.wav" -l ms -ml 1 -sow \
+# salinan dikuatkan untuk whisper (suara perlahan); energy.py tetap guna a16k.wav
+ffmpeg -v error -y -i "$out/a16k.wav" -af "highpass=f=100,loudnorm" -ar 16000 -ac 1 "$out/a16k_loud.wav"
+LD_LIBRARY_PATH=$B $B/whisper-cli -m "$M" -f "$out/a16k_loud.wav" -l ms -ml 1 -sow \
   --prompt "Aaa, okay, emm, aaa. Okay, jadi aaa, okay." -oj -of "$out/fill" >/dev/null 2>&1
 python3 -I - "$out/fill.json" <<'PY'
 import json,sys,re

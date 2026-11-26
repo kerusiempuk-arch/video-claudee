@@ -17,7 +17,9 @@ Rujukan: video boxer (Drive `1hHKM5lkYPdj2YYQVw6qiHSPtgzrcHYP5`), dibina semula 
 | Kad gambar produk (`IMAGES`) | Gambar listing produk bucu bulat di tengah (lebar 1000 px), footage di belakang blur + digelapkan |
 | CTA | Pil kuning **"Beli di beg kuning"** di atas + anak panah ⌄⌄ kuning melantun, hingga tamat |
 | Kedudukan bawah | `POSITION = "bottom"` bila kepala **atau produk** di bahagian atas frame (contoh kipas atas dashboard, `projects/kipas.py`): tajuk (y 1240), butang kuning (y 1300) dan gradien gelap dialih ke **bawah** (paras riba). Contoh `projects/extension.py`. Kepala di atas + produk di bawah (kuali dipegang paras pinggang) → tetap `bottom` (`projects/kuali.py`) |
-| Cover | Kepala di atas + produk di bawah → teks cover di **tengah** (`--pos bottom --y 760`, atas dada), muka & produk tak tertutup (contoh kuali) |
+| Cover | Kepala di atas → teks cover di **tengah** (`--pos bottom --y 760`, atas dada) — walaupun produk dipegang paras dada (contoh kuali, sudip) |
+| Awal video | Buang bual dengan jurukamera sebelum pitch ("dari mana?", "okay", "boleh") — video terus mula dengan ayat pertama tentang produk (contoh sudip) |
+| Transkrip | `find-fillers.sh` transkrip salinan audio yang dikuatkan (`a16k_loud.wav`, highpass + loudnorm) supaya suara perlahan pun dapat ditangkap |
 | Subtitle | **Tiada subtitle bawah** (arahan owner) |
 | Warna | Putih, kuning `#FFD21F`, hijau `#22C55E`, gelap `#12141A` |
 
