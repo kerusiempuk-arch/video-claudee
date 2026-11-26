@@ -70,7 +70,12 @@ STICKERS = [  # (mula, tamat, teks, x, y, sudut)
 ]
 CIRCLES = []
 BIG_WORDS = [(27.5, 28.8, "terhalang", True)]
-COVERS = []
+COVERS = [  # at = masa video ASAL (raw_noplate.mp4)
+    dict(at=1.4, kicker="bar ratchet trak,", title="terkawal",
+         stickers=["universal", "boleh laras ✓"], pill="kelebihan 1-3 · barang tak menggelongsor"),
+    dict(at=26.9, kicker="barang dalam baket,", title="terhalang",
+         stickers=["ketat sendiri", "tak menggelongsor ✓"], pill="kelebihan 1-3 · senang pasang"),
+]
 CTA = dict(title="terkawal", title_at=35.84, title_y=230, card_at=36.2, card_y=1180,
            card_label="Bar Ratchet Trak", name="Bar Ratchet Trak", tags="universal · boleh laras · ketat sendiri",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
