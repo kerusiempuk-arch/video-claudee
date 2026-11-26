@@ -1,4 +1,4 @@
-# Tagooli 8-in-1 Advanced Multivitamin Soft Chews – vitamin kucing (Drive 11YujZMT0ddOBeJxHrGlUf5NjaRrclbjB)
+# 8-in-1 Advanced Multivitamin Soft Chews – vitamin kucing (Drive 11YujZMT0ddOBeJxHrGlUf5NjaRrclbjB)
 REMOVE = [
     (0.00, 0.95),    # senyap awal
     (7.70, 8.74),    # "Kucing dah," (mula tak habis)
@@ -66,7 +66,7 @@ STICKERS = [
 CIRCLES = []
 BIG_WORDS = []  # "berbaloi." besar tutup muka (y tetap 230–450) -> guna sticker
 CTA = dict(title="ceria", title_at=23.30, title_y=230, card_at=23.46, card_y=1180,
-           card_label="Tagooli", name="Tagooli 8-in-1 Multivitamin", tags="8-in-1 · soft chews · kucing sihat",
+           card_label="Vitamin Kucing", name="8-in-1 Multivitamin Soft Chews", tags="8-in-1 · soft chews · kucing sihat",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
 
 # ---------- cover photo (tools/cover.py) – `at` ikut masa video ASAL
