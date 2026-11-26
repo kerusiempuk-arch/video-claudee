@@ -14,10 +14,11 @@ Rujukan: video boxer (Drive `1hHKM5lkYPdj2YYQVw6qiHSPtgzrcHYP5`), dibina semula 
 | Tajuk (`HEADS`) | Tengah atas, atas kepala: **label kecil** huruf besar berjarak (`S E T I A P  H A R I`, 28 px) + **tajuk besar bertitik** (800, 96 px, "Lain warna."). Tukar setiap ayat/idea. Masuk blur→tajam, keluar tajam→blur |
 | Pil | Pil putih teks hitam di bawah tajuk, muncul satu-satu bila disebut ("Ahad · Hijau", "Tak tulis brand") |
 | Nombor besar | Ganti tajuk dengan nilai besar (210 px) yang bertukar ikut suara: "3XL → 5XL", "2× → 3×" + ayat kecil + (pilihan) garis hijau |
-| Kad gambar produk (`IMAGES`) | Gambar listing produk bucu bulat di tengah (lebar 1000 px), footage di belakang blur + digelapkan |
+| Kad gambar produk (`IMAGES`) | Gambar listing produk bucu bulat di tengah (lebar 1000 px), footage di belakang blur + digelapkan. Screenshot telefon dipotong dulu dengan `scripts/crop-listing.py` (buang bar hitam / status bar / butang). Bila `POSITION = "bottom"` kad naik ke y 190 supaya tak tindih tajuk (contoh `projects/seluar.py`) |
 | CTA | Pil kuning **"Beli di beg kuning"** di atas + anak panah ⌄⌄ kuning melantun, hingga tamat |
 | Kedudukan bawah | `POSITION = "bottom"` bila kepala **atau produk** di bahagian atas frame (contoh kipas atas dashboard, `projects/kipas.py`): tajuk (y 1240), butang kuning (y 1300) dan gradien gelap dialih ke **bawah** (paras riba). Contoh `projects/extension.py`. Kepala di atas + produk di bawah (kuali dipegang paras pinggang) → tetap `bottom` (`projects/kuali.py`) |
 | Cover | Kepala di atas → teks cover di **tengah** (`--pos bottom --y 760`, atas dada) — walaupun produk dipegang paras dada (contoh kuali, sudip) |
+| Hujung video | `SRC_END` dipotong sebelum orang mula berjalan keluar frame (semak frame 0.2 s sekali di hujung) — CTA tetap ≥ 2 s (contoh seluar) |
 | Awal video | Buang bual dengan jurukamera sebelum pitch ("dari mana?", "okay", "boleh") — video terus mula dengan ayat pertama tentang produk (contoh sudip) |
 | Transkrip | `find-fillers.sh` transkrip salinan audio yang dikuatkan (`a16k_loud.wav`, highpass + loudnorm) supaya suara perlahan pun dapat ditangkap |
 | Subtitle | **Tiada subtitle bawah** (arahan owner) |
@@ -40,4 +41,5 @@ Gambar frame draf → preview video draf → render akhir selepas diluluskan.
 - `build.py` — enjin Style 3.
 - `projects/` — config setiap video (`boxer.py` contoh, `_template.py` templat).
 - `fonts/` — Plus Jakarta Sans (OFL). `sfx/` — sound effect.
+- `scripts/crop-listing.py` — potong screenshot listing jadi gambar segi empat (beri semua screenshot sekali gus).
 - `scripts/download-drive.sh`, `scripts/find-fillers.sh`, `scripts/energy.py` — muat turun, cari "aaa/okay", jeda dan titik potong.
