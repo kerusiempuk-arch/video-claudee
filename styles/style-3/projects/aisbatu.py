@@ -32,3 +32,5 @@ HEADS = [
 ]
 IMAGES = []   # tiada gambar produk diberi
 CTA = dict(start=29.48, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/v1/raw.mp4 52.5 work/v1/cover.png --style 3 --title "Bekas Air Batu." \
+#   --kicker "Buat sendiri · Sangat murah" --pills "Design cantik,Penuh setiap ruang,Masuk peti sejuk" --pos bottom --y 760   # teks di tengah (owner)
