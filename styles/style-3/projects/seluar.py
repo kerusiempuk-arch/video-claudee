@@ -15,7 +15,7 @@ TAIL = 1.9
 
 # Kepala di bahagian atas frame (y ~15–30 %) → tajuk, CTA & gradien di BAWAH.
 POSITION = "bottom"
-IMG_TOP = 190        # kad gambar 1000×1000 di atas tajuk bawah (y 1240)
+IMG_TOP = 190        # (kini default untuk POSITION="bottom")
 
 END = 31.39
 HEADS = [
@@ -28,7 +28,7 @@ HEADS = [
     dict(start=20.96, end=27.99, kicker="Sesuai untuk", title="Kerja lasak.",
          pills=[(23.52, "Kerja kebun"), (24.60, "Camping"), (25.90, "Memancing")]),
 ]
-IMAGES = [  # screenshot listing dari owner (dipotong jadi segi empat)
+IMAGES = [  # screenshot listing dari owner (crop: scripts/crop-listing.py)
     dict(src="work/v12tl/img/p1.jpg", start=3.10, end=5.95),    # warna lain-lain + size 28–62
     dict(src="work/v12tl/img/p2.jpg", start=7.80, end=11.30),   # detail poket
     dict(src="work/v12tl/img/p3.jpg", start=18.60, end=20.90),  # material tebal

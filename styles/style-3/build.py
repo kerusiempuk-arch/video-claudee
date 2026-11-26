@@ -37,7 +37,7 @@ TAIL = C.get("TAIL", 0.0)
 POSITION = C.get("POSITION", "top")   # "top" (biasa) / "bottom" (bila kepala di atas frame → tajuk, CTA, gradien di bawah)
 HEAD_Y = C.get("HEAD_Y", 1240 if POSITION == "bottom" else 190)   # atas label kecil (px, kanvas 1080×1920)
 CTA_Y = 1300 if POSITION == "bottom" else 200                       # default CTA["y"]
-IMG_TOP = C.get("IMG_TOP", 470)      # atas kad gambar produk
+IMG_TOP = C.get("IMG_TOP", 190 if POSITION == "bottom" else 470)   # atas kad gambar produk (bottom: atas tajuk y 1240)
 IMG_W = C.get("IMG_W", 1000)         # lebar kad gambar produk
 DENOISE = C.get("DENOISE", True)
 DARK_Y = C.get("DARK_Y", 105)
