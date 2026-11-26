@@ -27,7 +27,7 @@ HEADS = [
          pills=[(16.0, "Nak minum air batu"), (17.5, "Nak air sejuk")]),
     dict(start=20.28, end=25.68, kicker="Minum sikit-sikit", title="Memang boleh.",
          pills=[(24.0, "Design menarik")]),
-    dict(start=25.68, end=28.08, kicker="Ketulan ais", title="Lebih menarik."),
+    dict(start=25.68, end=28.08, kicker="Ketulan air batu", title="Lebih menarik."),
     dict(start=28.08, end=29.48, kicker="Harga", title="Sangat murah."),
 ]
 IMAGES = []   # tiada gambar produk diberi
