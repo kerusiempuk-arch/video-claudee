@@ -1,6 +1,6 @@
 # video-claudee
 
-Video editing for TikTok — both styles render with HyperFrames (HTML → MP4). The owner writes in Malay — reply in Malay.
+Video editing for TikTok — all styles render with HyperFrames (HTML → MP4). The owner writes in Malay — reply in Malay.
 
 ## Saved styles
 
@@ -8,6 +8,7 @@ Video editing for TikTok — both styles render with HyperFrames (HTML → MP4).
 |---|---|
 | "edit style 1" + Google Drive link | Follow `.claude/skills/edit-style-1/SKILL.md` (product explainer, HyperFrames via `styles/style-1/build.py`: big title with red dot, dark macOS-style option card, monospace "kelebihan 1 / 3" + blue progress bar, tilted white stickers, top (chest-level) captions, dark CTA card with yellow "Tekan beg kuning" button, punch-in cuts, SFX). Reference: `styles/style-1/` (approved example `projects/boxer.py`). |
 | "edit style 2" + Google Drive link | Follow `.claude/skills/edit-style-2/SKILL.md` (talking-head / product review, HyperFrames via `styles/style-2/build.py`: chest karaoke captions, blue rail, bottom feature cards, yellow "beg kuning" CTA, punch-in cuts, SFX). Reference: `styles/style-2/` (approved example `projects/boxer.py`). |
+| "edit style 3" + Google Drive link | Follow `.claude/skills/edit-style-3/SKILL.md` (top headlines, HyperFrames via `styles/style-3/build.py`: small spaced label + big bold title with period above the head, white pills, big animated numbers (3XL→5XL, 2×→3×), product-photo cards over blurred footage, yellow "Beli di beg kuning" pill + bouncing arrows, **no bottom subtitles**, punch-in cuts, SFX). Reference: `styles/style-3/` (example `projects/boxer.py`). |
 
 General style notes from the first reference video: `STYLE_GUIDE.md`.
 
@@ -17,6 +18,7 @@ General style notes from the first reference video: `STYLE_GUIDE.md`.
 - **Brighten dark footage** (mean luma < 105 → `hyperframes media-treatment` exposure/shadows).
 - Add fitting sound effects.
 - Send draft frames → draft preview video → final render after approval.
+- **Every time the final video is sent, send a cover photo with it** (frame showing the product + product name), **text in that style's own font and look** (`tools/cover/make_cover.py --style N`) — see each style's skill.
 - Commit and push work as you go.
 
 ## Saved styles are protected (owner's rule)
