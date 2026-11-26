@@ -22,7 +22,7 @@ POSITION = "bottom"
 
 END = 23.95
 HEADS = [
-    dict(start=0.0, end=2.37, kicker="Baru sampai", title="DIY Kit.", pills=[(1.71, "Laundry detergent")]),
+    dict(start=0.0, end=2.37, kicker="Laundry Detergent", title="DIY Kit."),
     dict(start=2.37, end=5.47, kicker="Cuba sendiri", title="Buat sabun.", pills=[(3.63, "Sabun sendiri")]),
     dict(start=5.47, end=9.27, kicker="Dalam pek", title="Semua ada.", pills=[(7.41, "Semua bahan disediakan")]),
     dict(start=9.27, end=14.57, kicker="Belakang pek · step", big=[(11.57, "1"), (13.93, "6")],
