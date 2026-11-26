@@ -14,6 +14,8 @@ END = 28.65
 CAPTION_Y = 680
 CARD_Y = 1420
 ZOOM = 0.04
+# SFX bunyi kucing (owner minta): selepas build.py, jalankan
+#   python3 -I styles/style-1/projects/vitamin_kucing_sfx.py work/v1/hf
 
 C_ = lambda end, *ws: (end, [(w, t, h) for w, t, h in ws])
 CAPTIONS = [  # 0–3.8s tiada kapsyen: close-up produk (kapsyen tutup label), pilihan kad hook dah sebut
