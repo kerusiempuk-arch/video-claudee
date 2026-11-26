@@ -35,3 +35,5 @@ IMAGES = [  # screenshot listing dari owner (dipotong jadi segi empat)
     dict(src="work/v12tl/img/p4.jpg", start=21.00, end=23.40),  # kuat & tahan lasak
 ]
 CTA = dict(start=27.99, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/v12tl/raw.mp4 35.5 work/v12tl/cover.png --style 3 --title "Seluar Kargo." \
+#   --kicker "Banyak poket · Kain tebal" --pills "Zip heavy duty,Pelbagai warna,Sesuai kerja lasak" --pos bottom --y 760
