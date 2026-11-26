@@ -1,4 +1,4 @@
-# Beg besar corak petak (Drive 13UP8lAA3jmCilSZnodOEbj9PlJ_5Z8y0) — Style 3
+# Beg guni corak petak (Drive 13UP8lAA3jmCilSZnodOEbj9PlJ_5Z8y0) — Style 3
 # Bina: python3 -I styles/style-3/build.py work/v1/raw.mp4 styles/style-3/projects/beg.py work/v1/hf
 
 REMOVE = [
@@ -24,17 +24,19 @@ END = 33.36
 HEADS = [
     dict(start=0.0, end=4.45, kicker="Sekarang ni", title="Tiada plastik.",
          pills=[(1.32, "Pergi pasar raya"), (3.13, "Plastik tak disediakan")]),
-    dict(start=4.45, end=9.75, kicker="Beg ni", title="Senang.",
+    dict(start=4.45, end=9.75, kicker="Beg guni", title="Senang.",
          pills=[(5.40, "Letak dalam kereta"), (8.36, "Beli barang dapur")]),
     dict(start=9.75, end=13.8, kicker="Terus bawa", title="Isi barang.",
          pills=[(11.09, "Letak barang dalam beg"), (12.4, "Lagi memudahkan")]),
     dict(start=13.8, end=17.95, kicker="Kalau tak bawa", title="Terpaksa beli.",
          pills=[(16.2, "Simpan dalam kereta je")]),
-    dict(start=17.95, end=20.1, kicker="Beg ni", title="Sangat besar."),
-    dict(start=20.1, end=22.95, kicker="Siap ada", title="Zip.", pills=[(21.2, "Dalam pun luas")]),
+    dict(start=17.95, end=20.6, kicker="Beg ni", title="Sangat besar.", pills=[(19.1, "Tahan berat")]),
+    dict(start=20.6, end=22.95, kicker="Siap ada", title="Zip.", pills=[(21.2, "Dalam pun luas")]),
     dict(start=22.95, end=27.35, kicker="Kalis air", title="Waterproof.",
          pills=[(23.86, "Hujan tak basah"), (25.33, "Senang tutup")]),
     dict(start=27.35, end=31.24, kicker="Ada", title="Pelbagai corak.", pills=[(29.73, "Beg besar")]),
 ]
-IMAGES = []   # tiada gambar produk diberi
+IMAGES = [  # frame beg paling jelas dari video (src 59.5 s), owner minta
+    dict(src="work/v1/img/p1.png", start=4.45, end=7.0),
+]
 CTA = dict(start=31.24, text="Beli di beg kuning")
