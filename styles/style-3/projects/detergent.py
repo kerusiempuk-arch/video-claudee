@@ -33,3 +33,5 @@ HEADS = [
 ]
 IMAGES = []   # tiada gambar produk diberi
 CTA = dict(start=20.78, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/new/raw.mp4 34 work/new/cover.png --style 3 --title "Laundry Detergent." \
+#   --kicker "DIY Kit · Buat sabun sendiri" --pills "Semua bahan ada,Step 1–6,Sangat senang" --pos bottom --y 760
