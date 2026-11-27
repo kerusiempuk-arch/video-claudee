@@ -69,7 +69,12 @@ STICKERS = [  # (mula, tamat, teks, x, y, sudut)
     (22.58, 22.98, "harga murah ✓", 110, 390, -1.5),
 ]
 CIRCLES = []
-COVERS = []
+COVERS = [
+    dict(at=36.5, kicker="dari anak-anak ke remaja,", title="boxer",
+         stickers=["kain lembut", "sejuk, tak panas ✓"], pill="kelebihan 1-3 · boxer lelaki"),
+    dict(at=33.0, kicker="pakai boxer, rasa", title="selesa",
+         stickers=["getah lembut", "pengudaraan lebih nyaman ✓"], pill="kelebihan 1-3 · boxer lelaki"),
+]
 BIG_WORDS = [(16.86, 19.18, "nyaman", True)]
 CTA = dict(title="selesa", title_at=23.03, title_y=230, card_at=23.28, card_y=1180,
            card_label="Boxer Lelaki", name="Boxer Lelaki", tags="kain lembut · sejuk · murah",
