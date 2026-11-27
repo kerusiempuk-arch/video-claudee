@@ -1,4 +1,4 @@
-# Kasut sarung / slip-on hitam (Drive 1fkk9NGAqalfUfC9e6ljhbvyXnGCqjDNw)
+# Kasut Sneakers (sarung / slip-on) (Drive 1fkk9NGAqalfUfC9e6ljhbvyXnGCqjDNw)
 # ---------- potongan (build.py) – masa ikut video ASAL
 REMOVE = [
     (0.00, 2.25),    # "Ah, dek." (awal)
@@ -40,7 +40,7 @@ CAPTIONS = [
     C_(16.98, ("dia", 16.08, False), ("tak", 16.18, True), ("licin", 16.34, True)),
     C_(18.45, ("nak", 17.10, False), ("pakai", 17.24, False), ("sarung", 17.58, True), ("sahaja", 18.12, False)),
 ]
-HOOK = dict(end=8.05, y=100, kicker="kasut sarung,", title="simple",
+HOOK = dict(end=8.05, y=100, kicker="kasut sneakers,", title="simple",
             options=[("Jalan-jalan", "01"), ("Pergi kedai", "02"), ("Naik motor", "03")],
             select_at=[4.30, 5.40, 6.54])
 SECTIONS = [
@@ -60,7 +60,7 @@ BIG_WORDS = [  # (mula, tamat, perkataan, titik_merah)
     (17.58, 18.40, "sarung", True),
 ]
 CTA = dict(title="simple", title_at=18.45, title_y=470, card_at=18.60, card_y=1180,
-           card_label="Kasut Sarung", name="Kasut Sarung", tags="sarung · anti-slip · pelbagai saiz",
+           card_label="Kasut Sneakers", name="Kasut Sneakers", tags="sarung · anti-slip · pelbagai saiz",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
 
 # ---------- cover photo (tools/cover.py) – `at` ikut masa video ASAL
