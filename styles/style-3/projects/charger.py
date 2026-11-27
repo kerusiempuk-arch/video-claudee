@@ -9,7 +9,13 @@ REMOVE = [
     (15.76, 16.86),  # "okay. Aa,"
     (20.77, 21.64),  # "aa"
 ]
-SRC_END = 21.11
+SRC_END = 31.3
+TAIL = 1.9
+
+# Kepala di bahagian atas frame (y ~5–30 %) → tajuk, CTA & gradien di BAWAH.
+POSITION = "bottom"
+
+END = 21.11
 HEADS = [
     dict(start=0.0, end=2.85, kicker="Charger ni", title="Boleh lipat.",
          pills=[(0.15, "Buka · tutup"), (1.4, "Jimat ruang")]),
