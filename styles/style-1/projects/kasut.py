@@ -64,4 +64,9 @@ CTA = dict(title="simple", title_at=17.58, title_y=470, card_at=17.72, card_y=11
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
 
 # ---------- cover photo (tools/cover.py) – `at` ikut masa video ASAL
-COVERS = []
+COVERS = [
+    dict(at=36.0, kicker="kasut sneakers,", title="simple", shift=250,
+         stickers=["sarung saja", "tapak anti-slip ✓"], pill="kelebihan 1-3 · kasut sneakers"),
+    dict(at=30.0, kicker="tapak anti-slip,", title="tak licin",
+         stickers=["hitam & biru", "pelbagai saiz ✓"], pill="kelebihan 1-3 · kasut sneakers"),
+]
