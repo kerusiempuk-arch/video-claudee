@@ -72,9 +72,9 @@ STICKERS = [  # (mula, tamat, teks, x, y, sudut)
 ]
 CIRCLES = []
 COVERS = [  # cover photo (tools/cover.py) – at = masa video ASAL
-    dict(at=44.0, kicker="nak cat tempat tinggi,", title="senang",
+    dict(at=46.6, kicker="nak cat tempat tinggi,", title="senang",
          stickers=["sangat stabil", "heavy duty ✓"], pill="kelebihan 1-3 · scaffolding"),
-    dict(at=4.0, kicker="scaffolding untuk cat siling,", title="stabil",
+    dict(at=3.0, kicker="scaffolding untuk cat siling,", title="stabil",
          stickers=["tak berkarat", "boleh adjust tinggi ✓"], pill="kelebihan 1-3 · scaffolding"),
 ]
 BIG_WORDS = [(10.04, 11.20, "stabil", True)]
