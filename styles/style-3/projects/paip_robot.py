@@ -35,3 +35,5 @@ HEADS = [
 ]
 IMAGES = []   # tiada gambar produk diberi
 CTA = dict(start=31.94, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/vid1127/raw.mp4 16.5 work/vid1127/cover3.png --style 3 \
+#   --title "Paip Tangan Robot." --kicker "Pusing 360° · Boleh adjust" --pills "Dongak ke atas,Semua lubang,Air pergi lebih jauh" --pos bottom
