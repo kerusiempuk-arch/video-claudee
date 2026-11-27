@@ -76,8 +76,8 @@ CTA = dict(title="padu", title_at=20.62, title_y=230, card_at=21.32, card_y=1180
 
 # ---------- cover photo (tools/cover.py) – `at` ikut masa video ASAL
 COVERS = [
-    dict(at=37.0, kicker="paip sinki,", title="laras",
+    dict(at=37.4, kicker="paip sinki,", title="laras",
          stickers=["tarik pendek / panjang", "ikut saiz sinki ✓"], pill="kelebihan 1-3 · paip sinki"),
-    dict(at=11.5, kicker="paip sinki,", title="anti bau",
+    dict(at=24.0, kicker="paip sinki,", title="anti bau",
          stickers=["filter lutsinar", "serangga tak masuk ✓"], pill="kelebihan 1-3 · one way, anti odor"),
 ]
