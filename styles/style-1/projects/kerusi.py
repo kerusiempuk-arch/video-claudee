@@ -50,7 +50,8 @@ CAPTIONS = [
     C_(23.12, ("lipat", 22.46, True), ("macam", 22.82, False)),
     C_(23.70, ("tu", 23.12, False), ("saja", 23.38, False)),
     C_(24.86, ("Bawah", 23.70, False), ("ni", 24.28, False), ("bahagian", 24.52, False)),
-    C_(25.60, ("kaki", 24.86, True), ("ni", 25.26, False)),
+    C_(25.72, ("kaki", 24.86, True), ("ni", 25.26, False), ("dia", 25.54, False)),
+    C_(26.58, ("ada", 25.72, False), ("step", 25.94, True), ("dia", 26.20, False)),
     C_(27.58, ("Kita", 26.58, False), ("boleh", 26.96, False), ("nak", 27.26, False)),
     C_(28.30, ("tinggikan", 27.58, True)),
     C_(29.00, ("ataupun", 28.30, False), ("nak", 28.78, False)),
@@ -92,13 +93,13 @@ BIG_WORDS = [  # (mula, tamat, perkataan, titik_merah)
     (10.16, 11.28, "selesa", True),
 ]
 CTA = dict(title="selesa", title_at=34.08, title_y=230, card_at=38.28, card_y=1180,
-           card_label="Kerusi Lipat", name="Kerusi Lipat Serba Guna", tags="span penuh · mudah lipat · kaki laras",
+           card_label="Super Tribe", name="Kerusi Lipat Super Tribe", tags="span penuh · mudah lipat · kaki boleh laras",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
 
 # ---------- cover photo (tools/cover.py) – `at` ikut masa video ASAL
 COVERS = [
     dict(at=3.0, kicker="kerusi lipat paling,", title="selesa",
-         stickers=["span penuh", "senang lipat ✓"], pill="kelebihan 1-3 · kerusi lipat serba guna"),
+         stickers=["span penuh", "senang lipat ✓"], pill="kelebihan 1-3 · kerusi lipat super tribe"),
     dict(at=46.0, kicker="kerusi lipat serba guna,", title="selesa",
-         stickers=["camping & pantai", "senang bawa ✓"], pill="kelebihan 1-3 · kerusi lipat"),
+         stickers=["camping & pantai", "senang bawa ✓"], pill="kelebihan 1-3 · super tribe"),
 ]
