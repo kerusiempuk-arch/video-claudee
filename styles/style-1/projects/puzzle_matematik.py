@@ -9,9 +9,9 @@ REMOVE = [
     (22.98, 25.25),  # "ada, aa," (cubaan pertama) – kekal "Dan juga | ada lambang"
     (34.50, 37.40),  # "Okay. Beserta dengan warna." (cubaan pertama)
 ]
-SRC_END = 42.03
-TAIL = 0.83
-PUNCH_Y = 0.00
+SRC_END = 42.40
+TAIL = 1.2
+PUNCH_Y = 0.25
 
 # ---------- overlay – masa ikut video SELEPAS dipotong
 END = 31.18
