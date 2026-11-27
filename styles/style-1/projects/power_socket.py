@@ -71,4 +71,9 @@ CTA = dict(title="murah", title_at=19.66, title_y=230, card_at=19.86, card_y=118
            card_label="Extension Socket", name="Power Socket",
            tags="3 plug · 6 USB · on/off",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
-COVERS = []
+COVERS = [  # at = masa video ASAL
+    dict(at=1.5, kicker="power socket,", title="promo",
+         stickers=["3 plug, 3 pin", "6 port USB ✓"], pill="tip 1-3 · extension socket"),
+    dict(at=19.6, kicker="extension socket,", title="murah",
+         stickers=["tekan sekali = on", "hitam & putih ✓"], pill="tip 1-3 · 3 plug + 6 USB"),
+]
