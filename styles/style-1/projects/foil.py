@@ -46,4 +46,9 @@ BIG_WORDS = []
 CTA = dict(title="selamat", title_at=8.55, title_y=230, card_at=8.62, card_y=1180,
            card_label="Aluminium Foil", name="Beg Aluminium Foil", tags="bersih · selamat",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
-COVERS = []
+COVERS = [
+    dict(at=10.4, kicker="beg aluminium foil,", title="selamat",
+         stickers=["ikan, ayam asing", "lebih bersih ✓"], pill="kelebihan 1-2 · beg aluminium foil"),
+    dict(at=2.0, kicker="dalam peti sejuk,", title="asing",
+         stickers=["beg berlainan", "lebih selamat ✓"], pill="kelebihan 1-2 · beg aluminium foil"),
+]
