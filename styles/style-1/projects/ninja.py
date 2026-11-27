@@ -63,7 +63,12 @@ STICKERS = [
     (22.94, 23.5, "istana", 140, 460, -2.0),
 ]
 CIRCLES = []
-COVERS = []
+COVERS = [  # tiada muka dalam video – A = set penuh, B = binaan
+    dict(at=6.0, kicker="mainan blok paling,", title="kreatif",
+         stickers=["model superhero", "lebih fokus ✓"], pill="kelebihan 1-3 · Ninjago Block Series"),
+    dict(at=9.0, kicker="ganti telefon & TV,", title="kreatif",
+         stickers=["kapal · roket · istana", "harga berbaloi ✓"], pill="kelebihan 1-3 · Ninjago Block Series"),
+]
 BIG_WORDS = [(7.34, 8.94, "menarik", True)]
 YELLOW = (255, 200, 40, 255)
 CTA = dict(title="kreatif", title_at=23.6, title_y=230, card_at=25.12, card_y=1180,
