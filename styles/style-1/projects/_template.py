@@ -9,7 +9,7 @@ PUNCH_Y = 0.25        # punch-in fokus ke atas (muka)
 
 # ---------- overlay (build.py) – masa ikut video SELEPAS dipotong
 END = 0.0             # tempoh selepas potongan (build.py --plan)
-CAPTION_Y = 680       # atas, paras dada (pilihan user); kena muka -> 700–760
+CAPTION_Y = 680       # atas, paras dada (pilihan user); kena muka -> 700–760; muka rendah dalam frame -> 900
 CARD_Y = 1420       # kad hook rendah supaya produk tak tertutup
 ZOOM = 0.04
 # CAPTION_ACCENT = (255, 212, 59, 255)   # paksa warna; default auto: baju/latar biru → kuning
@@ -29,7 +29,7 @@ STICKERS = [  # (mula, tamat, teks, x, y, sudut) — x 50/80/110, y 250/320/390 
 ]
 CIRCLES = []  # (mula, tamat, cx, cy, r, label, label_x, label_y)
 COVERS = [  # cover photo (tools/cover.py) – at = masa video ASAL; 2 pilihan (produk+muka, hasil)
-    # dict(at=4.2, kicker="<produk>,", title="<katakunci>", stickers=["<kelebihan 1>", "<kelebihan 2> ✓"], pill="tip 1-3 · <subtajuk>"),
+    # dict(at=4.2, kicker="<produk>,", title="<katakunci>", stickers=["<kelebihan 1>", "<kelebihan 2> ✓"], pill="kelebihan 1-3 · <subtajuk>"),  # label pil ikut SECTIONS ("kelebihan" / "tip")
 ]
 BIG_WORDS = []  # (mula, tamat, perkataan, titik_merah) – perkataan besar sekejap di tengah video, cth. (11.1, 12.4, "berbuih", True)
 CTA = dict(title="<katakunci>", title_at=0.0, title_y=230, card_at=0.0, card_y=1180,

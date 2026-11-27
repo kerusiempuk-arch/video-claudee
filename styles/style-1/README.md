@@ -17,7 +17,7 @@ Contoh siap: `styles/style-1/projects/boxer.py` (boxer lelaki — versi yang dil
 - Ikut suara, **1–3 perkataan** satu masa, muncul ikut masa sebenar setiap perkataan (Whisper).
 - Putih, Inter Bold 60, bayang lembut + outline nipis gelap.
 - **Kedudukan: ATAS, paras dada, `CAPTION_Y = 680`** (pilihan user, video Tai Chi) — di bawah sticker/tajuk, tak tutup muka.
-  Semak stills: kalau masih kena dagu/mulut, turunkan sikit (700–760). Projek lama (boxer, perancah) kekal 1780.
+  Semak stills: kalau masih kena dagu/mulut, turunkan sikit (700–760); kalau muka rendah dalam frame (orang duduk, kamera tinggi), turunkan ke dada `CAPTION_Y = 900` (video kain lap dapur). Projek lama (boxer, perancah) kekal 1780.
 - Kata kunci diwarnakan: biru-ungu `(110,123,255)` secara default; **kuning `(255,212,59)` automatik** bila baju/latar biru di paras kapsyen (`build.py` kira piksel biru ≥ 15 %, cetak keputusannya). Paksa dengan `CAPTION_ACCENT = (…)` dalam config projek.
 
 ## Potongan (wajib setiap video)
@@ -63,7 +63,7 @@ Bunyi sintetik (`sfx.py`, fail `.wav` dalam `sfx/`), bebas hak cipta, volume di 
 - Atas putih (gradient Style 1): kicker kecil + **tajuk besar + titik merah** (cth. "senang.").
 - Gambar dari video **diturunkan** (`shift` 330px) supaya tajuk tak tutup muka; pilih frame muka + produk jelas (`at` = masa video ASAL).
 - 2 sticker putih condong di kiri (y ≈ 1060) — ayat dari apa yang **disebut** dalam video, jangan reka dakwaan.
-- Pil monospace gelap di bawah (cth. "tip 1-3 · cara cuci senang", nombor biru).
+- Pil monospace gelap di bawah (cth. "tip 1-3 · cara cuci senang", nombor biru) — label ikut `SECTIONS`: video "kelebihan" → "kelebihan 1-3 · …", video tip → "tip 1-3 · …".
 - Frame suram dicerahkan sendiri. Buat **2 pilihan** (cth. A = produk + muka, B = hasil) dan biar owner pilih.
 
 ## Aliran kerja
