@@ -33,3 +33,6 @@ HEADS = [
 ]
 IMAGES = []   # tiada gambar produk diberi
 CTA = dict(start=28.66, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/v1/raw.mp4 33.0 work/v1/cover.png --style 3 --title $' Perangkap Serangga. ' \
+#   --kicker "Tanpa racun · Lebih selamat" --pills "Berpelekat 2 belah,Tali disediakan,Gantung je" --pos bottom --y 760
+#   (NBSP di kiri/kanan tajuk = fon kecil sikit supaya tajuk panjang tak cecah tepi)
