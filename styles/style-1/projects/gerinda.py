@@ -64,4 +64,9 @@ BIG_WORDS = [(13.00, 14.60, "tekan", True)]
 CTA = dict(title="senang", title_at=22.50, title_y=230, card_at=22.60, card_y=1180,
            card_label="Grinder", name="Grinder", tags="tumis · hiris · senang",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
-COVERS = []
+COVERS = [
+    dict(at=28.6, kicker="nak potong bawang,", title="senang",
+         stickers=["letak, tutup, tekan", "hirisan kecil ✓"], pill="tip 1-3 · grinder bawang"),
+    dict(at=23.27, kicker="akan menjadi potongan,", title="hirisan",
+         stickers=["tekan saja", "potongan kecil ✓"], pill="tip 1-3 · grinder bawang"),
+]
