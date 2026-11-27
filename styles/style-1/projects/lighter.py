@@ -1,4 +1,4 @@
-# Lighter elektrik (Drive 1iTdm3rz80UD_pBfCmc48N6fUwwKUGBYz) — salin fail ni, isi ikut video. Contoh lengkap: styles/style-1/projects/boxer.py. Bina: python3 -I styles/style-1/build.py <raw.mp4> <fail ini> <work_dir>
+# Lighter USB (Drive 1iTdm3rz80UD_pBfCmc48N6fUwwKUGBYz) — salin fail ni, isi ikut video. Contoh lengkap: styles/style-1/projects/boxer.py. Bina: python3 -I styles/style-1/build.py <raw.mp4> <fail ini> <work_dir>
 # ---------- potongan (build.py) – masa ikut video ASAL
 REMOVE = [
     (0.00, 2.70),  # bunyi klik lighter sebelum mula cakap
@@ -73,5 +73,5 @@ COVERS = [  # at = masa video ASAL
          stickers=["tekan & tolak", "tiada masalah ✓"], pill="kelebihan 1-3 · senang guna"),
 ]
 CTA = dict(title="terbaru", title_at=26.94, title_y=230, card_at=27.1, card_y=1180,
-           card_label="Lighter Cas", name="Lighter Cas", tags="cas saja · tahan angin · senang guna",
+           card_label="Lighter USB", name="Lighter USB", tags="cas saja · tahan angin · senang guna",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
