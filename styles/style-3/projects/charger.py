@@ -27,3 +27,5 @@ HEADS = [
 ]
 IMAGES = []   # tiada gambar produk diberi
 CTA = dict(start=18.75, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/v1/raw.mp4 17.5 work/v1/cover.png --style 3 --title "Charger 120W." \
+#   --kicker "Boleh lipat · Type-C" --pills "Super fast charging,Jimat ruang,Pelbagai saiz kabel" --pos bottom --y 600   # y 600 supaya pil tak tutup charger
