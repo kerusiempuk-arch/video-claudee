@@ -1,4 +1,4 @@
-# Gerinda elektrik bawang (Drive 1LsVWTxrxpJLlrqFAvJdunaeziviWV667)
+# Grinder bawang (Drive 1LsVWTxrxpJLlrqFAvJdunaeziviWV667)
 REMOVE = [
     (7.84, 8.70),    # "Okay."
     (14.45, 15.25),  # "Okay."
@@ -35,16 +35,16 @@ CAPTIONS = [
     C_(16.14, ("Tegak", 14.82, False), ("saja", 15.44, False), ("akan", 15.78, False)),
     C_(17.10, ("menjadi", 16.16, False), ("potongan", 16.56, False)),
     C_(18.10, ("hirisan", 17.12, True), ("kecil", 17.52, True)),
-    C_(19.00, ("Ini", 18.14, False), ("gerinda", 18.36, True)),
+    C_(19.00, ("Ini", 18.14, False), ("grinder", 18.36, True)),
     C_(19.90, ("Nak", 19.04, False), ("menumis", 19.18, True)),
     C_(20.64, ("nak", 19.92, False), ("potong", 20.00, False), ("bawang", 20.20, True)),
     C_(21.50, ("ke", 20.66, False), ("apa", 20.78, False), ("semua", 20.90, False)),
     C_(22.50, ("sangat", 21.58, False), ("senang", 21.76, True)),
-    C_(24.40, ("Berminat", 22.60, False), ("dengan", 23.10, False), ("gerinda", 23.48, True)),
+    C_(24.40, ("Berminat", 22.60, False), ("dengan", 23.10, False), ("grinder", 23.48, True)),
     C_(25.48, ("dapatkan", 24.44, False), ("di", 24.72, False), ("beg", 24.80, True), ("kuning", 25.00, True)),
 ]
 HOOK = dict(end=4.45, y=100, kicker="nak potong bawang,", title="senang",
-            options=[("Tumbuk", "01"), ("Hiris pisau", "02"), ("Gerinda", "03")], select_at=[1.34, 2.44, 3.38])
+            options=[("Tumbuk", "01"), ("Hiris pisau", "02"), ("Grinder", "03")], select_at=[1.34, 2.44, 3.38])
 SECTIONS = [
     (4.45, 9.70, "tip", "1 / 3", "letak bawang"),
     (9.70, 14.80, "tip", "2 / 3", "tutup & tekan"),
@@ -62,6 +62,6 @@ STICKERS = [
 CIRCLES = []
 BIG_WORDS = [(13.00, 14.60, "tekan", True)]
 CTA = dict(title="senang", title_at=22.50, title_y=230, card_at=22.60, card_y=1180,
-           card_label="Gerinda", name="Gerinda Bawang", tags="tumis · hiris · senang",
+           card_label="Grinder", name="Grinder", tags="tumis · hiris · senang",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
 COVERS = []
