@@ -21,3 +21,5 @@ HEADS = [
 ]
 IMAGES = []   # tiada gambar produk diberi
 CTA = dict(start=11.64, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/v1/raw.mp4 1.0 work/v1/cover.png --style 3 --title "Magnetic." \
+#   --kicker "Frame gambar · Saiz F4" --pills "Warna gold,Pelbagai saiz,Sesuai untuk gambar" --pos bottom --y 760
