@@ -1,4 +1,4 @@
-# Kain lap serat buluh (gulung) (Drive 154vaB4qt49LcoP3EsC8IuMvq9pyLuAip)
+# Kain Lap Dapur (gulung, serat buluh) (Drive 154vaB4qt49LcoP3EsC8IuMvq9pyLuAip)
 REMOVE = [
     (9.84, 10.45),   # "okay" perlahan
     (12.95, 13.70),  # "okay"
@@ -74,7 +74,7 @@ BIG_WORDS = [
     (23.14, 24.05, "sesuai", True),
 ]
 CTA = dict(title="wajib", title_at=27.30, title_y=230, card_at=27.42, card_y=1180,
-           card_label="Kain Lap Buluh", name="Kain Lap Serat Buluh", tags="tahan · boleh basuh · guna semula",
+           card_label="Kain Lap Dapur", name="Kain Lap Dapur", tags="tahan · boleh basuh · guna semula",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
 
 COVERS = []
