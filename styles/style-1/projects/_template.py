@@ -28,8 +28,8 @@ SECTIONS = [  # (mula, tamat, "kelebihan" atau "tip", "1 / 3", subtajuk)
 STICKERS = [  # (mula, tamat, teks, x, y, sudut) — x 50/80/110, y 250/320/390; senarai 3 benda -> y 260/340/420, sudut 2/-1.5/1.5 bertindan
 ]
 CIRCLES = []  # (mula, tamat, cx, cy, r, label, label_x, label_y)
-COVERS = [  # cover photo (tools/cover.py) – at = masa video ASAL; 2 pilihan (produk+muka, hasil)
-    # dict(at=4.2, kicker="<produk>,", title="<katakunci>", stickers=["<kelebihan 1>", "<kelebihan 2> ✓"], pill="kelebihan 1-3 · <subtajuk>"),  # label pil ikut SECTIONS ("kelebihan" / "tip")
+COVERS = [  # cover photo (tools/cover.py) – at = masa video ASAL; 2 pilihan (produk+muka, hasil; tiada muka → produk penuh + sudut lain)
+    # dict(at=4.2, kicker="<produk>,", title="<katakunci>", stickers=["<kelebihan 1>", "<kelebihan 2> ✓"], pill="kelebihan 1-3 · <subtajuk / Nama Produk>"),  # label pil ikut SECTIONS ("kelebihan" / "tip")
 ]
 BIG_WORDS = []  # (mula, tamat, perkataan, titik_merah) – perkataan besar sekejap di tengah video, cth. (11.1, 12.4, "berbuih", True)
 CTA = dict(title="<katakunci>",  # utamakan perkataan yang disebut di hujung (cth. "murah"), kalau tiada ulang tajuk hook

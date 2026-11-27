@@ -8,7 +8,7 @@ Contoh siap: `styles/style-1/projects/boxer.py` (boxer lelaki — versi yang dil
 ## Struktur video
 | Bahagian | Apa | Bila |
 |---|---|---|
-| **Hook** | kicker kecil (cth. "seluar dalam lelaki paling") + tajuk besar 1 perkataan bold hitam + **titik merah** (cth. "selesa."). Kad gelap gaya tetingkap macOS (titik merah/kuning/hijau + nama produk) dengan **2 atau 3 pilihan** `01`/`02`/`03` (kad tinggi sendiri ikut bilangan pilihan) — pilihan bertukar biru tepat bila perkataan itu disebut (`select_at` ikut masa sebenar) | sepanjang ayat pembuka (~3–6s); **boleh dipanjangkan (cth. ~8s)** supaya kedua-dua pilihan sempat disebut — `HOOK.end` = hujung ayat yang sebut pilihan ke-2 |
+| **Hook** | kicker kecil (cth. "seluar dalam lelaki paling") + tajuk besar 1 perkataan bold hitam + **titik merah** (cth. "selesa."). Kad gelap gaya tetingkap macOS (titik merah/kuning/hijau + nama produk) dengan **2 atau 3 pilihan** (3 pilihan bila ayat pembuka sebut 3 perkara — cth. "kapal / superhero / gabung mainan lain", kad sampai ~7s) `01`/`02`/`03` (kad tinggi sendiri ikut bilangan pilihan) — pilihan bertukar biru tepat bila perkataan itu disebut (`select_at` ikut masa sebenar) | sepanjang ayat pembuka (~3–6s); **boleh dipanjangkan (cth. ~8s)** supaya kedua-dua pilihan sempat disebut — `HOOK.end` = hujung ayat yang sebut pilihan ke-2 |
 | **Kelebihan 1/3, 2/3, 3/3** | progress bar biru nipis di atas + label monospace gelap `kelebihan 1 / 3` atau **`tip 1 / 3`** (video tip / cara guna) (nombor biru) + subtajuk pendek. Sticker putih condong sikit, bertindan ke bawah (kiri atas), keluar tepat bila disebut. Senarai pendek yang disebut berturut (cth. "tak koyak / tak bocor / tak basah ✓") → **3 tingkat** y 260 / 340 / 420, sudut berselang 2 / −1.5 / 1.5. Bulatan biru + label untuk tunjuk bahagian produk (pilihan) | ikut isi percakapan |
 | **CTA** | tajuk besar — **utamakan perkataan yang disebut di hujung video** (cth. "murah." bila dia kata "harga sangat murah"), kalau tiada baru ulang tajuk hook (cth. "selesa.") + kad gelap: nama produk, tag monospace `a · b · c` (**maks 3 tag, 1–2 perkataan setiap satu** — supaya tak terkeluar kad), butang. TikTok Shop → butang **kuning "Tekan beg kuning ↓"** (teks gelap). Lain-lain → merah "Link dekat bawah ↓" | ~2s terakhir, simpan ~1.2s hujung untuk dibaca (`TAIL = 1.2`). Nama produk panjang → font kad mengecil sendiri |
 
@@ -64,7 +64,9 @@ Bunyi sintetik (`sfx.py`, fail `.wav` dalam `sfx/`), bebas hak cipta, volume di 
 - Gambar dari video **diturunkan** (`shift` 330px) supaya tajuk tak tutup muka; pilih frame muka + produk jelas (`at` = masa video ASAL).
 - 2 sticker putih condong di kiri (y ≈ 1060) — ayat dari apa yang **disebut** dalam video, jangan reka dakwaan.
 - Pil monospace gelap di bawah (cth. "tip 1-3 · cara cuci senang", nombor biru) — label ikut `SECTIONS`: video "kelebihan" → "kelebihan 1-3 · …", video tip → "tip 1-3 · …".
+- Pil boleh juga guna **nama produk** selepas titik: "kelebihan 1-3 · <Nama Produk>" (video mainan Ninjago).
 - Frame suram dicerahkan sendiri. Buat **2 pilihan** (cth. A = produk + muka, B = hasil) dan biar owner pilih.
+- **Video tanpa muka** (tangan pegang produk sahaja): A = produk penuh dari frame paling tajam, B = sudut/binaan lain + kicker dari ayat lain (cth. "ganti telefon & TV,"). Rujukan: `projects/ninja.py`.
 
 ## Aliran kerja
 1. Preview (render **draft**, tanpa watermark) → hantar ke user, senaraikan apa yang dipotong & teks yang perlu disemak.
