@@ -67,9 +67,9 @@ STICKERS = [  # (mula, tamat, teks, x, y, sudut)
 CIRCLES = []
 BIG_WORDS = [(6.76, 7.90, "pakai gas", True)]
 COVERS = [  # at = masa video ASAL
-    dict(at=8.2, kicker="lighter yang", title="terbaru",
+    dict(at=8.2, kicker="lighter USB", title="terbaru",
          stickers=["cas saja", "tak pakai gas ✓"], pill="kelebihan 1-3 · bateri tahan lama"),
-    dict(at=25.0, kicker="tangan basah, berangin,", title="menyala",
+    dict(at=25.6, kicker="tangan basah, berangin,", title="menyala",
          stickers=["tekan & tolak", "tiada masalah ✓"], pill="kelebihan 1-3 · senang guna"),
 ]
 CTA = dict(title="terbaru", title_at=26.94, title_y=230, card_at=27.1, card_y=1180,
