@@ -100,6 +100,6 @@ CTA = dict(title="selesa", title_at=34.08, title_y=230, card_at=38.28, card_y=11
 COVERS = [
     dict(at=3.0, kicker="kerusi lipat paling,", title="selesa",
          stickers=["span penuh", "senang lipat ✓"], pill="kelebihan 1-3 · kerusi lipat super tribe"),
-    dict(at=46.0, kicker="kerusi lipat serba guna,", title="selesa",
+    dict(at=45.0, kicker="kerusi lipat serba guna,", title="selesa",
          stickers=["camping & pantai", "senang bawa ✓"], pill="kelebihan 1-3 · super tribe"),
 ]
