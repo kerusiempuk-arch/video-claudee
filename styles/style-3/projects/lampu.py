@@ -28,3 +28,5 @@ HEADS = [
 ]
 IMAGES = []   # tiada gambar produk diberi
 CTA = dict(start=16.64, text="Beli di beg kuning", y=780)   # kepala di atas frame hujung video → CTA di dada, atas lampu
+# Cover: python3 -I tools/cover/make_cover.py work/v1/raw.mp4 43.5 work/v1/cover.png --style 3 --title "Lampu Kepala." \
+#   --kicker "3 cahaya · Boleh zoom" --pills "Indikator bateri,Type-C,Getah lembut" --pos bottom --y 600   # lampu menyala di paras pinggang
