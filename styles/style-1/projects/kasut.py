@@ -7,6 +7,7 @@ REMOVE = [
     (12.38, 20.96),  # "okey. Hmm… Tepi saja. Kenapa nak buat video ni? Okey, ha,"
     (23.36, 23.88),  # "Ha,"
     (27.80, 28.74),  # "okey. Ah,"
+    (30.22, 31.74),  # "susah nak licin" (owner minta buang)
     (32.76, 32.98),  # "okay"
     (34.40, 34.88),  # "Okay,"
 ]
@@ -15,7 +16,7 @@ TAIL = 1.2
 PUNCH_Y = 0.25
 
 # ---------- overlay – masa ikut video SELEPAS dipotong
-END = 22.67
+END = 21.83
 CAPTION_Y = 680
 CARD_Y = 1420
 ZOOM = 0.04
@@ -35,10 +36,9 @@ CAPTIONS = [
     C_(11.40, ("warna", 10.48, False), ("aku", 10.80, False), ("punya", 11.02, False)),
     C_(12.90, ("warna", 11.82, False), ("hitam", 12.42, True)),
     C_(14.00, ("ada", 12.98, False), ("warna", 13.28, False), ("biru", 13.54, True)),
-    C_(15.12, ("tapak", 14.16, False), ("anti-slip", 14.64, True)),
-    C_(16.02, ("susah", 15.14, False), ("nak", 15.60, False), ("licin", 15.82, False)),
-    C_(16.98, ("dia", 16.08, False), ("tak", 16.18, True), ("licin", 16.34, True)),
-    C_(18.45, ("nak", 17.10, False), ("pakai", 17.24, False), ("sarung", 17.58, True), ("sahaja", 18.12, False)),
+    C_(15.12, ("tapak", 14.16, False), ("anti-slip", 14.50, True)),
+    C_(16.14, ("dia", 15.20, False), ("tak", 15.34, True), ("licin", 15.50, True)),
+    C_(17.58, ("nak", 16.30, False), ("pakai", 16.38, False), ("sarung", 16.74, True), ("sahaja", 17.28, False)),
 ]
 HOOK = dict(end=8.05, y=100, kicker="kasut sneakers,", title="simple",
             options=[("Jalan-jalan", "01"), ("Pergi kedai", "02"), ("Naik motor", "03")],
@@ -46,20 +46,20 @@ HOOK = dict(end=8.05, y=100, kicker="kasut sneakers,", title="simple",
 SECTIONS = [
     (8.05, 10.45, "kelebihan", "1 / 3", "pelbagai saiz"),
     (10.45, 14.10, "kelebihan", "2 / 3", "hitam & biru"),
-    (14.10, 18.45, "kelebihan", "3 / 3", "tapak anti-slip"),
+    (14.10, 17.58, "kelebihan", "3 / 3", "tapak anti-slip"),
 ]
 STICKERS = [
     (9.34, 10.40, "pelbagai saiz", 80, 260, 2.0),
     (12.42, 14.05, "hitam ✓", 80, 260, 2.0),
     (13.54, 14.05, "biru ✓", 130, 340, -1.5),
-    (14.64, 16.95, "tapak anti-slip", 80, 260, 2.0),
-    (16.18, 16.95, "tak licin ✓", 130, 340, -1.5),
+    (14.50, 16.12, "tapak anti-slip", 80, 260, 2.0),
+    (15.34, 16.12, "tak licin ✓", 130, 340, -1.5),
 ]
 CIRCLES = []
 BIG_WORDS = [  # (mula, tamat, perkataan, titik_merah)
-    (17.58, 18.40, "sarung", True),
+    (16.74, 17.54, "sarung", True),
 ]
-CTA = dict(title="simple", title_at=18.45, title_y=470, card_at=18.60, card_y=1180,
+CTA = dict(title="simple", title_at=17.58, title_y=470, card_at=17.72, card_y=1180,
            card_label="Kasut Sneakers", name="Kasut Sneakers", tags="sarung · anti-slip · pelbagai saiz",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
 
