@@ -8,6 +8,8 @@ Usage: .venv-style1/bin/python styles/style-1/tools/transcribe.py <video.mp4> [-
 Nota: filler pendek kadang-kadang tak ditulis langsung dalam audio ASAL (bising). Transkrip juga
 suara bersih yang dah dipotong (build.py --cut-audio) dengan --keep <cut.wav.keep.json>: setiap
 [FILLER] dicetak bersama "REMOVE ≈ (a, b)" dalam masa video ASAL -> terus masuk REMOVE.
+Dengan --keep juga: "# BUNYI PENDEK?" = bunyi 0.06–0.45 s di celah perkataan yang Whisper tak tulis
+("okey"/"aa"/separuh perkataan) dan "# JEDA" = jeda > 0.6 s ikut paras bunyi -> semak, masuk REMOVE.
 """
 import sys, json, subprocess, tempfile, os, wave, re
 os.environ.setdefault("HF_HUB_DISABLE_XET", "1")  # proxy hanya benarkan muat turun biasa
@@ -102,6 +104,22 @@ if keep:
             a0, b0 = to_src(c0), to_src(c1)
             x["flag"] = f"FILLER – REMOVE ≈ ({a0:.2f}, {b0:.2f})" + ("" if b else " (anggaran Whisper – semak)")
             print(f"# cadangan REMOVE ({a0:.2f}, {b0:.2f})  # '{x['w']}' @cut {x['s']:.2f}")
+if keep:
+    # bunyi pendek ("okey"/"aa"/"ti-") yang Whisper TAK tulis: pulau 0.06–0.45 s di celah perkataan
+    # Whisper kadang "regangkan" perkataan sampai ke dalam jeda -> perkataan > 0.7 s dikira 0.6 s sahaja
+    wr = [(y["s"], min(y["e"], y["s"] + 0.6)) for y in words]
+    near = lambda s0, e0: any(min(e0, b + 0.08) - max(s0, a_ - 0.08) > 0 for a_, b in wr)
+    seen = []
+    for s0, e0 in sorted(islands):
+        if 0.06 <= e0 - s0 <= 0.45 and not near(s0, e0) and not any(min(e0, b) - max(s0, a_) > 0 for a_, b in seen):
+            seen.append((s0, e0))
+            print(f"# BUNYI PENDEK? @cut {s0:.2f}-{e0:.2f} – cadangan REMOVE ({to_src(s0 - 0.04):.2f}, {to_src(e0 + 0.04):.2f})  (semak dulu)")
+    # jeda > 0.6 s ikut paras bunyi (build.py tak potong sebab bunyi latar di atas paras senyap)
+    quiet = db < np.percentile(db, 95) - 20
+    for q0, q1 in runs(quiet):
+        t0, t1 = q0 * 0.02, q1 * 0.02
+        if t1 - t0 > 0.6 and t0 > 0.1 and t1 < len(db) * 0.02 - 0.1:
+            print(f"# JEDA {t1 - t0:.2f}s @cut {t0:.2f}-{t1:.2f} – cadangan REMOVE ({to_src(t0 + 0.12):.2f}, {to_src(t1 - 0.15):.2f})")
 for x in words:
     f = f"   <-- [{x['flag']}]" if x["flag"] else ""
     low = "  (?)" if x["p"] < 0.5 else ""

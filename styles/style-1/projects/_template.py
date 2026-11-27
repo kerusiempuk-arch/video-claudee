@@ -9,7 +9,7 @@ PUNCH_Y = 0.25        # punch-in fokus ke atas (muka)
 
 # ---------- overlay (build.py) – masa ikut video SELEPAS dipotong
 END = 0.0             # tempoh selepas potongan (build.py --plan)
-CAPTION_Y = 680       # atas, paras dada (pilihan user); kena muka -> 700–760
+CAPTION_Y = 680       # atas, paras dada (pilihan user); kena muka -> 700–760 (duduk: 760); muka rendah dalam frame -> 900
 CARD_Y = 1420       # kad hook rendah supaya produk tak tertutup
 ZOOM = 0.04
 # CAPTION_ACCENT = (255, 212, 59, 255)   # paksa warna; default auto: baju/latar biru → kuning
@@ -25,13 +25,15 @@ HOOK = dict(end=3.0, y=100,  # end = hujung ayat pembuka (boleh ~8s supaya 2 pil
             options=[("<pilihan A>", "01"), ("<pilihan B>", "02")], select_at=[1.0, 2.0])  # boleh 3 pilihan ("03")
 SECTIONS = [  # (mula, tamat, "kelebihan" atau "tip", "1 / 3", subtajuk)
 ]
-STICKERS = [  # (mula, tamat, teks, x, y, sudut) — x 50/80/110, y 250/320/390 bertindan
+STICKERS = [  # (mula, tamat, teks, x, y, sudut) — x 50/80/110, y 250/320/390; senarai 3 benda -> y 260/340/420, sudut 2/-1.5/1.5 bertindan
+    # masalah produk biasa disebut dulu? 3 sticker "… ✗" sebelum SECTIONS, kemudian "… ✓" dalam seksyen kelebihan
 ]
 CIRCLES = []  # (mula, tamat, cx, cy, r, label, label_x, label_y)
-COVERS = [  # cover photo (tools/cover.py) – at = masa video ASAL; 2 pilihan (produk+muka, hasil)
-    # dict(at=4.2, kicker="<produk>,", title="<katakunci>", stickers=["<kelebihan 1>", "<kelebihan 2> ✓"], pill="tip 1-3 · <subtajuk>"),
+COVERS = [  # cover photo (tools/cover.py) – at = masa video ASAL; 2 pilihan (produk+muka, hasil; tiada muka → produk penuh + sudut lain)
+    # dict(at=4.2, kicker="<produk>,", title="<katakunci>", stickers=["<kelebihan 1>", "<kelebihan 2> ✓"], pill="kelebihan 1-3 · <subtajuk / Nama Produk>"),  # label pil ikut SECTIONS ("kelebihan" / "tip")
 ]
 BIG_WORDS = []  # (mula, tamat, perkataan, titik_merah) – perkataan besar sekejap di tengah video, cth. (11.1, 12.4, "berbuih", True)
-CTA = dict(title="<katakunci>", title_at=0.0, title_y=230, card_at=0.0, card_y=1180,
+CTA = dict(title="<katakunci>",  # utamakan perkataan yang disebut di hujung (cth. "murah"), kalau tiada ulang tajuk hook
+           title_at=0.0, title_y=230, card_at=0.0, card_y=1180,
            card_label="<Produk>", name="<Produk>", tags="a · b · c",  # maks 3 tag pendek (1–2 perkataan)
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
