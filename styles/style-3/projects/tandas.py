@@ -31,3 +31,5 @@ HEADS = [
 ]
 IMAGES = []   # tiada gambar produk diberi
 CTA = dict(start=25.2, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/v3new/raw.mp4 36.4 work/v3new/cover.png --style 3 --title "Portable Toilet." \
+#   --kicker "Sangat kuat · Ada baldi" --pills "Tempat letak tangan,Tempat sandar,Tempat tisu" --pos bottom --y 760   # teks di tengah (owner)
