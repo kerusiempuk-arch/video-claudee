@@ -9,15 +9,15 @@ Contoh siap: `styles/style-1/projects/boxer.py` (boxer lelaki — versi yang dil
 | Bahagian | Apa | Bila |
 |---|---|---|
 | **Hook** | kicker kecil (cth. "seluar dalam lelaki paling") + tajuk besar 1 perkataan bold hitam + **titik merah** (cth. "selesa."). Kad gelap gaya tetingkap macOS (titik merah/kuning/hijau + nama produk) dengan **2 atau 3 pilihan** `01`/`02`/`03` (kad tinggi sendiri ikut bilangan pilihan) — pilihan bertukar biru tepat bila perkataan itu disebut (`select_at` ikut masa sebenar) | sepanjang ayat pembuka (~3–6s); **boleh dipanjangkan (cth. ~8s)** supaya kedua-dua pilihan sempat disebut — `HOOK.end` = hujung ayat yang sebut pilihan ke-2 |
-| **Kelebihan 1/3, 2/3, 3/3** | progress bar biru nipis di atas + label monospace gelap `kelebihan 1 / 3` atau **`tip 1 / 3`** (video tip / cara guna) (nombor biru) + subtajuk pendek. Sticker putih condong sikit, bertindan ke bawah (kiri atas), keluar tepat bila disebut. Bulatan biru + label untuk tunjuk bahagian produk (pilihan) | ikut isi percakapan |
-| **CTA** | tajuk besar ulang (cth. "selesa.") + kad gelap: nama produk, tag monospace `a · b · c` (**maks 3 tag, 1–2 perkataan setiap satu** — supaya tak terkeluar kad), butang. TikTok Shop → butang **kuning "Tekan beg kuning ↓"** (teks gelap). Lain-lain → merah "Link dekat bawah ↓" | ~2s terakhir, simpan ~1.2s hujung untuk dibaca (`TAIL = 1.2`). Nama produk panjang → font kad mengecil sendiri |
+| **Kelebihan 1/3, 2/3, 3/3** | progress bar biru nipis di atas + label monospace gelap `kelebihan 1 / 3` atau **`tip 1 / 3`** (video tip / cara guna) (nombor biru) + subtajuk pendek. Sticker putih condong sikit, bertindan ke bawah (kiri atas), keluar tepat bila disebut. Senarai pendek yang disebut berturut (cth. "tak koyak / tak bocor / tak basah ✓") → **3 tingkat** y 260 / 340 / 420, sudut berselang 2 / −1.5 / 1.5. Bulatan biru + label untuk tunjuk bahagian produk (pilihan) | ikut isi percakapan |
+| **CTA** | tajuk besar — **utamakan perkataan yang disebut di hujung video** (cth. "murah." bila dia kata "harga sangat murah"), kalau tiada baru ulang tajuk hook (cth. "selesa.") + kad gelap: nama produk, tag monospace `a · b · c` (**maks 3 tag, 1–2 perkataan setiap satu** — supaya tak terkeluar kad), butang. TikTok Shop → butang **kuning "Tekan beg kuning ↓"** (teks gelap). Lain-lain → merah "Link dekat bawah ↓" | ~2s terakhir, simpan ~1.2s hujung untuk dibaca (`TAIL = 1.2`). Nama produk panjang → font kad mengecil sendiri |
 
 ## Kapsyen
 - **Tanpa kapsyen**: `CAPTIONS = []` (cth. video sabun – owner minta buang subtitle tengah).
 - Ikut suara, **1–3 perkataan** satu masa, muncul ikut masa sebenar setiap perkataan (Whisper).
 - Putih, Inter Bold 60, bayang lembut + outline nipis gelap.
 - **Kedudukan: ATAS, paras dada, `CAPTION_Y = 680`** (pilihan user, video Tai Chi) — di bawah sticker/tajuk, tak tutup muka.
-  Semak stills: kalau masih kena dagu/mulut, turunkan sikit (700–760); kalau muka rendah dalam frame (orang duduk, kamera tinggi), turunkan ke dada `CAPTION_Y = 900` (video kain lap dapur). Projek lama (boxer, perancah) kekal 1780.
+  Semak stills: kalau masih kena dagu/mulut, turunkan sikit (700–760 — cth. orang duduk tapi muka masih tinggi: 760, video sarung telefon); kalau muka rendah dalam frame (orang duduk, kamera tinggi), turunkan ke dada `CAPTION_Y = 900` (video kain lap dapur). Projek lama (boxer, perancah) kekal 1780.
 - Kata kunci diwarnakan: biru-ungu `(110,123,255)` secara default; **kuning `(255,212,59)` automatik** bila baju/latar biru di paras kapsyen (`build.py` kira piksel biru ≥ 15 %, cetak keputusannya). Paksa dengan `CAPTION_ACCENT = (…)` dalam config projek.
 
 ## Potongan (wajib setiap video)
