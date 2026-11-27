@@ -24,10 +24,12 @@ HEADS = [
          pills=[(10.58, "Sangat selesa")]),
     dict(start=12.80, end=15.55, kicker="Siap ada", title="Tali.",
          pills=[(14.0, "Boleh ketatkan")]),
-    dict(start=15.55, end=21.30, kicker="Kain dia", title="Bergetah.",
+    dict(start=15.55, end=21.30, kicker="Material", title="Kain stretch.",
          pills=[(17.38, "Tengok dekat")]),
     dict(start=21.30, end=27.00, kicker="Lepas basuh", title="Cepat kering.",
          pills=[(22.21, "Senang basuh"), (25.03, "Senang dibersihkan")]),
 ]
 IMAGES = []
 CTA = dict(start=27.00, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/v1/raw.mp4 42.8 work/v1/cover.png --style 3 --title "Seluar Trek." \
+#   --kicker "Kain stretch · Cepat kering" --pills "Poket berzip,Getah tebal,Ada tali" --pos bottom --y 760
