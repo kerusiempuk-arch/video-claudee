@@ -68,8 +68,8 @@ STICKERS = [  # (mula, tamat, teks, x, y, sudut)
 CIRCLES = []
 BIG_WORDS = []  # "senang." tutup muka di sini – dibuang
 COVERS = [
-    dict(at=34.5, kicker="Tai Chi Wellness Patch,", title="tenaga", stickers=["tampal di pinggang", "tampal saja ✓"], pill="kelebihan 1-3 · patch lelaki"),
-    dict(at=31.0, kicker="Tai Chi Wellness Patch,", title="senang", stickers=["tampal sebelum tidur", "pulihkan tenaga ✓"], pill="kelebihan 1-3 · cara pakai"),
+    dict(at=35.0, kicker="Tai Chi Wellness Patch,", title="tenaga", stickers=["tampal di pinggang", "tampal saja ✓"], pill="kelebihan 1-3 · patch lelaki"),
+    dict(at=35.6, kicker="Tai Chi Wellness Patch,", title="senang", stickers=["tampal sebelum tidur", "pulihkan tenaga ✓"], pill="kelebihan 1-3 · cara pakai"),
 ]
 YELLOW = (255, 200, 40, 255)
 # tajuk CTA disorok (title_y=-500): punch-in dekat, tajuk tutup muka
