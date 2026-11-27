@@ -28,3 +28,5 @@ HEADS = [
 ]
 IMAGES = []   # tiada gambar produk diberi
 CTA = dict(start=24.28, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/v1/raw.mp4 28.3 work/v1/cover.png --style 3 --title "Lampu Solar." \
+#   --kicker "Bentuk bunga · Kelip-kelip" --pills "Siap pemacak,Tak payah tarik wire,Banyak mod" --pos bottom --y 760
