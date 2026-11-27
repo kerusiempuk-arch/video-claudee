@@ -79,8 +79,8 @@ CTA = dict(title="murah", title_at=28.26, title_y=230, card_at=28.86, card_y=118
 
 # ---------- cover photo (tools/cover.py) – `at` ikut masa video ASAL
 COVERS = [
-    dict(at=1.2, kicker="sarung telefon,", title="waterproof",
+    dict(at=2.0, kicker="sarung telefon,", title="waterproof",
          stickers=["simple sahaja", "tak bocor ✓"], pill="kelebihan 1-3 · selamat naik motor"),
-    dict(at=24.0, kicker="naik motor, telefon", title="selamat",
+    dict(at=8.0, kicker="naik motor, telefon", title="selamat",
          stickers=["tak koyak, tak bocor", "telefon tak basah ✓"], pill="kelebihan 1-3 · boleh cas"),
 ]
