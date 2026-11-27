@@ -34,3 +34,5 @@ HEADS = [
 ]
 IMAGES = []   # tiada gambar produk diberi
 CTA = dict(start=30.6, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/v1/raw.mp4 49.5 work/v1/cover.png --style 3 --title "Shilajit Tongkat Ali." \
+#   --kicker "Tenaga harian · Imun" --pills "Liquid,10 pieces,1 sachet sehari" --pos bottom --y 760   # teks di tengah (owner)
