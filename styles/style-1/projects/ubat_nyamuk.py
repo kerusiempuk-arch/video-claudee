@@ -77,7 +77,7 @@ BIG_WORDS = [
     (19.78, 20.82, "20 koil", True),
 ]
 COVERS = [
-    dict(at=6.6, kicker="ubat nyamuk lingkaran,", title="stabil",
+    dict(at=6.3, kicker="ubat nyamuk lingkaran,", title="stabil",
          stickers=["stand 4 kaki", "20 koil ✓"], pill="kelebihan 1-3 · mosquito coil"),
     dict(at=15.5, kicker="lingkaran melengkung,", title="stabil",
          stickers=["halau nyamuk", "+ serangga terbang ✓"], pill="kelebihan 1-3 · mosquito coil"),
