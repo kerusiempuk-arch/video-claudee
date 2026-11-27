@@ -26,6 +26,7 @@ HOOK = dict(end=3.0, y=100,  # end = hujung ayat pembuka (boleh ~8s supaya 2 pil
 SECTIONS = [  # (mula, tamat, "kelebihan" atau "tip", "1 / 3", subtajuk)
 ]
 STICKERS = [  # (mula, tamat, teks, x, y, sudut) — x 50/80/110, y 250/320/390; senarai 3 benda -> y 260/340/420, sudut 2/-1.5/1.5 bertindan
+    # masalah produk biasa disebut dulu? 3 sticker "… ✗" sebelum SECTIONS, kemudian "… ✓" dalam seksyen kelebihan
 ]
 CIRCLES = []  # (mula, tamat, cx, cy, r, label, label_x, label_y)
 COVERS = [  # cover photo (tools/cover.py) – at = masa video ASAL; 2 pilihan (produk+muka, hasil; tiada muka → produk penuh + sudut lain)

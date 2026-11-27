@@ -47,6 +47,12 @@ Contoh siap: `styles/style-1/projects/boxer.py` (boxer lelaki — versi yang dil
   → tambah `--anchor saat:x,y,w,h`. Lihat `--check check.jpg` dan semak setiap 0.2 s bila plate masuk/keluar frame.
 - Guna `raw_noplate.mp4` sebagai RAW untuk `build.py` dan `cover.py`. Rujukan: `projects/bar_ratchet.py`.
 
+## Bahagian "masalah" sebelum kelebihan (bila video banding produk biasa vs produk ni)
+- Bila pembuat video sebut masalah produk biasa (cth. lighter gas: "habis gas, buang", "angin, tangan basah, api tak hidup"),
+  letak **3 sticker masalah** (`STICKERS`, x 50/80/110, y 260/340/420) bertanda **✗** pada masa ia disebut — **sebelum** `SECTIONS` bermula.
+- Dalam seksyen kelebihan yang menjawab masalah itu, ulang perkara sama dengan **✓** (cth. "tangan basah ✓", "tahan angin ✓").
+- Teks hanya dari apa yang disebut. Rujukan: `projects/lighter.py`.
+
 ## Visual lain
 - **Perkataan besar sekejap** di tengah video (`BIG_WORDS = [(mula, tamat, "berbuih", True)]`, `True` = titik merah): hitam bold 170px di atas (y ≈ 340), bunyi whoosh/drop automatik. Letak bila tiada sticker supaya tak bertindih (rujukan: video rak besi "store", "4 layer", "ngam.").
 - **Kad hook** default `CARD_Y = 1420` (lebih rendah) supaya produk yang dipegang tak tertutup — semak stills, naikkan kalau kad tutup produk di bawah.
