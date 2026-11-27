@@ -78,7 +78,12 @@ BIG_WORDS = [  # perkataan besar sekejap – tiada sticker masa ni
     (14.21, 16.73, "1, 2, 3", True),
     (21.25, 22.58, "+ − × ÷", False),
 ]
-COVERS = []
+COVERS = [  # at = masa video ASAL
+    dict(at=5.6, kicker="puzzle matematik,", title="belajar",
+         stickers=["mainan sambil belajar", "nombor & lambang ✓"], pill="kelebihan 1-3 · puzzle matematik"),
+    dict(at=31.5, kicker="tambah, tolak, darab, bahagi,", title="asas",
+         stickers=["operasi asas", "warna-warni ✓"], pill="kelebihan 1-3 · puzzle matematik"),
+]
 YELLOW = (255, 200, 40, 255)
 CTA = dict(title="belajar", title_at=29.39, title_y=230, card_at=29.63, card_y=1180,
            card_label="Puzzle Matematik", name="Puzzle Matematik",
