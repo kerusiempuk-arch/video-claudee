@@ -30,3 +30,5 @@ HEADS = [
 ]
 IMAGES = []   # tiada gambar produk diberi
 CTA = dict(start=23.02, text="Beli di beg kuning")
+# Cover: python3 -I tools/cover/make_cover.py work/v1/raw.mp4 7.0 work/v1/cover.png --style 3 --title "Buku Solat." \
+#   --kicker "Perbaiki solat · 3 hari" --pills "Cetakan berwarna,Kertas berkualiti,Sangat murah" --pos bottom --y 760
