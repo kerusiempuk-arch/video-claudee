@@ -77,4 +77,9 @@ CTA = dict(title="wajib", title_at=27.30, title_y=230, card_at=27.42, card_y=118
            card_label="Kain Lap Dapur", name="Kain Lap Dapur", tags="tahan · boleh basuh · guna semula",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
 
-COVERS = []
+COVERS = [  # at = masa video ASAL
+    dict(at=4.0, kicker="kain lap dapur,", title="wajib",
+         stickers=["macam tisu, tapi kain", "sangat tahan ✓"], pill="kelebihan 1-3 · kain lap dapur"),
+    dict(at=47.6, kicker="kain lap dapur,", title="tahan",
+         stickers=["susah nak koyak", "boleh basuh, guna berulang ✓"], pill="kelebihan 1-3 · kain lap dapur"),
+]
