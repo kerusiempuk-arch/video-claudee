@@ -2,7 +2,7 @@
 # ---------- potongan (build.py) – masa ikut video ASAL
 REMOVE = [
     (3.95, 4.45),    # "ah" lepas "anak remaja aku"
-    (5.00, 5.34),    # "aa" sebelum "dah banyak dah"
+    (4.95, 6.60),    # "aa" + "dah banyak dah" (owner minta potong)
     (7.12, 7.44),    # gagap "anak-anak-anak" -> "anak-anak"
     (8.97, 9.40),    # "aa" sebelum "pakai boxer"
     (10.88, 12.20),  # "okay" + "ah"
@@ -17,7 +17,7 @@ TAIL = 0.7            # hujung tak dipotong senyap — masa baca CTA (1.2s supay
 PUNCH_Y = 0.25        # punch-in fokus ke atas (muka)
 
 # ---------- overlay (build.py) – masa ikut video SELEPAS dipotong
-END = 25.67            # tempoh selepas potongan (build.py --plan)
+END = 24.95            # tempoh selepas potongan (build.py --plan)
 CAPTION_Y = 680       # atas, paras dada (pilihan user); kena muka -> 700–760
 CARD_Y = 1420       # kad hook rendah supaya produk tak tertutup
 ZOOM = 0.04
@@ -29,49 +29,48 @@ ZOOM = 0.04
 CAPTIONS = [  # (group_end, [(perkataan, mula, highlight)]) – masa SELEPAS potong
     (1.64, [("Aku", 0.00, False), ("beli", 0.50, False), ("boxer", 0.84, True), ("ni", 1.16, False)]),
     (2.38, [("aku", 1.66, False), ("nak", 1.78, False), ("bagi", 1.90, False)]),
-    (3.50, [("anak", 2.26, False), ("remaja", 2.62, True), ("aku", 3.12, False)]),
-    (4.32, [("Dah", 3.52, False), ("banyak", 3.72, False), ("dah", 4.06, False)]),
-    (5.32, [("daripada", 4.32, False), ("anak-anak", 4.68, True)]),
-    (6.46, [("ke", 5.32, False), ("remaja", 5.56, True)]),
-    (7.32, [("pakai", 6.48, False), ("boxer", 6.60, True)]),
-    (8.60, [("Kain", 7.34, False), ("dia", 7.64, False), ("lembut", 8.00, True)]),
-    (9.64, [("getah", 8.62, True), ("pinggang", 8.92, False), ("pun", 9.32, False)]),
-    (10.36, [("lembut", 9.66, True)]),
-    (11.80, [("selesa", 10.38, True), ("dipakai", 10.68, False)]),
-    (12.54, [("Material", 11.82, False), ("dia", 12.08, False)]),
-    (13.40, [("dipakai", 12.56, False)]),
-    (14.60, [("sejuk", 13.42, True), ("sahaja", 13.88, False)]),
-    (15.50, [("tak", 14.62, False), ("panas", 14.74, True)]),
-    (16.76, [("Dengan", 15.52, False), ("pakai", 15.78, False), ("boxer", 16.04, False)]),
-    (17.56, [("pengudaraan", 16.78, True)]),
-    (18.90, [("lebih", 17.58, False), ("nyaman", 18.30, True)]),
-    (20.12, [("selesa", 18.92, True), ("dipakai", 19.30, False)]),
-    (21.18, [("Ada", 20.14, False), ("pelbagai", 20.28, False), ("saiz", 20.66, True)]),
-    (22.22, [("ada", 21.20, False), ("pelbagai", 21.30, False), ("warna", 21.70, True)]),
-    (23.80, [("Harga", 22.24, False), ("sangat-sangat", 22.78, False), ("murah", 23.30, True)]),
-    (24.68, [("Berminat?", 23.82, False), ("dapatkan", 24.22, False)]),
-    (25.67, [("di", 24.62, False), ("beg", 24.70, True), ("kuning", 24.86, True)]),
+    (3.60, [("anak", 2.26, False), ("remaja", 2.62, True), ("aku", 3.12, False)]),
+    (4.60, [("Dari", 3.68, False), ("anak-anak", 3.96, True)]),
+    (5.74, [("ke", 4.60, False), ("remaja", 4.84, True)]),
+    (6.60, [("pakai", 5.76, False), ("boxer", 5.88, True)]),
+    (7.88, [("Kain", 6.62, False), ("dia", 6.92, False), ("lembut", 7.28, True)]),
+    (8.92, [("getah", 7.90, True), ("pinggang", 8.20, False), ("pun", 8.60, False)]),
+    (9.64, [("lembut", 8.94, True)]),
+    (11.08, [("selesa", 9.66, True), ("dipakai", 9.96, False)]),
+    (11.82, [("Material", 11.10, False), ("dia", 11.36, False)]),
+    (12.68, [("dipakai", 11.84, False)]),
+    (13.88, [("sejuk", 12.70, True), ("sahaja", 13.16, False)]),
+    (14.78, [("tak", 13.90, False), ("panas", 14.02, True)]),
+    (16.04, [("Dengan", 14.80, False), ("pakai", 15.06, False), ("boxer", 15.32, False)]),
+    (16.84, [("pengudaraan", 16.06, True)]),
+    (18.18, [("lebih", 16.86, False), ("nyaman", 17.58, True)]),
+    (19.40, [("selesa", 18.20, True), ("dipakai", 18.58, False)]),
+    (20.46, [("Ada", 19.42, False), ("pelbagai", 19.56, False), ("saiz", 19.94, True)]),
+    (21.50, [("ada", 20.48, False), ("pelbagai", 20.58, False), ("warna", 20.98, True)]),
+    (23.08, [("Harga", 21.52, False), ("sangat-sangat", 22.06, False), ("murah", 22.58, True)]),
+    (23.96, [("Berminat?", 23.10, False), ("dapatkan", 23.50, False)]),
+    (24.95, [("di", 23.90, False), ("beg", 23.98, True), ("kuning", 24.14, True)]),
 ]
-HOOK = dict(end=7.2, y=100, kicker="dari anak-anak ke remaja, semua pakai", title="boxer",
-            options=[("Anak-anak", "01"), ("Remaja", "02")], select_at=[4.68, 5.56])
+HOOK = dict(end=6.48, y=100, kicker="dari anak-anak ke remaja, semua pakai", title="boxer",
+            options=[("Anak-anak", "01"), ("Remaja", "02")], select_at=[3.96, 4.84])
 SECTIONS = [  # (mula, tamat, label, "1 / 3", subtajuk)
-    (7.2, 11.7, "kelebihan", "1 / 3", "kain & getah lembut"),
-    (11.7, 20.0, "kelebihan", "2 / 3", "sejuk & nyaman"),
-    (20.0, 23.75, "kelebihan", "3 / 3", "saiz, warna & harga"),
+    (6.48, 10.98, "kelebihan", "1 / 3", "kain & getah lembut"),
+    (10.98, 19.28, "kelebihan", "2 / 3", "sejuk & nyaman"),
+    (19.28, 23.03, "kelebihan", "3 / 3", "saiz, warna & harga"),
 ]
 STICKERS = [  # (mula, tamat, teks, x, y, sudut)
-    (8.00, 11.6, "kain lembut", 50, 250, 2.0),
-    (9.66, 11.6, "getah lembut", 80, 320, -1.5),
-    (10.68, 11.6, "selesa ✓", 110, 390, 1.5),
-    (13.42, 16.6, "sejuk", 50, 250, 2.0),
-    (14.74, 16.6, "tak panas ✓", 80, 320, -1.5),
-    (20.66, 23.7, "pelbagai saiz", 50, 250, -2.0),
-    (21.70, 23.7, "pelbagai warna", 80, 320, 1.5),
-    (23.30, 23.7, "harga murah ✓", 110, 390, -1.5),
+    (7.28, 10.88, "kain lembut", 50, 250, 2.0),
+    (8.94, 10.88, "getah lembut", 80, 320, -1.5),
+    (9.96, 10.88, "selesa ✓", 110, 390, 1.5),
+    (12.70, 15.88, "sejuk", 50, 250, 2.0),
+    (14.02, 15.88, "tak panas ✓", 80, 320, -1.5),
+    (19.94, 22.98, "pelbagai saiz", 50, 250, -2.0),
+    (20.98, 22.98, "pelbagai warna", 80, 320, 1.5),
+    (22.58, 22.98, "harga murah ✓", 110, 390, -1.5),
 ]
 CIRCLES = []
 COVERS = []
-BIG_WORDS = [(17.58, 19.9, "nyaman", True)]
-CTA = dict(title="selesa", title_at=23.75, title_y=230, card_at=24.0, card_y=1180,
+BIG_WORDS = [(16.86, 19.18, "nyaman", True)]
+CTA = dict(title="selesa", title_at=23.03, title_y=230, card_at=23.28, card_y=1180,
            card_label="Boxer Lelaki", name="Boxer Lelaki", tags="kain lembut · sejuk · murah",
            button="Tekan beg kuning ↓", button_color=(255, 200, 40, 255), button_text_color=(22, 22, 26, 255))
